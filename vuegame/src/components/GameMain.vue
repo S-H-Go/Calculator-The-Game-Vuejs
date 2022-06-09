@@ -1,35 +1,28 @@
 <template>
   <main id="main">
     <screen-section
-      :goalNumber="goalNumber"
-      :step="step"
+      :info="displayInfo"
+      :control="displayControl"
       :ledOptions="ledOptions"
-      :ledNumberDisplay="ledNumberDisplay"
     ></screen-section>
     <section id="button-section">
+      <div id="other-button-section"></div>
       <div id="function-button-section">
-        <button
-          v-if="functionButton.clr"
-          @click="clr"
+        <clr-button
+          v-show="functionButton.clr"
+          @init="init"
           class="function-button color-clr-button"
-        >
-          CLR
-        </button>
-        <button
-          v-if="functionButton.rightMove"
-          @click="rightMove"
-          id="right-move-button"
-          class="function-button color-button-orange hide"
-        >
-          &lt;&lt;
-        </button>
-        <button
-          v-if="functionButton.square"
-          @click="square"
-          class="function-button color-button-orange hide"
-        >
-          x²
-        </button>
+        ></clr-button>
+        <right-move-button
+          :info="getInfo()"
+          @changeCurrentNum="changeCurrentNum"
+          class="function-button color-button-orange"
+        ></right-move-button>
+        <square-button
+          :info="getInfo()"
+          @changeCurrentNum="changeCurrentNum"
+          class="function-button color-button-orange"
+        ></square-button>
         <button
           v-if="functionButton.pposite"
           id="pposite-nubutton"
@@ -122,6 +115,9 @@
 
 <script>
 import ScreenSection from "./ScreenSection.vue";
+import ClrButton from "./ClrButton.vue";
+import RightMoveButton from "./RightMoveButton.vue";
+import SquareButton from "./SquareButton.vue";
 //const rem = 14;
 // let ledOptions = {
 //   color: "#464948",
@@ -135,24 +131,35 @@ import ScreenSection from "./ScreenSection.vue";
 export default {
   name: "GameMain",
   props: {
-    initialNumber: Number,
-    stepNumber: Number,
-    goalNumber: Number,
+    level: Number,
+    initialNum: Number,
+    initialStep: Number,
+    goal: Number,
   },
-  components: { ScreenSection },
+  components: { ScreenSection, ClrButton, RightMoveButton, SquareButton },
   data() {
-    const rem = 14;
+    const rem = 16;
     //const initialNum = this.initialNumber;
     return {
-      key: 0,
-      step: this.stepNumber,
-      ledNumberDisplay: true,
-      error: false,
+      displayInfo: {
+        level: this.level,
+        step: this.initialStep,
+        goal: this.goal,
+        ledCanvasKey: 0,
+        errorInfo: "ERROE",
+        accomplishInfo: "完成了",
+      },
+      displayControl: {
+        ledCanvasDisplay: true,
+        error: false,
+        accomplish: false,
+        pause: false,
+      },
       ledOptions: {
         color: "#464948",
-        width: 1.5 * rem,
-        height: 2.5 * rem,
-        values: this.initialNumber,
+        width: 1.6 * rem,
+        height: 2.6 * rem,
+        values: this.initialNum,
         lineWidth: 5,
         italics: 0,
         opacity: 0.1,
@@ -164,63 +171,69 @@ export default {
         pposite: true,
         shiftRight: true,
         shiftLeft: true,
-        reverse: false,
-        sum: false,
-        cube: false,
-        mirror: false,
-        store: false,
-        inv10: false,
-        insert: false,
-        replace: false,
+        reverse: true,
+        sum: true,
+        cube: true,
+        mirror: true,
+        store: true,
+        inv10: true,
+        insert: true,
+        replace: true,
         eachOperation: false,
       },
     };
   },
   methods: {
-    clr() {
-      this.ledNumberDisplay = true;
-      this.step = this.stepNumber;
-      this.ledOptions.values = this.initialNumber;
-      this.key++;
-    },
     //右移
-    rightMove() {
-      let num = this.ledOptions.values.toString();
-      if (num.length == 1 || Number(num) == 0) {
-        this.ledOptions.values = 0;
-        if (Number(num) == 0) {
-          this.complete(false);
-          return;
-        }
-      } else {
-        this.ledOptions.values = Number(num.slice(0, num.length - 1));
-      }
-      this.complete();
-    },
+    // rightMove() {
+    //   let num = this.ledOptions.values.toString();
+    //   if (num.length == 1 || Number(num) == 0) {
+    //     this.ledOptions.values = 0;
+    //     if (Number(num) == 0) {
+    //       this.complete(false);
+    //       return;
+    //     }
+    //   } else {
+    //     this.ledOptions.values = Number(num.slice(0, num.length - 1));
+    //   }
+    //   this.complete();
+    // },
     //平方
-    square() {
-      if (this.ledOptions.values == 0) {
-        this.complete(false);
-      } else {
-        this.ledOptions.values *= this.ledOptions.values;
-        this.complete();
+    complete: function (stepChange = true) {
+      if (this.displayInfo.step >= 0 && stepChange) {
+        this.displayInfo.step--;
       }
-    },
-    complete(stepChange = true) {
-      if (this.step >= 0 && stepChange) {
-        this.step--;
-      }
-      this.key++;
-      if (this.ledOptions.values === this.goalNumber) {
+      this.ledCanvasKey++;
+      if (this.ledOptions.values === this.goal) {
         this.ledNumberDisplay = false;
       }
       if (
         this.ledOptions.values > 1000000 ||
         this.ledOptions.toString().includes(".")
       ) {
-        this.ledNumberDisplay = false;
-        this.error = true;
+        this.displayControl.ledCanvasDisplay = false;
+        this.displayControl.error = true;
       }
+    },
+    //获取当前信息，传递给按钮子组件
+    getInfo: function () {
+      return {
+        currentNum: this.ledOptions.values,
+        step: this.displayInfo.step,
+      };
+    },
+    //更改当前数字
+    changeCurrentNum: function (num) {
+      this.ledOptions.values = num;
+      this.displayInfo.ledCanvasKey++;
+      this.complete();
+    },
+    init: function () {
+      this.ledOptions.values = this.initialNum;
+      this.displayInfo.step = this.initialStep;
+      this.displayInfo.ledCanvasKey--;
+      this.displayControl.error = false;
+      this.displayControl.ledCanvasDisplay = true;
     },
   },
 };
@@ -228,9 +241,10 @@ export default {
 
 <style>
 body {
-  --rem: 14px;
+  --rem: 16px;
   padding: 0px;
   margin: 0px;
+  border: 0px;
   font-family: "Microsoft Yahei", simSun, Arial;
   font-size: var(--rem);
 }

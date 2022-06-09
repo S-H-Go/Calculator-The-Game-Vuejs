@@ -1,27 +1,42 @@
 <template>
   <div id="frame-section">
-    <a
-      id="play-link"
-      href="https://play.google.com/store/apps/details?id=com.sm.calculateme"
-      >Calculator:The Game</a
-    >
+    <section id="head">
+      <span style="color: azure; font-style: italic; line-height: 1rem"
+        >等级: {{ info.level }}</span
+      >
+      <a
+        id="play-link"
+        href="https://play.google.com/store/apps/details?id=com.sm.calculateme"
+        >Calculator:The Game</a
+      >
+    </section>
     <div id="display-section">
       <section id="info-display-section">
-        <section class="top-display">
-          目标:
-          {{ goalNumber }}
+        <section class="info-display">
+          <section class="info-text-display">目标:</section>
+          <section class="info-num-display">{{ info.goal }}</section>
         </section>
-        <section class="top-display">步数:{{ step }}</section>
-        <section style="line-height: 2rem">O(∩_∩)O</section>
+        <section class="info-display">
+          <section class="info-text-display">步数:</section>
+          <section class="info-num-diaplay">{{ info.step }}</section>
+        </section>
+        <section style="line-height: 3rem">O(∩_∩)O</section>
       </section>
       <section id="number-display-section">
         <led-style-canvas
-          v-if="ledNumberDisplay"
+          v-show="control.ledCanvasDisplay"
           :ledOptions="ledOptions"
-          :key="ledCanvasKey"
-          style="text-align: right"
+          :key="info.ledCanvasKey"
         ></led-style-canvas>
-        <section v-if="error && !ledNumberDisplay">ERROE</section>
+        <div v-show="!control.ledCanvasDisplay && control.error" id="error">
+          {{ info.errorInfo }}
+        </div>
+        <div
+          v-show="!control.ledCanvasDisplay && control.accomplish"
+          id="accomplish"
+        >
+          {{ info.accomplishInfo }}
+        </div>
       </section>
     </div>
   </div>
@@ -32,10 +47,19 @@ import LedStyleCanvas from "./LedStyleCanvas.vue";
 export default {
   name: "ScreenSection",
   props: {
-    goalNumber: Number,
-    step: Number,
-    ledNumberDisplay: Boolean,
-    error: Boolean,
+    info: {
+      level: Number,
+      step: Number,
+      goal: Number,
+      ledCanvasKey: Number,
+      errorInfo: String,
+      accomplishInfo: String,
+    },
+    control: {
+      ledCanvasDisplay: Boolean,
+      error: Boolean,
+      accomplish: Boolean,
+    },
     ledOptions: {
       color: String,
       width: Number,
@@ -47,9 +71,7 @@ export default {
     },
   },
   data() {
-    return {
-      ledCanvasKey: 0,
-    };
+    return {};
   },
   components: { LedStyleCanvas },
 };
@@ -64,11 +86,16 @@ export default {
   border-radius: 5%;
   margin: 0;
 }
+#head {
+  display: flex;
+  flex-direction: row;
+}
 /* 链接样式 */
 #play-link {
+  font-size: 0.5rem;
   margin: 0%;
   margin-bottom: 0.5rem;
-  padding: 0%;
+  padding-left: 2rem;
   color: white;
   text-decoration: none;
 }
@@ -85,28 +112,44 @@ export default {
   display: flex;
   flex-direction: row-reverse;
   align-items: stretch;
-  padding: 0 1rem 0;
+  padding: 0;
 }
-.top-display {
-  font-size: 0.6rem;
+.info-display {
+  font-size: 0.8rem;
+  width: 6em;
   background-color: #3d3c3a;
   text-align: center;
-  line-height: 3em;
+  line-height: 2em;
   word-break: keep-all;
   color: #a9b4aa;
   margin-right: 0.5em;
   margin-top: 0.5em;
-  padding: 0;
-  height: 30em;
-  width: 10em;
   border-radius: 5%;
+}
+.info-text-display {
+  height: 1.2em;
+}
+.info-num-display {
+  height: 1em;
 }
 /* 数字显示部分 */
 #number-display-section {
-  font-size: 2rem;
+  font-size: 4rem;
   text-align: right;
+  margin-top: 0.1rem;
+  margin-bottom: 0.6rem;
+  padding-right: 0.5rem;
+}
+#accomplish {
+  font-size: 2.6rem;
+  margin-top: 0.6rem;
+  margin-bottom: 1.27rem;
+  padding: 0;
+}
+#error {
+  font-size: 2.6rem;
   margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding-right: 1rem;
+  margin-bottom: 1.33rem;
+  padding: 0;
 }
 </style>

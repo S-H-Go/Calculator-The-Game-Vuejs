@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <game-main
-      :initialNumber="initialNum"
-      :stepNumber="stepNum"
-      :goalNumber="goalNum"
-    ></game-main>
-  </div>
+  <game-main
+    :initialNum="initialNum"
+    :initialStep="initialStep"
+    :goal="goal"
+  ></game-main>
 </template>
 
 <script>
@@ -15,8 +13,8 @@ export default {
   data() {
     return {
       initialNum: 2021,
-      stepNum: 8,
-      goalNum: 24,
+      initialStep: 8,
+      goal: 24,
     };
   },
   components: {
@@ -32,6 +30,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
