@@ -1,0 +1,32 @@
+{
+    "level":{
+        "-4":{
+            "initialNum":0,
+            "initialStep":5,
+            "goal":-11,
+            "buttons":["+1","-2","x3","/3","insert1"],
+            "path":["+1","-2","x3","/3","insert1"]
+        },
+        "-3":{
+            "initialNum":2022,
+            "initialStep":5,
+            "goal":3,
+            "buttons":["rightMove","square","pposite","reverse","sum"],
+            "path":["rightMove","square","pposite","reverse","sum"]
+        },
+        "-2":{
+            "initialNum":10,
+            "initialStep":5,
+            "goal":11,
+            "buttons":["cube","shiftLeft","shiftRight","mirror"],
+            "path":["cube","shiftLeft","shiftRight","cube","mirror"]
+        },
+        "-1":{
+            "initialNum":10,
+            "initialStep":3,
+            "goal":9090,
+            "buttons":["store","inv10"],
+            "path":["store","takeOut","inv10"]
+        }
+    }
+}

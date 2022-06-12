@@ -268,4 +268,9 @@ options: {
 //	ledSetValue("#test",{color:null,width:50,height:110,values:"-51.2122.12.3.5454.9.8.73.",lineWidth:5,italics:-10,opacity:0.2});
 //	ledSetValue("#test1",{color:"red",width:20,height:45,values:"-323.343.254",lineWidth:3,italics:0});
 </script>
-<style></style>
+<style>
+#canvas {
+  margin: 0;
+  padding: 0;
+}
+</style>
