@@ -121,6 +121,6 @@ export default {
   height: 4rem;
 }
 .function-button:active{
-  border:none;
+  outline:none
 }
 </style>
