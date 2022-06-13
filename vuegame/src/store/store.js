@@ -101,9 +101,8 @@ const store = new createStore({
                 state.data.ledOptions.values > 1000000 ||
                 state.data.ledOptions.values.toString().includes(".")
             ) {
-                //数字过大或者是小数则报错错误
+                //数字过大或者是小数则报错
                 state.control.ledCanvasDisplay = false;
-                // state.data.ledOptions.values = 0; //使数值等于0，控制按钮触发后无操作
                 state.control.error = true;
             }
         },
@@ -234,7 +233,11 @@ const store = new createStore({
             store.commit("CHANGE_BUTTON_LIST");
         },
         [type.ACCOMPLISH](state) {
-            state.data.level++;
+            if(state.data.level<state.data.maxLevel){
+                state.data.level++;
+            }else{
+                state.data.level==state.data.minLevel;
+            }
             state.control.accomplish = false;
             state.control.ledCanvasDisplay = true;
             store.commit("GET_LEVEL_DATA",levelData.level[state.data.level]);

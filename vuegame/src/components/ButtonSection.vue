@@ -120,4 +120,7 @@ export default {
   width: 4.8rem;
   height: 4rem;
 }
+.function-button:active{
+  border:none;
+}
 </style>

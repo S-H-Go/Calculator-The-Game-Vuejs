@@ -1,0 +1,26 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GET_LEVEL_DATA = exports.EACH_BUTTON = exports.ACCOMPLISH = exports.SUB_LEVEL = exports.ADD_LEVEL = exports.CHANGE_LEVEL = exports.CHANGE_BUTTON_LIST = exports.INIT = exports.CLR = exports.CHANGE_CURRENT_NUM = void 0;
+var CHANGE_CURRENT_NUM = "CHANGE_CURRENT_NUM";
+exports.CHANGE_CURRENT_NUM = CHANGE_CURRENT_NUM;
+var CLR = "CLR";
+exports.CLR = CLR;
+var INIT = "INIT";
+exports.INIT = INIT;
+var CHANGE_BUTTON_LIST = "CHANGE_BUTTON_LIST";
+exports.CHANGE_BUTTON_LIST = CHANGE_BUTTON_LIST;
+var CHANGE_LEVEL = "CHANGE_LEVEL";
+exports.CHANGE_LEVEL = CHANGE_LEVEL;
+var ADD_LEVEL = "ADD_LEVEL";
+exports.ADD_LEVEL = ADD_LEVEL;
+var SUB_LEVEL = "SUB_LEVEL";
+exports.SUB_LEVEL = SUB_LEVEL;
+var ACCOMPLISH = "ACCOMPLISH";
+exports.ACCOMPLISH = ACCOMPLISH;
+var EACH_BUTTON = "EACH_BUTTON";
+exports.EACH_BUTTON = EACH_BUTTON;
+var GET_LEVEL_DATA = "GET_LEVEL_DATA";
+exports.GET_LEVEL_DATA = GET_LEVEL_DATA;
