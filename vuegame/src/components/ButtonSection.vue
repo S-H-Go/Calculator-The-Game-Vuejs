@@ -113,14 +113,12 @@ export default {
 }
 
 .function-button {
+  outline:none;
   border: none;
   color: white;
   border-radius: 6%;
   margin: 0.3rem 0.1rem;
   width: 4.8rem;
   height: 4rem;
-}
-.function-button:active{
-  outline:none
 }
 </style>
