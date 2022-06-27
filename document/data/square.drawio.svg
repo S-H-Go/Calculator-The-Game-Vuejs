@@ -1,0 +1,54 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="428px" height="510px" viewBox="-0.5 -0.5 428 510" content="&lt;mxfile&gt;&lt;diagram id=&quot;di3IrMLWTtnVm35CpCUc&quot; name=&quot;第 1 页&quot;&gt;1VfLbqMwFP2au2wEmOcSE9pZzEgjzWKWIxocgkpwZJwm6dfPNdghFHdaKX1oNq05vn7cc459HSDZ9ngnit3mBy9ZA55THoEswfOiiOBfBZwGII6iAahEXQ6QOwK/6iemQUej+7pk3SRQct7IejcFV7xt2UpOsEIIfpiGrXkzXXVXVGwG/FoVzRz9XZdyo7PwohH/xupqY1Z2w2To2RYmWGfSbYqSHy4gkgPJBOdyaG2PGWsUd4aXYdztC73njQnWyrcMCIYBj0Wz17npfcmTSZaVmLv+bHmL/+iat1Kr4ib4PV9Vb6Tje7HS82jNZSEqpqP8AVIrXAzTO71jfMukOGGAYE0h68cp+4UWsTrHjXliQ6dqT5vM084jSHxIY8hDiGOgkUJiD2gCeQBxBBTTDMEjaELMGDHsoUSFJ2EfheMyiLGRQOJBms+Y7KTgD2fHYKIU5d+pzu2xUgdlsW74YbUphFx0yJP841rIXtdNk/GGi1GPF/l/ZEKy4z+51b1eoh2pj6Rrvg+jwd1YY5sLcxvsGjnMuf4MG/pzGyZfZUPXneet/BRDemsl4HtxjzcpoUVTVy3CK8yUoRGoErrGCyrVHdu6LNVAKlhXPxX3/STKuDtet7LfckAhWFpYbNQatFg9VILv2/J1qxnxnnvtfP/q5SdXnM2DN87CDU1tOE20eTP1evKfKs1xZkP0aeIBM56v1x164blw5w2+TUvLnfKJHna9LzOxbzFxAHh/pOH/Y2Kj3tUmRg8nZrYrXXvjTs/CjRH5XY1rl48uISF95UsgXvYNB2gGuQ807pG+QVMc6kCG9c6xlMdQh2FlxXstXUIa9Bcc9joqJsWKG/UxKcS5M7OL2PDt/b6zCDyvpR9UF+NgogGJLHUxsdRF1w+uP1uJXRsH4vA1kW7VC0Rx7SslLqUxwin+c4hJ//RB/n3Lo+a5IF8lA/Gmz5OQRItgLoRnESJ8jweKZy/UkbK9ahBzJFCR7FXWLBzNiXwH1oJnjzrf9T6QNfwcf7gMF9H464/kfwE=&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <path d="M 96 81 L 96 174.63" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 96 179.88 L 92.5 172.88 L 96 174.63 L 99.5 172.88 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <ellipse cx="96" cy="41" rx="90" ry="40" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="19px">
+            <text x="95.5" y="37.5">
+                用户点击
+            </text>
+            <text x="95.5" y="60.5">
+                平方按钮
+            </text>
+        </g>
+        <path d="M 96 326 L 96 442.13" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 96 447.38 L 92.5 440.38 L 96 442.13 L 99.5 440.38 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="19px">
+            <text x="116.21" y="390.14">
+                是
+            </text>
+        </g>
+        <path d="M 191 253.5 L 299.63 253.5" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 304.88 253.5 L 297.88 257 L 299.63 253.5 L 297.88 250 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="19px">
+            <text x="246.79" y="250.21">
+                否
+            </text>
+        </g>
+        <path d="M 96 181 L 191 253.5 L 96 326 L 1 253.5 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="19px">
+            <text x="95.5" y="250">
+                当前值不为 0
+            </text>
+            <text x="95.5" y="273">
+                并且步数大于0
+            </text>
+        </g>
+        <rect x="36" y="448.5" width="120" height="60" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="19px">
+            <text x="95.5" y="475">
+                将当前值修改
+            </text>
+            <text x="95.5" y="498">
+                为它的平方
+            </text>
+        </g>
+        <rect x="306" y="223.5" width="120" height="60" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="19px">
+            <text x="365.5" y="261.5">
+                无操作
+            </text>
+        </g>
+    </g>
+</svg>

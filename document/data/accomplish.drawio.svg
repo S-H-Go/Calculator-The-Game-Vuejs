@@ -1,0 +1,68 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="362px" height="282px" viewBox="-0.5 -0.5 362 282" content="&lt;mxfile&gt;&lt;diagram id=&quot;Q6XD_fFSFbbLJl4F7LeM&quot; name=&quot;第 1 页&quot;&gt;7Vldb5swFP01fq0w5sM8QkK6lz110tZHFNzEGsGV47TJfv2uwS4QSNQ2pM3SSVVlH9vg++FzDw4ik9X2VmaPy+8iZwVynXyLyBS5ru9h+K+BXQ0E2KuBheR5DeEGuON/mAEdg254ztadiUqIQvHHLjgXZcnmqoNlUorn7rQHUXTf+pgtWA+4m2dFH/3Jc7WsUeqGDf6N8cXSvhkHUT2yyuxkY8l6meXiuQWRFJGJFELVrdV2wgrtO+uXet3swOjLxiQr1WsWuH694ikrNsY4szG1s9ZKsSlzphc4iCQPolQmIjjQfV4UE1EICUApSsCT/ibMvp6YVGzbgsymbplYMSV3MMWOhsZBJkN867Dnxt8kMNiy5WuXGjAzMV68PLtxAzSMJ4a9Qsi/4ZUQv9Ir0QhOsdl9zCksh3NiusZstuXql/GSbt+32tNtu7OznRJ2Vi25gfQ0/fv2YLOu6u0OBIGVeaxPe2szZT7j2sJq/sGIrMVGzln3hKhMLpidZizX5h6Nm2RFpvhTlzZOCgI9KQj4PUEI/wdhj2UHSDP1UTJFEdENGiE6rRoOSiYoDVE81WDqoSRGNNVIlKAYGgGKHUTDZvJ+MIEZwN5kraT4zfYYZYBksoIvSujOwZsM8ESTC4fKFZuBFc9z/ezkOH+NQFbE8bsU7vXJKhrgKjIGgXujcRU+ekzOku02s9vZbk/Ax2c7eYVEGMWXl8X7Q0GwuuATgnBa8cXvCcIF8P5lBcHu5g2y8GPEMfV7zDooA4MxZGB0Gh3c+O/RIJ1UxJeSip+oA3E/CiAmIoqSSl7EldTQCOgSR8sLkCBRCDMfsmLNkBsgl+DK+IFlvtYmdKKHKEVQpLVymaEYVwhGMexyqiS8+XrkCqbdQxU4fbmChw7VGHoFjNgP549r8u0+Yfl9wjqba/uVc3ZFrvX2XBvQftqey7XeAAl9hVJgFciF6PP+lcA1c8dHJjgZ0DrHPvR9XUDjsPWhH+naCjW0+b53bFUNqvaRp8FDqCnHUMLprCnn1xPdlxsAG91goOq65+KvgWve8UQUhN5DUYRSqvUS/H1BERUO3PmcTUR5/Uufa670ZxRR0G1+gqrGWr/jkfQv&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="0" y="0" width="360" height="280" fill="none" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <rect x="0" y="190" width="360" height="90" fill="none" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <path d="M 0 0 L 90 65" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 360 0 L 270 65" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <rect x="135" y="20" width="90" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="16px">
+            <text x="179.5" y="41.5">
+                当前值等于目标值
+            </text>
+        </g>
+        <path d="M 0 125 L 90 190" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 360 125 L 270 190" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <rect x="0" y="65" width="360" height="60" fill="none" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <path d="M 180 65 L 180 125" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <rect x="10" y="80" width="160" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="16px">
+            <text x="89.5" y="92">
+                显示数字=false
+            </text>
+            <text x="89.5" y="111">
+                显示完成信息=true
+            </text>
+        </g>
+        <rect x="0" y="35" width="60" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="16px">
+            <text x="29.5" y="56.5">
+                T
+            </text>
+        </g>
+        <rect x="300" y="160" width="60" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="16px">
+            <text x="329.5" y="181.5">
+                F
+            </text>
+        </g>
+        <path d="M 180 190 L 180 280" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <rect x="0" y="160" width="60" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="16px">
+            <text x="29.5" y="181.5">
+                T
+            </text>
+        </g>
+        <rect x="120" y="140" width="120" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="16px">
+            <text x="179.5" y="161.5">
+                当前值大于阈值 或 当前值为小数
+            </text>
+        </g>
+        <rect x="10" y="220" width="160" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="16px">
+            <text x="89.5" y="232">
+                显示数字=false
+            </text>
+            <text x="89.5" y="251">
+                显示错误信息=true
+            </text>
+        </g>
+        <rect x="300" y="35" width="60" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="16px">
+            <text x="329.5" y="56.5">
+                F
+            </text>
+        </g>
+    </g>
+</svg>

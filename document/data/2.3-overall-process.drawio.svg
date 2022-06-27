@@ -1,0 +1,54 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="692px" height="221px" viewBox="-0.5 -0.5 692 221" content="&lt;mxfile&gt;&lt;diagram id=&quot;mRBlTVQwibrFDNOryAE8&quot; name=&quot;第 1 页&quot;&gt;3Vhdb5swFP01ftyE+bQfgZDtZdKkPqx9pMElqARHDmmT/fpdYxNwcdslaZppUqTYB19/nOtz7wXkpavdN5Gvlz94wWrkOsUOeTPkutgnGP4ksldIFBIFlKIq9KABuKl+Mw06Gt1WBdsYA1vO67Zam+CCNw1btAaWC8GfzWEPvDZXXeclmwA3i7yeor+qol0qlLjRgH9nVbnsV8YhVU9WeT9Yn2SzzAv+PIK8DHmp4LxVrdUuZbUkr+dF2c1feXrYmGBN+zcGesdPeb3VZ9P7avf9YVkBZ9fdhjfwl9T5PauTfPFYCr5tipTXXAxP1QzS7NVN9U7LRck0FB5OD9eG8RVrxR6GCFbnbfVkTpVr/5WHcQfTn7yCRVxH3zXPC5TJvu875hQbvhULpq0GoqAx2sYAdfTZqaRXpVKdY0SlyS45k12DlzdIwO5JLHRnZ3IO5/M4wfiTSAmnnGQRimeIUJQFKMkQCSRCfRQTlIWIEJREskE9RGYo81EyQzSdMCmWfHW/3bxL2UNV11YWn5ho2e5tHqcEaQM3dL+a6vL7AP08REXs6zHLUUQkzvms9msdedXYrmpv5UWDvavenb52sj3bjTv7vtPA3m7HnbthBtkdzLpeb3f5a32uru1R0418M2o6L/ylZDSJmrEQ+X40bC0HbF5fJ3CsywwXQE14akQmFt0FUmuJ1zVmKMayEbuIZh0So9iZXKJraOsLNqnxXYuyemysrPAjlGUJWEcH8bN0ho/T2SWUhS01Co4uIjffsevgo+UWupfVW0+ZIThIYkSmOJnxII/FKKMy0VFIfQTFc/n7FwQXhNcUnG8lDsoA6ui4ROeSOMibNB6C2Evi4Piwq2TTCv7I3qctr6uyge4COGKAJ5LBCl5zYv1gVRVFfVp9dpYzcPS+M0KLL14W9yf5IrBfYiBc+cJBSSrvbhJKv8iyDcBpbfa/+MIPrugLy+sp+AJydEI7gUAG7xK3LI9VTqddwTzN8hB65l0DrHAXdCDJeVhSaItRc+lk0J+cAFTYTRlHiCQdkiIa9mPoxPPHOOhClXlk1uVuZAlm2FKXnxDMoDt8rlBJY/jo42V/AA==&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <path d="M 345 60 L 345 133.63" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 345 138.88 L 341.5 131.88 L 345 133.63 L 348.5 131.88 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 272.5 180 L 126.37 180" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 121.12 180 L 128.12 176.5 L 126.37 180 L 128.12 183.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 417.5 180 L 563.63 180" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 568.88 180 L 561.88 183.5 L 563.63 180 L 561.88 176.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 345 140 L 417.5 180 L 345 220 L 272.5 180 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="344.5" y="184.5">
+                等待用户操作
+            </text>
+        </g>
+        <path d="M 60 150 L 60 30 L 277.63 30" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 282.88 30 L 275.88 33.5 L 277.63 30 L 275.88 26.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="0" y="150" width="120" height="60" fill="none" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="59.5" y="184.5">
+                关卡增加
+            </text>
+        </g>
+        <path d="M 630 150 L 630 30 L 406.37 30" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 401.12 30 L 408.12 26.5 L 406.37 30 L 408.12 33.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="570" y="150" width="120" height="60" fill="none" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="629.5" y="184.5">
+                显示错误
+            </text>
+        </g>
+        <rect x="180" y="150" width="60" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="209.5" y="169.5">
+                成功通关
+            </text>
+        </g>
+        <rect x="460" y="150" width="60" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="489.5" y="169.5">
+                数值越界
+            </text>
+        </g>
+        <rect x="285" y="0" width="115" height="60" fill="none" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="342" y="27.5">
+                根据当前关卡信息
+            </text>
+            <text x="342" y="41.5">
+                显示（初始化）
+            </text>
+        </g>
+    </g>
+</svg>
