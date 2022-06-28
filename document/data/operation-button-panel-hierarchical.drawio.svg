@@ -1,0 +1,52 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="431px" height="283px" viewBox="-0.5 -0.5 431 283" content="&lt;mxfile&gt;&lt;diagram id=&quot;hENq4Oi6ma9lk6dPjC92&quot; name=&quot;第 1 页&quot;&gt;7VhNb6MwEP01vkbYfNg+hkB2Lyut1MNujyi4AYngyHHaZH/92rEJOBCURumm7TaHiHkeezwz74EB+LPV7pvI1sUPnrMKIC/fAT8BCAUYqn8N7A0QwcAAS1HmBoIt8FD+YRb0LLotc7ZxHCXnlSzXLrjgdc0W0sEyIfiL6/bEKzfqOluyHvCwyKo++qvMZWFQgnCLf2flsmgiw4iakVXWONtMNkWW85cO5KfAnwnOpbla7Was0rVr6mLmzc+MHjcmWC0vmYDMhOes2trcQBoB6gOSgDQAcQLoTCNkBggFKQUUgWl6uEjA1DgnIJ7bbOS+KZHg2zpnOooH/PiprKoZr7hQds1r5RPbwExItju7eXgsiaIS4ysmxV65NDzybBUtjYLA2i9tU2BT6aLTkMhimeXB8rh0Wyp1Yas1XDm/lzLLFUmsyYUs+JLXWZW2aOwWpZArtXgC1SXblfK3hiehtR6tk75Odl1j39SU19JKA1I9WOdTze22xAqZlzoBM7lWGXaCaPOxia+NNszBauKYPHVy421SteBbsbBeVtAyE0smO1zrN1OwKpPls7v6UGfs1J+8VHFbEoQuCULvpLlmC3bWSX+P27io5cGAWEJA5lodKQY0PkijJx8UAeTDQyn1YAhiT8+bqkE8oK17KMkPoVPECPWVRKO3EVJ4byFdK4zXCvA6IUW3F9KlnYmG+Z5oDn9svqPAvWn8S77je/P9fT84yCd8cJABIRHN/TjVQlKyMUJ6B8oIcXA3ZdB+mcakYpM+qUqH3OQCcufZpjhMPq8mOKqmS1l+c/4igifUa38nT3By0hCjsR6bX7ksRm8mkubl7qv9F7Xfp3RCEG1/bvsxmXTGKLmODONBMBwNckNqwC9qvIIaEYJj1CDwOjKML4tP93nD9o93+78/MkH/E56ZmqScQ5N6xSCHI9KHfvsIIv9uZyw48BHj61Z6lvChh517Hr7NIWt82dsdspTZfks27u0HeT/9Cw==&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="160" y="0" width="120" height="60" fill="none" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="219.5" y="34.5">
+                操作按钮面板
+            </text>
+        </g>
+        <path d="M 159 180 L 159 120 L 220 120 L 220 60" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <rect x="111" y="180" width="96" height="60" fill="none" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="158.5" y="207.5">
+                双目操作
+            </text>
+            <text x="158.5" y="221.5">
+                数字按钮
+            </text>
+        </g>
+        <path d="M 48 180 L 48 120 L 220 120 L 220 60" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <rect x="0" y="180" width="96" height="60" fill="none" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="47.5" y="207.5">
+                单目操作
+            </text>
+            <text x="47.5" y="221.5">
+                数字按钮
+            </text>
+        </g>
+        <path d="M 382 180 L 382 120 L 220 120 L 220 60" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <rect x="334" y="180" width="96" height="60" fill="none" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="381.5" y="214.5">
+                设置按钮
+            </text>
+        </g>
+        <path d="M 47.9 240 L 47.9 280" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+        <path d="M 159.83 239 L 159.83 279" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+        <path d="M 381.83 241 L 381.83 281" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+        <path d="M 271 180 L 271 120 L 220 120 L 220 60" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <rect x="223" y="180" width="96" height="60" fill="none" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="270.5" y="207.5">
+                三目操作
+            </text>
+            <text x="270.5" y="221.5">
+                数字按钮
+            </text>
+        </g>
+        <path d="M 267.83 240 L 267.83 280" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/>
+    </g>
+</svg>
