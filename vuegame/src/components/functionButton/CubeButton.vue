@@ -1,8 +1,10 @@
 <template>
-  <button @click="cube" class="function-button color-button-orange">x³</button>
+  <button @click="cube" class="button color-button-orange">x³</button>
 </template>
 
 <script>
+import { CHANGE_CURRENT_NUM } from '@/store/mutation-types'
+
 export default {
   name: "CubeButton",
   props: {
@@ -10,8 +12,8 @@ export default {
     step: Number,
   },
   methods: {
-    cube: function () {
-      this.$emit("changeCurrentNum", Math.pow(this.currentNum, 3));
+    cube() {
+      this.$store.commit(CHANGE_CURRENT_NUM, Math.pow(this.currentNum, 3));
     },
   },
 };

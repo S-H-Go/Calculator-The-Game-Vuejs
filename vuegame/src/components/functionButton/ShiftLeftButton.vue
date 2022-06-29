@@ -1,10 +1,12 @@
 <template>
-  <button @click="shiftLeft" class="function-button color-button-orange">
+  <button @click="shiftLeft" class="button color-button-orange">
     Shift&lt;
   </button>
 </template>
 
 <script>
+import { CHANGE_CURRENT_NUM } from '@/store/mutation-types'
+
 export default {
   name: "ShiftLeftButton",
   props: {
@@ -12,20 +14,20 @@ export default {
     step: Number,
   },
   methods: {
-    shiftLeft: function () {
+    shiftLeft() {
       if (this.step > 0 && this.currentNum != 0) {
         const numStr = this.currentNum.toString().replaceAll("-", "");
         let numArray = numStr.split("");
         numArray.push(numArray.shift());
         if (this.currentNum.toString().includes("-")) {
           //如果是负数
-          this.$emit(
-            "changeCurrentNum",
+          this.$store.commit(
+            CHANGE_CURRENT_NUM,
             Number("-" + numArray.join().replaceAll(",", ""))
           );
         } else {
-          this.$emit(
-            "changeCurrentNum",
+          this.$store.commit(
+            CHANGE_CURRENT_NUM,
             Number(numArray.join().replaceAll(",", ""))
           );
         }

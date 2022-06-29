@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import ScreenSection from "./ScreenSection.vue";
-import ButtonSection from "./ButtonSection.vue";
+import ScreenSection from "./ScreenPanel.vue";
+import ButtonSection from "./ButtonPanel.vue";
 import { mapMutations } from "vuex";
 
 export default {
@@ -22,17 +22,21 @@ export default {
 </script>
 
 <style>
-body {
+html {
   --rem: 16px;
-  padding: 0px;
-  margin: 0px;
-  border: 0px;
   font-family: "Microsoft Yahei", simSun, Arial;
   font-size: var(--rem);
 }
+
+body {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
 #main {
-  height: 30rem;
-  width: 15rem;
+  width: 18rem;
+  height: 50rem;
   margin: auto;
 }
 </style>

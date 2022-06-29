@@ -1,6 +1,13 @@
-{
-    "level":{
-        "-4":{
+[
+        {
+            "level":-5,
+            "initialNum":0,
+            "initialStep":4,
+            "goal":1,
+            "buttons":["+1","<<","x²","Reverse","SUM","x³","Shift<","Shift>","Mirror","Store","Inv10","insert1","each+1","13=>14"],
+            "path":["+1"]
+        },
+        {
             "level":-4,
             "initialNum":0,
             "initialStep":6,
@@ -8,7 +15,7 @@
             "buttons":["+2","x3","-3","each+2","25=>2022"],
             "path":["+2","each+2","+4","x5","-5","25=>2022"]
         },
-        "-3":{
+        {
             "level":-3,
             "initialNum":0,
             "initialStep":5,
@@ -16,31 +23,31 @@
             "buttons":["+1","-2","x3","/3","insert1"],
             "path":["+1","-2","x3","/3","insert1"]
         },
-        "-2":{
+        {
             "level":-2,
             "initialNum":2022,
             "initialStep":5,
             "goal":61,
-            "buttons":["rightMove","square","pposite","reverse","sum"],
-            "path":["rightMove","pposite","square","reverse","sum"]
+            "buttons":["<<","x²","+/-","Reverse","SUM"],
+            "path":["<<","+/-","x²","SUM","Reverse"]
         },
-        "-1":{
+        {
             "level":-1,
             "initialNum":10,
             "initialStep":5,
             "goal":11,
-            "buttons":["cube","shiftLeft","shiftRight","mirror"],
-            "path":["cube","shiftLeft","shiftRight","cube","mirror"]
+            "buttons":["x³","Shift<","Shift>","Mirror"],
+            "path":["x³","Shift<","Shift>","x³","Mirror"]
         },
-        "0":{
+        {
             "level":0,
             "initialNum":10,
             "initialStep":3,
             "goal":9090,
-            "buttons":["store","inv10"],
-            "path":["store","takeOut","inv10"]
+            "buttons":["Store","Inv10"],
+            "path":["Store","takeOut","Inv10"]
         },
-        "1":{
+        {
             "level":1,
             "initialNum":0,
             "initialStep":2,
@@ -48,7 +55,7 @@
             "buttons":["+1"],
             "path":["+1","+1"]
         },
-        "2":{
+        {
             "level":2,
             "initialNum":0,
             "initialStep":3,
@@ -56,7 +63,7 @@
             "buttons":["+2","+3"],
             "path":["+2","+3","+3"]
         },
-        "3":{
+        {
             "level":3,
             "initialNum":0,
             "initialStep":3,
@@ -64,7 +71,7 @@
             "buttons":["+1","+2","x4"],
             "path":["+1","+2","x4"]
         },
-        "4":{
+        {
             "level":4,
             "initialNum":1,
             "initialStep":3,
@@ -72,7 +79,7 @@
             "buttons":["+4","-2"],
             "path":["-2","+4","+4"]
         },
-        "5":{
+        {
             "level":5,
             "initialNum":0,
             "initialStep":3,
@@ -80,7 +87,7 @@
             "buttons":["+4","x4"],
             "path":["+4","x4","+4"]
         },
-        "6":{
+        {
             "level":6,
             "initialNum":0,
             "initialStep":4,
@@ -88,7 +95,7 @@
             "buttons":["+2","x4"],
             "path":["+2","x4","+2","x4"]
         },
-        "7":{
+        {
             "level":7,
             "initialNum":100,
             "initialStep":4,
@@ -96,39 +103,39 @@
             "buttons":["+3","/5"],
             "path":["/5","/5","+3","+3"]
         },
-        "8":{
+        {
             "level":8,
             "initialNum":4321,
             "initialStep":3,
             "goal":4,
-            "buttons":["rightMove"],
-            "path":["rightMove","rightMove","rightMove"]
+            "buttons":["<<"],
+            "path":["<<","<<","<<"]
         },
-        "9":{
+        {
             "level":9,
             "initialNum":0,
             "initialStep":3,
             "goal":4,
-            "buttons":["+8","x5","rightMove"],
-            "path":["+8","x5","rightMove"]
+            "buttons":["+8","x5","<<"],
+            "path":["+8","x5","<<"]
         },
-        "10":{
+        {
             "level":10,
             "initialNum":50,
             "initialStep":4,
             "goal":9,
-            "buttons":["/5","x3","rightMove"],
-            "path":["x3","/5","rightMove","x3"]
+            "buttons":["/5","x3","<<"],
+            "path":["x3","/5","<<","x3"]
         },
-        "11":{
+        {
             "level":11,
             "initialNum":99,
             "initialStep":3,
             "goal":100,
-            "buttons":["-8","x11","rightMove"],
-            "path":["-8","x11","rightMove"]
+            "buttons":["-8","x11","<<"],
+            "path":["-8","x11","<<"]
         },
-        "12":{
+        {
             "level":12,
             "initialNum":0,
             "initialStep":5,
@@ -136,23 +143,23 @@
             "buttons":["+8","x10","/2"],
             "path":["+8","x10","x10","+8","/2"]
         },
-        "13":{
+        {
             "level":13,
             "initialNum":171,
             "initialStep":4,
             "goal":23,
-            "buttons":["x2","-9","rightMove"],
-            "path":["-9","x2","rightMove","-9"]
+            "buttons":["x2","-9","<<"],
+            "path":["-9","x2","<<","-9"]
         },
-        "14":{
+        {
             "level":14,
             "initialNum":0,
             "initialStep":5,
             "goal":21,
-            "buttons":["+5","x3","x5","rightMove"],
-            "path":["+5","x5","rightMove","+5","x3"]
+            "buttons":["+5","x3","x5","<<"],
+            "path":["+5","x5","<<","+5","x3"]
         },
-        "15":{
+        {
             "level":15,
             "initialNum":10,
             "initialStep":3,
@@ -160,15 +167,15 @@
             "buttons":["x3","x2","-5"],
             "path":["x3","-5","x2"]
         },
-        "16":{
+        {
             "level":16,
             "initialNum":0,
             "initialStep":5,
             "goal":2,
-            "buttons":["+4","x9","rightMove"],
-            "path":["+4","x9","rightMove","x9","rightMove"]
+            "buttons":["+4","x9","<<"],
+            "path":["+4","x9","<<","x9","<<"]
         },
-        "17":{
+        {
             "level":17,
             "initialNum":0,
             "initialStep":2,
@@ -176,7 +183,7 @@
             "buttons":["insert1"],
             "path":["insert1","insert1"]
         },
-        "18":{
+        {
             "level":18,
             "initialNum":0,
             "initialStep":3,
@@ -184,7 +191,7 @@
             "buttons":["insert1","insert0"],
             "path":["insert1","insert0","insert1"]
         },
-        "19":{
+        {
             "level":19,
             "initialNum":0,
             "initialStep":3,
@@ -192,7 +199,7 @@
             "buttons":["insert2","x2"],
             "path":["insert2","insert2","x2"]
         },
-        "20":{
+        {
             "level":20,
             "initialNum":0,
             "initialStep":2,
@@ -200,9 +207,4 @@
             "buttons":["+3","insert5"],
             "path":["+3","insert5"]
         }
-
-
-
-
-    }
-}
+]

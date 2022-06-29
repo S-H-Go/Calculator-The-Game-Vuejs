@@ -1,8 +1,5 @@
 <template>
-  <button
-    @click="this.$store.commit('CLR')"
-    class="function-button color-button-clr"
-  >
+  <button @click="this.$store.commit('CLR')" class="button color-button-clr">
     CLR
   </button>
 </template>

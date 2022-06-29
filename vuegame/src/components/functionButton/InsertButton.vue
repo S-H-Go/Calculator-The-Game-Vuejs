@@ -1,10 +1,11 @@
 <template>
-  <button @click="insert" class="function-button color-button-blue hide">
+  <button @click="insert" class="button color-button-blue hide">
     {{ num1 }}
   </button>
 </template>
 
 <script>
+import { CHANGE_CURRENT_NUM } from '@/store/mutation-types';
 export default {
   name: "InsertButton",
   props: {
@@ -15,10 +16,7 @@ export default {
   methods: {
     insert() {
       if (this.step > 0) {
-        this.$emit(
-          "changeCurrentNum",
-          Number(this.currentNum.toString() + this.num1)
-        );
+        this.$store.commit(CHANGE_CURRENT_NUM, Number(this.currentNum.toString() + this.num1));
       }
     },
   },

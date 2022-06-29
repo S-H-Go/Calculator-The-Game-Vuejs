@@ -1,26 +1,16 @@
 <template>
   <div id="frame-section">
     <section id="head">
-      <span
-        style="
+      <span style="
           font-size: 0.9rem;
           color: azure;
           font-style: italic;
           line-height: 1rem;
           width: 4rem;
-        "
-        >等级: {{ screenData.level }}</span
-      >
-      <a
-        id="play-link"
-        href="https://play.google.com/store/apps/details?id=com.sm.calculateme"
-        >Calculator:The Game</a
-      >
+        ">等级: {{ screenData.level }}</span>
+      <a id="play-link" href="https://play.google.com/store/apps/details?id=com.sm.calculateme">Calculator:The Game</a>
     </section>
-    <div
-      id="display-section"
-      v-show="screenControl.initialMode && !screenControl.setMode"
-    >
+    <div id="display-section" v-show="screenControl.initialMode && !screenControl.setMode">
       <section id="info-display-section">
         <section class="info-display">
           <section class="info-text-display">目标:</section>
@@ -33,37 +23,25 @@
         <section style="line-height: 3rem">O(∩_∩)O</section>
       </section>
       <section id="number-display-section">
-        <led-style-canvas
-          v-show="screenControl.ledCanvasDisplay"
-          :ledOptions="screenData.ledOptions"
-          :key="screenData.ledCanvasKey"
-        ></led-style-canvas>
-        <div
-          v-show="
-            screenControl.initialMode &&
-            !screenControl.ledCanvasDisplay &&
-            screenControl.error
-          "
-          id="error"
-        >
+        <led-style-canvas v-show="screenControl.ledCanvasDisplay" :ledOptions="screenData.ledOptions"
+          :key="screenData.ledCanvasKey"></led-style-canvas>
+        <div v-show="
+          screenControl.initialMode &&
+          !screenControl.ledCanvasDisplay &&
+          screenControl.error
+        " id="error">
           {{ screenData.errorInfo }}
         </div>
-        <div
-          v-show="
-            screenControl.initialMode &&
-            !screenControl.ledCanvasDisplay &&
-            screenControl.accomplish
-          "
-          id="accomplish"
-        >
+        <div v-show="
+          screenControl.initialMode &&
+          !screenControl.ledCanvasDisplay &&
+          screenControl.accomplish
+        " id="accomplish">
           {{ screenData.accomplishInfo }}
         </div>
       </section>
     </div>
-    <div
-      id="display-section-pause"
-      v-show="screenControl.setMode && !screenControl.initialMode"
-    >
+    <div id="display-section-pause" v-show="screenControl.setMode && !screenControl.initialMode">
       {{ screenData.pauseInfo }}
     </div>
   </div>
@@ -71,7 +49,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import LedStyleCanvas from "./LedStyleCanvas.vue";
+import LedStyleCanvas from "./screenSection/LedStyleCanvas.vue";
 export default {
   name: "ScreenSection",
   computed: {
@@ -90,10 +68,12 @@ export default {
   border-radius: 5%;
   margin: 0;
 }
+
 #head {
   display: flex;
   flex-direction: row;
 }
+
 /* 链接样式 */
 #play-link {
   font-size: 0.5rem;
@@ -103,22 +83,27 @@ export default {
   color: white;
   text-decoration: none;
 }
+
 #play-link:hover {
   color: #ea6c18;
 }
+
 /* 显示部分 */
 #display-section {
   background-color: #a8b7a2;
   border-radius: 5%;
 }
+
 #display-section-pause {
   font-size: 4rem;
   background-color: #a8b7a2;
   border-radius: 5%;
   text-align: center;
   line-height: 11rem;
+  width: auto;
   height: 8.97rem;
 }
+
 /* 信息显示部分 */
 #info-display-section {
   display: flex;
@@ -126,6 +111,7 @@ export default {
   align-items: stretch;
   padding: 0;
 }
+
 .info-display {
   font-size: 0.8rem;
   width: 6em;
@@ -138,12 +124,15 @@ export default {
   margin-top: 0.5em;
   border-radius: 5%;
 }
+
 .info-text-display {
   height: 1.2em;
 }
+
 .info-num-display {
   height: 1em;
 }
+
 /* 数字显示部分 */
 #number-display-section {
   font-size: 4rem;
@@ -152,12 +141,14 @@ export default {
   margin-bottom: 0.6rem;
   padding-right: 0.5rem;
 }
+
 #accomplish {
   font-size: 2.6rem;
   margin-top: 1rem;
   margin-bottom: 1.55rem;
   padding: 0;
 }
+
 #error {
   font-size: 2.6rem;
   margin-top: 1rem;

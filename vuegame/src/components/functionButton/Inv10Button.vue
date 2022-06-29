@@ -1,10 +1,11 @@
 <template>
-  <button @click="inv10" class="function-button color-button-orange">
+  <button @click="inv10" class="button color-button-orange">
     Inv10
   </button>
 </template>
 
 <script>
+import { CHANGE_CURRENT_NUM } from "@/store/mutation-types";
 export default {
   name: "Inv10Button",
   props: {
@@ -17,14 +18,14 @@ export default {
         let numArray = this.currentNum.toString().split("");
         let resultArray = [];
         for (let x of numArray) {
-          if(x!=0){
+          if (x != 0) {
             resultArray.push(Number(10 - x));
-          }else{
+          } else {
             resultArray.push(0);
           }
         }
-        this.$emit(
-          "changeCurrentNum",
+        this.$store.commit(
+          CHANGE_CURRENT_NUM,
           Number(resultArray.join().replaceAll(",", ""))
         );
       }

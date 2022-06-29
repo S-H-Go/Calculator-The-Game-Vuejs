@@ -1,13 +1,13 @@
 <template>
-  <button
-    @click="elementaryArithmetic"
-    class="function-button color-button-grey"
-  >
+  <button @click="elementaryArithmetic" class="button color-button-grey">
     {{ operation }}{{ num1 }}
   </button>
 </template>
 
 <script>
+//四则运算按钮
+import { CHANGE_CURRENT_NUM } from '@/store/mutation-types'
+
 export default {
   name: "ElementaryArithmetic",
   props: {
@@ -21,22 +21,22 @@ export default {
       if (this.step > 0) {
         switch (this.operation) {
           case "+": {
-            this.$emit("changeCurrentNum", this.currentNum + this.num1);
+            this.$store.commit(CHANGE_CURRENT_NUM, this.currentNum + this.num1);
             break;
           }
           case "-": {
-            this.$emit("changeCurrentNum", this.currentNum - this.num1);
+            this.$store.commit(CHANGE_CURRENT_NUM, this.currentNum - this.num1);
             break;
           }
           case "x": {
-            if(this.currentNum!=0){
-            this.$emit("changeCurrentNum", this.currentNum * this.num1);
+            if (this.currentNum != 0) {
+              this.$store.commit(CHANGE_CURRENT_NUM, this.currentNum * this.num1);
             }
             break;
           }
           case "/": {
-            if(this.currentNum!=0){
-            this.$emit("changeCurrentNum", this.currentNum / this.num1);
+            if (this.currentNum != 0 && this.num1 != 0) {
+              this.$store.commit(CHANGE_CURRENT_NUM, this.currentNum / this.num1);
             }
             break;
           }

@@ -1,8 +1,10 @@
 <template>
-  <button @click="reverse" class="function-button color-button-orange">Reverse</button>
+  <button @click="reverse" class="button color-button-orange">Reverse</button>
 </template>
 
 <script>
+import { CHANGE_CURRENT_NUM } from '@/store/mutation-types'
+
 export default {
   name: "ReverseButton",
   props: {
@@ -10,25 +12,25 @@ export default {
     step: Number,
   },
   methods: {
-    reverse: function () {
+    reverse() {
       if (this.step > 0 && this.currentNum != 0) {
         let numStr = this.currentNum.toString();
         if (numStr.includes("-")) {
-          this.$emit(
-            "changeCurrentNum",
+          this.$store.commit(
+            CHANGE_CURRENT_NUM,
             Number(
               "-" +
-                numStr
-                  .replace("-", "")
-                  .split("")
-                  .reverse()
-                  .join()
-                  .replaceAll(",", "")
+              numStr
+                .replace("-", "")
+                .split("")
+                .reverse()
+                .join()
+                .replaceAll(",", "")
             )
           );
         } else {
-          this.$emit(
-            "changeCurrentNum",
+          this.$store.commit(
+            CHANGE_CURRENT_NUM,
             Number(numStr.split("").reverse().join().replaceAll(",", ""))
           );
         }

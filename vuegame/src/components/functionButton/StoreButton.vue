@@ -1,19 +1,14 @@
 <template>
-  <button
-    id="store-button"
-    @mousedown="mouseDown"
-    @mouseout="mouseLeave"
-    @mouseup="mouseUp"
-    @touchstart="handlerTouchstart"
-    @touchmove="handlerTouchmove"
-    @touchend="handlerTouchend"
-    class="function-button color-button-purple"
-  >
+  <button id="store-button" @mousedown="mouseDown" @mouseout="mouseLeave" @mouseup="mouseUp"
+    @touchstart="handlerTouchstart" @touchmove="handlerTouchmove" @touchend="handlerTouchend"
+    class="button color-button-purple">
     {{ this.$store.state.data.storeNum }}
   </button>
 </template>
 
 <script>
+import { CHANGE_CURRENT_NUM } from '@/store/mutation-types'
+
 export default {
   name: "StoreButton",
   props: {
@@ -27,62 +22,61 @@ export default {
     };
   },
   methods: {
-    mouseDown: function () {
-      //计时器，500ms
-      this.loop = setTimeout(() => {
-        this.loop = 0;
-        if (this.step > 0) {
-          this.$store.state.data.storeNum = Number(this.currentNum);
-          this.$emit("changeCurrentNum", this.currentNum);
-        }
-      }, 500);
-      return false;
+    //长按存储操作
+    store() {
+      if (this.step > 0) {
+        this.$store.state.data.storeNum = Number(this.currentNum);
+        //做这个操作是为了步数减一
+        this.$store.commit(CHANGE_CURRENT_NUM, this.currentNum);
+      }
     },
-    mouseLeave: function () {
-      // 清除定时器
-      clearTimeout(this.loop);
-      this.loop = 0;
-    },
-    mouseUp: function () {
-      clearTimeout(this.loop);
+    //单击放出并连接在后面的操作
+    tackOut() {
       if (
         this.step > 0 &&
         Number.isFinite(this.$store.state.data.storeNum) &&
         this.loop !== 0
       ) {
         //单击操作
-        this.$emit(
-          "changeCurrentNum",
+        this.$store.commit(
+          CHANGE_CURRENT_NUM,
           Number(this.currentNum.toString() + this.$store.state.data.storeNum)
         );
       }
     },
-    handlerTouchstart: function () {
+    mouseDown() {
+      //计时器，500ms
       this.loop = setTimeout(() => {
         this.loop = 0;
-        // 执行长按要执行的内容
-        if (this.step > 0) {
-          this.$store.state.data.storeNum = this.currentNum;
-          this.$emit("changeCurrentNum", this.currentNum);
-        }
-      }, 500); // 定时的时间
+        this.store();
+      }, 500);
       return false;
     },
-    handlerTouchmove: function () {
+    mouseLeave() {
       // 清除定时器
       clearTimeout(this.loop);
       this.loop = 0;
     },
-    handlerTouchend: function () {
+    mouseUp() {
+      clearTimeout(this.loop);
+      this.tackOut();
+    },
+    handlerTouchstart() {
+      this.loop = setTimeout(() => {
+        this.loop = 0;
+        this.store();
+      }, 500); // 定时的时间
+      return false;
+    },
+    handlerTouchmove() {
       // 清除定时器
       clearTimeout(this.loop);
-      if (this.loop !== 0) {
-        // 单击操作
-        this.$emit(
-          "changeCurrentNum",
-          Number(this.currentNum.toString() + this.$store.state.data.storeNum)
-        );
-      }
+      this.loop = 0;
+    },
+    handlerTouchend() {
+      // 清除定时器
+      clearTimeout(this.loop);
+      this.tackOut();
     },
   },
 };

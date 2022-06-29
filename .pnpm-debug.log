@@ -1,0 +1,14 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 error pnpm": {
+    "code": "ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND",
+    "err": {
+      "name": "pnpm",
+      "message": "No package.json (or package.yaml, or package.json5) was found in \"D:\\Project\\software\".",
+      "code": "ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND",
+      "stack": "pnpm: No package.json (or package.yaml, or package.json5) was found in \"D:\\Project\\software\".\n    at readProjectManifest (D:\\Environment\\nvm\\v16.15.1\\node_modules\\pnpm\\dist\\pnpm.cjs:20853:13)\n    at async Object.readProjectManifestOnly (D:\\Environment\\nvm\\v16.15.1\\node_modules\\pnpm\\dist\\pnpm.cjs:20857:28)\n    at async readProjectManifestOnly (D:\\Environment\\nvm\\v16.15.1\\node_modules\\pnpm\\dist\\pnpm.cjs:43891:24)\n    at async Object.handler (D:\\Environment\\nvm\\v16.15.1\\node_modules\\pnpm\\dist\\pnpm.cjs:178277:24)\n    at async D:\\Environment\\nvm\\v16.15.1\\node_modules\\pnpm\\dist\\pnpm.cjs:186469:21\n    at async run (D:\\Environment\\nvm\\v16.15.1\\node_modules\\pnpm\\dist\\pnpm.cjs:186443:43)\n    at async runPnpm (D:\\Environment\\nvm\\v16.15.1\\node_modules\\pnpm\\dist\\pnpm.cjs:186661:5)\n    at async D:\\Environment\\nvm\\v16.15.1\\node_modules\\pnpm\\dist\\pnpm.cjs:186653:7"
+    }
+  }
+}

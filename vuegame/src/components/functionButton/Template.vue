@@ -1,5 +1,5 @@
 <template>
-  <button @click="Name" class="function-button color-button-orange"></button>
+  <button @click="Name" class="button color-button-orange"></button>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
     step: Number,
   },
   methods: {
-    Name: function () {},
+    Name: {},
   },
 };
 </script>

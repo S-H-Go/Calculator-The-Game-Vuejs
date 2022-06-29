@@ -1,10 +1,12 @@
 <template>
-  <button @click="square" class="function-button color-button-orange">
+  <button @click="square" class="button color-button-orange">
     x²
   </button>
 </template>
 
 <script>
+import { CHANGE_CURRENT_NUM } from '@/store/mutation-types'
+
 export default {
   name: "SquareButton",
   props: {
@@ -12,11 +14,11 @@ export default {
     step: Number,
   },
   methods: {
-    square: function () {
+    square() {
       if (this.currentNum == 0 || this.step == 0) {
         return;
       }
-      this.$emit("changeCurrentNum", Math.pow(Number(this.currentNum), 2));
+      this.$store.commit(CHANGE_CURRENT_NUM, Math.pow(Number(this.currentNum), 2));
     },
   },
 };
