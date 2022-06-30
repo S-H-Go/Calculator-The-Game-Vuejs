@@ -38,7 +38,7 @@ let mutations = {
         state.allLevelData = levelData;
         state.data.currentLevelIndex = 0;
         state.data.accomplishInfo = "你赢了";
-        state.data.errorInfo = "ERROR";
+        state.data.errorInfo = "错误";
         state.data.pauseInfo = "暂停";
         this.commit(type.LEVEL_INIT);
     },
@@ -188,14 +188,11 @@ let mutations = {
     [type.LEVEL_ADD](state) {
         if (state.data.currentLevelIndex < state.allLevelData.length - 1) {
             state.data.currentLevelIndex++;
-            //同时更新显示面板的等级数
-            state.data.level = state.allLevelData[state.data.currentLevelIndex].level;
         }
     },
     [type.LEVEL_SUB](state) {
         if (state.data.currentLevelIndex > 0) {
             state.data.currentLevelIndex--;
-            state.data.level = state.allLevelData[state.data.currentLevelIndex].level;
         }
     }
 }

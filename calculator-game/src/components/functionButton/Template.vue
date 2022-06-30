@@ -1,16 +1,16 @@
 <template>
-  <button @click="Name" class="button color-button-orange"></button>
+  <button @click="name" class="button color-button-orange"></button>
 </template>
 
 <script>
 export default {
-  name: "Name",
+  name: "TemplateVue",
   props: {
     currentNum: Number,
     step: Number,
   },
   methods: {
-    Name: {},
+    name: {},
   },
 };
 </script>

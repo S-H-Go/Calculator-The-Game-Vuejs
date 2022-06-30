@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style>
-:root {
+#button-panel {
   --button-border-size: 0.5rem;
   --button-width: 5.5rem;
   --button-height: 4.8rem;
@@ -68,14 +68,34 @@ export default {
 }
 
 .button {
+  width: var(--button-width);
+  height: var(--button-height);
   border: none;
+  font-size: 1.25rem;
   color: white;
   padding: 0;
   border-radius: var(--button-border-radius);
   margin-top: var(--button-margin-top);
   margin-left: var(--button-margin-left);
   margin-right: var(--button-margin-left);
-  width: var(--button-width);
-  height: var(--button-height);
+}
+
+.button:active {
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  #button-panel {
+    --button-border-size: 4vw;
+    --button-width: 28vw;
+    --button-height: calc(28vw - 5vw);
+    --button-margin-top: 5.5vw;
+    --button-margin-left: 1vw;
+    --button-border-radius: 6%;
+  }
+
+  .button {
+    font-size: 1.5rem;
+  }
 }
 </style>

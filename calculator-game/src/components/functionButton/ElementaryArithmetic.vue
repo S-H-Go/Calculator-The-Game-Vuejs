@@ -1,6 +1,6 @@
 <template>
   <button @click="elementaryArithmetic" class="button color-button-grey">
-    {{ operation }}{{ num1 }}
+    {{ operation }} {{ num1 }}
   </button>
 </template>
 

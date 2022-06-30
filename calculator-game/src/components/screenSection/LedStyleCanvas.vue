@@ -270,7 +270,7 @@ options: {
 </script>
 <style>
 #canvas {
-  margin: 0;
+  margin-right: var(--margin-right);
   padding: 0;
 }
 </style>

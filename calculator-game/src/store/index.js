@@ -1,16 +1,13 @@
 import { createStore } from 'vuex'
 import mutations from './mutations';
-const rem = 16;
-
 const store = new createStore({
     state: {
         data: {
             //全局数据
             currentLevelIndex: 0,
-            errorInfo: "ERROE",
+            errorInfo: "错误",
             accomplishInfo: "你赢了",
             pauseInfo: "暂停",
-            rem: rem,
             //当前关卡数据
             level: 0,
             initialNum: 0,
@@ -21,8 +18,8 @@ const store = new createStore({
             ledCanvasKey: 0,
             ledOptions: {
                 color: "#464948",
-                width: 1.6 * rem,
-                height: 2.6 * rem,
+                width: 36,
+                height: 60,
                 values: 2021,
                 lineWidth: 5,
                 italics: 0,
