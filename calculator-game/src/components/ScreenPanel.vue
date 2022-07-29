@@ -1,25 +1,26 @@
 <template>
   <div id="screen-panel">
-    <level-screen></level-screen>
+    <level-screen :level=screenData.level></level-screen>
     <div id="display-section">
-      <step-goal-screen></step-goal-screen>
+      <step-goal-screen :step=screenData.step :goal=screenData.goal></step-goal-screen>
       <number-screen></number-screen>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import LevelScreen from "./screenSection/LevelScreen.vue";
 import StepGoalScreen from "./screenSection/StepGoalScreen.vue";
 import NumberScreen from "./screenSection/NumberScreen.vue";
-export default {
-  name: "ScreenSection",
-  components: { LevelScreen, StepGoalScreen, NumberScreen },
-};
+import { useStore } from '../store'
+import { computed } from 'vue';
+const store = useStore()
+const screenData = computed(() => store.getScreenData)
 </script>
 <style>
 /* 边框部分 */
-#screen-panel {
+#screen-panel
+{
   --height: 15rem;
   --level-height: 2rem;
   --step-width: 5rem;
@@ -34,7 +35,8 @@ export default {
 }
 
 /* 显示部分 */
-#display-section {
+#display-section
+{
   background-color: #a8b7a2;
   display: flex;
   flex-direction: column;
@@ -45,14 +47,17 @@ export default {
   height: calc(var(--height) - var(--height) * 0.1);
 }
 
-@media screen and (max-width: 768px) {
-  #screen-panel {
+@media screen and (max-width: 768px)
+{
+  #screen-panel
+  {
     --height: 16rem;
     --step-width: 6rem;
     --step-height: 4rem;
   }
 
-  #display-section {
+  #display-section
+  {
     height: calc(var(--height) - var(--height) * 0.15)
   }
 }

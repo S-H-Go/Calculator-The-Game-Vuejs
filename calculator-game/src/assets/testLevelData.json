@@ -1,50 +1,65 @@
 [
-    {
-        "level":-5,
-        "initialNum":0,
-        "initialStep":4,
-        "goal":1,
-        "buttons":["+1","<<","x²","Reverse","SUM","x³","Shift<","Shift>","Mirror","Store","Inv10","insert1","each+1","13=>14"],
-        "path":["+1"]
-    },
-    {
-        "level":-4,
-        "initialNum":0,
-        "initialStep":6,
-        "goal":2022,
-        "buttons":["+2","x3","-3","each+2","25=>2022"],
-        "path":["+2","each+2","+4","x5","-5","25=>2022"]
-    },
-    {
-        "level":-3,
-        "initialNum":0,
-        "initialStep":5,
-        "goal":-11,
-        "buttons":["+1","-2","x3","/3","insert1"],
-        "path":["+1","-2","x3","/3","insert1"]
-    },
-    {
-        "level":-2,
-        "initialNum":2022,
-        "initialStep":5,
-        "goal":61,
-        "buttons":["<<","x²","+/-","Reverse","SUM"],
-        "path":["<<","+/-","x²","SUM","Reverse"]
-    },
-    {
-        "level":-1,
-        "initialNum":10,
-        "initialStep":5,
-        "goal":11,
-        "buttons":["x³","Shift<","Shift>","Mirror"],
-        "path":["x³","Shift<","Shift>","x³","Mirror"]
-    },
-    {
-        "level":0,
-        "initialNum":10,
-        "initialStep":3,
-        "goal":9090,
-        "buttons":["Store","Inv10"],
-        "path":["Store","takeOut","Inv10"]
-    }
+  {
+    "level": -5,
+    "initialNum": 0,
+    "initialStep": 50,
+    "goal": -1000,
+    "buttons": [
+      "+1",
+      "<<",
+      "x²",
+      "Reverse",
+      "SUM",
+      "x³",
+      "Shift<",
+      "Shift>",
+      "Mirror",
+      "Store",
+      "Inv10",
+      "insert1",
+      "each+1",
+      "13=>14"
+    ],
+    "path": ["+1"]
+  },
+  {
+    "level": -4,
+    "initialNum": 0,
+    "initialStep": 6,
+    "goal": 2022,
+    "buttons": ["+2", "x3", "-3", "each+2", "25=>2022"],
+    "path": ["+2", "each+2", "+4", "x5", "-5", "25=>2022"]
+  },
+  {
+    "level": -3,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": -11,
+    "buttons": ["+1", "-2", "x3", "/3", "insert1"],
+    "path": ["+1", "-2", "x3", "/3", "insert1"]
+  },
+  {
+    "level": -2,
+    "initialNum": 2022,
+    "initialStep": 5,
+    "goal": 61,
+    "buttons": ["<<", "x²", "+/-", "Reverse", "SUM"],
+    "path": ["<<", "+/-", "x²", "SUM", "Reverse"]
+  },
+  {
+    "level": -1,
+    "initialNum": 10,
+    "initialStep": 5,
+    "goal": 11,
+    "buttons": ["x³", "Shift<", "Shift>", "Mirror"],
+    "path": ["x³", "Shift<", "Shift>", "x³", "Mirror"]
+  },
+  {
+    "level": 0,
+    "initialNum": 10,
+    "initialStep": 3,
+    "goal": 9090,
+    "buttons": ["Store", "Inv10"],
+    "path": ["Store", "takeOut", "Inv10"]
+  }
 ]

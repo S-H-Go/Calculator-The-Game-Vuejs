@@ -4,23 +4,20 @@
   </button>
 </template>
 
-<script>
-import { CHANGE_CURRENT_NUM } from '@/store/mutation-types'
-
-export default {
-  name: "PpositeButton",
-  props: {
-    currentNum: Number,
-    step: Number,
-  },
-  methods: {
-    pposite() {
-      if (this.step > 0 && this.currentNum != 0) {
-        this.$store.commit(CHANGE_CURRENT_NUM, -1 * this.currentNum);
-      }
-    },
-  },
-};
+<script lang="ts" setup>
+import { useStore } from '../../store'
+const store = useStore()
+const props = defineProps<{
+  currentNum: number,
+  step: number,
+}>()
+function pposite() {
+  if (props.step > 0) {
+    if (props.step > 0 && props.currentNum != 0) {
+      store.changeCurrentNum(-1 * props.currentNum);
+    }
+  }
+}
 </script>
 
 <style>

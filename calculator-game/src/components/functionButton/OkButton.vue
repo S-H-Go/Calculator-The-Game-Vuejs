@@ -2,16 +2,12 @@
   <button @click="ok" class="button color-button-green">OK</button>
 </template>
 
-<script>
-import { ACCOMPLISH } from '@/store/mutation-types';
-export default {
-  name: "OkButton",
-  methods: {
-    ok() {
-      this.$store.commit(ACCOMPLISH);
-    },
-  },
-};
+<script lang="ts" setup>
+import { useStore } from '../../store'
+const store = useStore()
+function ok() {
+  store.accomplish();
+}
 </script>
 
 <style>

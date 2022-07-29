@@ -4,24 +4,20 @@
   </button>
 </template>
 
-<script>
-import { CHANGE_CURRENT_NUM } from '@/store/mutation-types'
+<script lang="ts" setup>
+import { useStore } from '../../store'
+const store = useStore()
+const props = defineProps<{
+  currentNum: number,
+  step: number,
+}>()
+function square() {
+  if (props.currentNum == 0 || props.step == 0) {
+    return;
+  }
+  store.changeCurrentNum(Math.pow(props.currentNum, 2));
+}
 
-export default {
-  name: "SquareButton",
-  props: {
-    currentNum: Number,
-    step: Number,
-  },
-  methods: {
-    square() {
-      if (this.currentNum == 0 || this.step == 0) {
-        return;
-      }
-      this.$store.commit(CHANGE_CURRENT_NUM, Math.pow(Number(this.currentNum), 2));
-    },
-  },
-};
 </script>
 
 <style>

@@ -16,7 +16,7 @@ import ReplaceButton from "../components/functionButton/ReplaceButton.vue";
 import EachButton from "../components/functionButton/EachButton.vue";
 import ElementaryArithmetic from "../components/functionButton/ElementaryArithmetic.vue"
 import { markRaw } from "vue";
-export const buttonFactory = (index, ...args) => {
+export function buttonFactory(index: string, num1?: number, num2?: number, operation?: string) {
   //需要加上markRaw()
   switch (index) {
     case "<<": {
@@ -53,16 +53,16 @@ export const buttonFactory = (index, ...args) => {
       return { tag: markRaw(Inv10Button) };
     }
     case "insert": {
-      return { tag: markRaw(InsertButton), num1: args[0] };
+      return { tag: markRaw(InsertButton), num1: num1 };
     }
     case "replace": {
-      return { tag: markRaw(ReplaceButton), num1: args[0], num2: args[1] };
+      return { tag: markRaw(ReplaceButton), num1: num1, num2: num2 };
     }
     case "each": {
-      return { tag: markRaw(EachButton), operation: args[0], num1: args[1] };
+      return { tag: markRaw(EachButton), operation: operation, num1: num1 };
     }
     case "elementaryArithmetic": {
-      return { tag: markRaw(ElementaryArithmetic), operation: args[0], num1: args[1] }
+      return { tag: markRaw(ElementaryArithmetic), operation: operation, num1: num1 }
     }
   }
 }

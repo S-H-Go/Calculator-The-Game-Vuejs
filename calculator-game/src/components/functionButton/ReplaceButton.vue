@@ -4,30 +4,23 @@
   </button>
 </template>
 
-<script>
-import { CHANGE_CURRENT_NUM } from '@/store/mutation-types'
-
-export default {
-  name: "ReplaceButton",
-  props: {
-    currentNum: Number,
-    step: Number,
-    num1: Number,
-    num2: Number,
-  },
-  methods: {
-    replace() {
-      let numStr = this.currentNum.toString();
-      if (this.step > 0) {
-        let resultStr = numStr.replaceAll(
-          this.num1.toString(),
-          this.num2.toString()
-        );
-        this.$store.commit(CHANGE_CURRENT_NUM, Number(resultStr));
-      }
-    },
-  },
-};
+<script lang="ts" setup>
+import { useStore } from '../../store'
+const store = useStore()
+const props = defineProps<{
+  currentNum: number,
+  step: number,
+  num1: number,
+  num2: number,
+}>()
+function replace() {
+  if (props.step > 0) {
+    let numStr = props.currentNum.toString();
+    let reg = RegExp(props.num1.toString(), 'g');
+    let resultStr = numStr.replace(reg, props.num2.toString());
+    store.changeCurrentNum(Number(resultStr));
+  }
+}
 </script>
 
 <style>

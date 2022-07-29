@@ -26,34 +26,34 @@
     </table>
 </template>
 
-<script>
+<script lang="ts" setup>
 import SetButton from './SetButton.vue';
 import LevelSubButton from './LevelSubButton.vue';
 import LevelDisplayButton from './LevelDisplayButton.vue';
 import LevelAddButton from './LevelAddButton.vue';
-export default {
-    name: "SetButtonPanel",
-    components: { SetButton, LevelSubButton, LevelDisplayButton, LevelAddButton }
-}
 </script>
 
 <style>
-.font-size {
+.font-size
+{
     font-size: 2rem;
 }
 
-#set-button-table {
+#set-button-table
+{
     border-spacing: 0 0;
     width: calc(var(--button-width) *3 + var(--button-margin-left) * 6);
     height: calc(var(--button-margin-top) * 3 + var(--button-height) * 3);
 }
 
-#set-button-table tr {
+#set-button-table tr
+{
     border: 0;
     height: calc(var(--button-height) + var(--button-margin-top));
 }
 
-#set-button-table tr td {
+#set-button-table tr td
+{
     padding: 0;
     width: calc(var(--button-width) + var(--button-margin-left) * 2);
 }

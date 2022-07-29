@@ -4,37 +4,30 @@
   </button>
 </template>
 
-<script>
-import { CHANGE_CURRENT_NUM } from '@/store/mutation-types'
-
-export default {
-  name: "ShiftLeftButton",
-  props: {
-    currentNum: Number,
-    step: Number,
-  },
-  methods: {
-    shiftLeft() {
-      if (this.step > 0 && this.currentNum != 0) {
-        const numStr = this.currentNum.toString().replaceAll("-", "");
-        let numArray = numStr.split("");
-        numArray.push(numArray.shift());
-        if (this.currentNum.toString().includes("-")) {
-          //如果是负数
-          this.$store.commit(
-            CHANGE_CURRENT_NUM,
-            Number("-" + numArray.join().replaceAll(",", ""))
-          );
-        } else {
-          this.$store.commit(
-            CHANGE_CURRENT_NUM,
-            Number(numArray.join().replaceAll(",", ""))
-          );
-        }
-      }
-    },
-  },
-};
+<script lang="ts" setup>
+import { useStore } from '../../store'
+const store = useStore()
+const props = defineProps<{
+  currentNum: number,
+  step: number,
+}>()
+function shiftLeft() {
+  if (props.step > 0 && props.currentNum != 0) {
+    const numStr = props.currentNum.toString().replace("-", "");
+    let numArray = numStr.split("");
+    numArray.push(String(numArray.shift()));
+    if (props.currentNum.toString().includes("-")) {
+      //如果是负数
+      store.changeCurrentNum(
+        Number("-" + numArray.join(""))
+      );
+    } else {
+      store.changeCurrentNum(
+        Number(numArray.join(""))
+      );
+    }
+  }
+}
 </script>
 
 <style>

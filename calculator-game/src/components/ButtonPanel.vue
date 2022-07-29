@@ -5,24 +5,18 @@
   </div>
 </template>
 
-<script>
-import { mapGetters } from "vuex";
+<script lang="ts" setup>
 import FunctionButtonPanel from './functionButton/FunctionButtonPanel.vue';
 import SetButtonPanel from "./setButton/SetButtonPanel.vue";
-export default {
-  name: "ButtonSection",
-  computed: {
-    ...mapGetters(["buttonControl"]),
-  },
-  components: {
-    SetButtonPanel,
-    FunctionButtonPanel,
-  },
-};
+import { useStore } from '../store'
+import { computed } from 'vue';
+const store = useStore()
+const buttonControl = computed(() => store.getButtonControl);
 </script>
 
 <style>
-#button-panel {
+#button-panel
+{
   --button-border-size: 0.5rem;
   --button-width: 5.5rem;
   --button-height: 4.8rem;
@@ -31,43 +25,51 @@ export default {
   --button-border-radius: 6%;
 }
 
-.color-button-clr {
+.color-button-clr
+{
   background-color: #c72f2e;
   box-shadow: 0rem var(--button-border-size) hsl(0, 62%, 41%);
 }
 
-.color-button-blue {
+.color-button-blue
+{
   background-color: #8b7cd6;
   box-shadow: 0rem var(--button-border-size) hsl(250, 52%, 59%);
 }
 
-.color-button-grey {
+.color-button-grey
+{
   background-color: #424a4c;
   box-shadow: 0rem var(--button-border-size) hsl(192, 7%, 21%);
 }
 
-.color-button-green {
+.color-button-green
+{
   background-color: greenyellow;
   box-shadow: 0rem var(--button-border-size) greenyellow;
 }
 
-.color-button-orange {
+.color-button-orange
+{
   background-color: #ea6c18;
   box-shadow: 0rem var(--button-border-size) hsl(24, 83%, 44%);
 }
 
-.color-button-purple {
+.color-button-purple
+{
   background-color: #5c215b;
   box-shadow: 0rem var(--button-border-size) hsl(301, 47%, 18%);
 }
 
 /* 设置按钮的颜色 */
-.color-button-yeelow {
+.color-button-yeelow
+{
   background-color: rgb(202, 202, 44);
   box-shadow: 0rem var(--button-border-size) hsl(60, 50%, 40%);
 }
 
-.button {
+.button
+{
   width: var(--button-width);
   height: var(--button-height);
   border: none;
@@ -80,12 +82,15 @@ export default {
   margin-right: var(--button-margin-left);
 }
 
-.button:active {
+.button:active
+{
   border: none;
 }
 
-@media screen and (max-width: 768px) {
-  #button-panel {
+@media screen and (max-width: 768px)
+{
+  #button-panel
+  {
     --button-border-size: 4vw;
     --button-width: 28vw;
     --button-height: calc(28vw - 5vw);
@@ -94,7 +99,8 @@ export default {
     --button-border-radius: 6%;
   }
 
-  .button {
+  .button
+  {
     font-size: 1.5rem;
   }
 }

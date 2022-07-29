@@ -4,24 +4,17 @@
   </button>
 </template>
 
-<script>
-import { EACH_BUTTON } from "@/store/mutation-types"
-export default {
-  name: "EachButton",
-  props: {
-    currentNum: Number,
-    step: Number,
-    operation: String,
-    num1: Number,
-  },
-  methods: {
-    each() {
-      if (this.step > 0) {
-        this.$store.commit(EACH_BUTTON, [this.operation, this.num1]);
-      }
-    },
-  },
-};
+<script lang="ts" setup>
+import { useStore } from '../../store'
+const store = useStore();
+const props = defineProps<{
+  currentNum: number,
+  operation: string,
+  num1: number,
+}>()
+function each() {
+  store.eachButton(props.operation, props.num1)
+}
 </script>
 
 <style>

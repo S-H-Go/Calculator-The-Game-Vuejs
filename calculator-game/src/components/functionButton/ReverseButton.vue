@@ -2,42 +2,33 @@
   <button @click="reverse" class="button color-button-orange">Reverse</button>
 </template>
 
-<script>
-import { CHANGE_CURRENT_NUM } from '@/store/mutation-types'
-
-export default {
-  name: "ReverseButton",
-  props: {
-    currentNum: Number,
-    step: Number,
-  },
-  methods: {
-    reverse() {
-      if (this.step > 0 && this.currentNum != 0) {
-        let numStr = this.currentNum.toString();
-        if (numStr.includes("-")) {
-          this.$store.commit(
-            CHANGE_CURRENT_NUM,
-            Number(
-              "-" +
-              numStr
-                .replace("-", "")
-                .split("")
-                .reverse()
-                .join()
-                .replaceAll(",", "")
-            )
-          );
-        } else {
-          this.$store.commit(
-            CHANGE_CURRENT_NUM,
-            Number(numStr.split("").reverse().join().replaceAll(",", ""))
-          );
-        }
-      }
-    },
-  },
-};
+<script lang="ts" setup>
+import { useStore } from '../../store'
+const store = useStore()
+const props = defineProps<{
+  currentNum: number,
+  step: number,
+}>()
+function reverse() {
+  //分解成数组，逆转数组再合成字符串
+  if (props.step > 0 && props.currentNum != 0) {
+    let numStr = props.currentNum.toString();
+    if (numStr.includes("-")) {
+      store.changeCurrentNum(
+        Number(
+          "-" +
+          numStr
+            .replace("-", "")
+            .split("")
+            .reverse()
+            .join("")
+        )
+      );
+    } else {
+      store.changeCurrentNum(Number(numStr.split("").reverse().join("")));
+    }
+  }
+}
 </script>
 
 <style>

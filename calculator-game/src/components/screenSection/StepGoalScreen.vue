@@ -5,25 +5,27 @@
 
         <section class="info-display">
             <section class="info-text-display">步数:</section>
-            <section class="info-num-diaplay">{{ this.$store.state.data.step }}</section>
+            <section class="info-num-diaplay">{{ props.step }}</section>
         </section>
         <section class="info-display">
             <section class="info-text-display">目标:</section>
-            <section class="info-num-display">{{ this.$store.state.data.goal }}</section>
+            <section class="info-num-display">{{ props.goal }}</section>
         </section>
     </section>
 
 </template>
 
-<script>
-export default {
-    name: "StepGoalScreen"
-}
+<script lang="ts" setup>
+const props = defineProps<{
+    step: number,
+    goal: number
+}>()
 </script>
 
 <style>
 /* 信息显示部分 */
-#info-display-section {
+#info-display-section
+{
     height: var(--step-height);
     display: flex;
     justify-content: space-evenly;
@@ -31,7 +33,8 @@ export default {
     padding: 0;
 }
 
-.info-display {
+.info-display
+{
     width: var(--step-width);
     height: var(--step-height);
     display: flex;
