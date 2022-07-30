@@ -30,10 +30,10 @@ cd software-engineering/calculator-game
 npm install
 ```
 
-4. 运行
+4. 开发环境运行
 
 ```shell
-npm run serve
+npm dev
 ```
 
-之后访问本地服务器 8080 端口（即 http://localhost:8080）即可打开。
+访问控制台输出的链接即可打开

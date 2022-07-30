@@ -1,15 +1,8 @@
 import { defineStore } from "pinia"
-import { buttonFactory } from "./buttonFactory";
-const levelData: Ilevel[] = require('@/assets/levelData.json')
-// const levelData: Ilevel[] = require('@/assets/testLevelData')
-interface Ilevel {
-    "level": number,
-    "initialNum": number,
-    "initialStep": number,
-    "goal": number,
-    "buttons": string[],
-    "path": string[]
-}
+import { buttonFactory } from "./buttonFactory"
+import levelData from "../assets/levelData.json"
+// import levelData from "../assets/testLevelData.json"
+
 export const useStore = defineStore("main", {
     state: () => {
         return {
