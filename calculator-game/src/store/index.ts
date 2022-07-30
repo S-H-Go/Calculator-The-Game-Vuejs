@@ -2,7 +2,15 @@ import { defineStore } from "pinia"
 import { buttonFactory } from "./buttonFactory"
 import levelData from "../assets/levelData.json"
 // import levelData from "../assets/testLevelData.json"
-
+export interface ILedOptions {
+    color: string,
+    width: number,
+    height: number,
+    values: number,
+    lineWidth: number,
+    italics: number,
+    opacity: number,
+}
 export const useStore = defineStore("main", {
     state: () => {
         return {
@@ -19,7 +27,7 @@ export const useStore = defineStore("main", {
                 step: 0,
                 goal: 0,
                 storeNum: "Store" as string | number,
-                ledCanvasKey: 0,
+                ledCanvasKey: Math.random(),
                 ledOptions: {
                     color: "#464948",
                     width: 36,
@@ -28,7 +36,7 @@ export const useStore = defineStore("main", {
                     lineWidth: 5,
                     italics: 0,
                     opacity: 0.1,
-                }
+                } as ILedOptions
             },
             control: {
                 ledCanvasDisplay: true,
@@ -139,7 +147,7 @@ export const useStore = defineStore("main", {
             //添加按钮控制,遍历当前关卡的按钮
             for (const item of this.allLevelData[this.data.currentLevelIndex].buttons) {
                 //不是四则运算符
-                if (item[0] != '+' && item[0] != '-' && item[0] != 'x' && item[0] != '/' || item[1] === "²" || item[1] === '³') {
+                if (item[0] != '+' && item[0] != '-' && item[0] != 'x' && item[0] != '/' || item[1] === '/' || item[1] === "²" || item[1] === '³') {
                     //插入按钮 insert12
                     if (item.includes("insert")) {
                         this.buttonsControl.insert.push(Number(item.substring(6, item.length)));
