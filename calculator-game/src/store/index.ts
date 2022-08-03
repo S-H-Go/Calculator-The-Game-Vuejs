@@ -1,16 +1,8 @@
 import { defineStore } from "pinia"
-import { buttonFactory } from "./buttonFactory"
+import { ILedOptions } from "./interface"
 import levelData from "../assets/levelData.json"
 // import levelData from "../assets/testLevelData.json"
-export interface ILedOptions {
-    color: string,
-    width: number,
-    height: number,
-    values: number,
-    lineWidth: number,
-    italics: number,
-    opacity: number,
-}
+import { ButtonControl } from "./ButtonsControl"
 export const useStore = defineStore("main", {
     state: () => {
         return {
@@ -47,32 +39,7 @@ export const useStore = defineStore("main", {
             },
             buttonList: [] as any,
             allLevelData: levelData,
-            buttonsControl: {
-                ["<<" as string]: false,
-                'x²': false,
-                '+/-': false,
-                Reverse: false,
-                SUM: false,
-                'x³': false,
-                'Shift<': false,
-                'Shift>': false,
-                Mirror: false,
-                Store: false,
-                Inv10: false,
-                insert: [] as number[],
-                replace: {
-                    num1: [] as number[],
-                    num2: [] as number[],
-                },
-                each: {
-                    operation: [] as string[],
-                    num1: [] as number[]
-                },
-                elementaryArithmetic: {
-                    operation: [] as string[],
-                    num1: [] as number[]
-                },
-            }
+            buttonsControl: new ButtonControl()
         }
     },
     getters: {
@@ -125,7 +92,7 @@ export const useStore = defineStore("main", {
             this.control.error = false;
             this.data.storeNum = "Store";
             this.data.ledCanvasKey--;
-            if (this.buttonsControl.each.operation.length != 0) {//如果有按钮的数字则需要关卡初始化
+            if (this.buttonsControl.getEach().operation.length != 0) {//如果有按钮的数字则需要关卡初始化
                 this.levelInit();
             }
         },
@@ -144,102 +111,23 @@ export const useStore = defineStore("main", {
             this.data.goal = this.allLevelData[this.data.currentLevelIndex].goal;
             this.data.step = this.data.initialStep;
             this.data.ledOptions.values = this.data.initialNum;
-            //添加按钮控制,遍历当前关卡的按钮
-            for (const item of this.allLevelData[this.data.currentLevelIndex].buttons) {
-                //不是四则运算符
-                if (item[0] != '+' && item[0] != '-' && item[0] != 'x' && item[0] != '/' || item[1] === '/' || item[1] === "²" || item[1] === '³') {
-                    //插入按钮 insert12
-                    if (item.includes("insert")) {
-                        this.buttonsControl.insert.push(Number(item.substring(6, item.length)));
-                    } else if (item.includes("=>")) {//替换按钮 12=>14
-                        const numArray = item.split("=>");
-                        this.buttonsControl.replace.num1.push(Number(numArray[0]));
-                        this.buttonsControl.replace.num2.push(Number(numArray[1]));
-                    } else if (item.includes("each")) {//each 按钮 each+4
-                        this.buttonsControl.each.operation.push(item.substring(4, 5));
-                        this.buttonsControl.each.num1.push(Number(item.substring(5, item.length)));
-                    }
-                    else {//单目操作按钮
-                        //如果存在则设置为true
-                        if (item in this.buttonsControl) {
-                            this.buttonsControl[item] = true;
-                        } else {
-                            console.log(item, "不存在")
-                        }
-                    }
-
-                } else {//四则运算符号
-                    this.buttonsControl.elementaryArithmetic.operation.push(item.substring(0, 1));
-                    this.buttonsControl.elementaryArithmetic.num1.push(Number(item.substring(1, item.length)));
-                }
-            }
-            this.changeButtonList();
+            //更新按钮控制
+            this.buttonsControl.updateButtonsControl(this.allLevelData[this.data.currentLevelIndex].buttons);
+            //更新按钮列表
+            this.updateButtonList();
         },
-        //更改显示的按钮列表
-        changeButtonList() {
+        //更新显示的按钮列表
+        updateButtonList() {
             this.buttonList = [];
-            //增加操作按钮
-            for (const index in this.buttonsControl) {
-                if (this.buttonsControl[index] === true) {
-                    this.buttonList.push(buttonFactory(index));
-                }
-            }
-            for (const i of this.buttonsControl.insert) {
-                this.buttonList.push(buttonFactory("insert", i));
-            }
-            for (let i = 0; i < this.buttonsControl.replace.num1.length; i++) {
-                this.buttonList.push(buttonFactory("replace", this.buttonsControl.replace.num1[i], this.buttonsControl.replace.num2[i]));
-            }
-            for (let i = 0; i < this.buttonsControl.each.operation.length; i++) {
-                this.buttonList.push(buttonFactory("each", this.buttonsControl.each.num1[i], 0, this.buttonsControl.each.operation[i]));
-            }
-            for (let i = 0; i < this.buttonsControl.elementaryArithmetic.operation.length; i++) {
-                this.buttonList.push(buttonFactory("elementaryArithmetic", this.buttonsControl.elementaryArithmetic.num1[i], 0, this.buttonsControl.elementaryArithmetic.operation[i]));
-            }
+            this.buttonsControl.updateButtonsList(this.buttonList);
         },
         //每个数字都操作的按钮
         eachButton(operation: string, num: number) {
             if (this.data.step > 0) {
                 this.data.step--;
             }
-            switch (operation) {
-                case '+': {
-                    for (const i in this.buttonsControl.insert) {
-                        this.buttonsControl.insert[i] += num
-                    }
-                    for (const i in this.buttonsControl.elementaryArithmetic.num1) {
-                        this.buttonsControl.elementaryArithmetic.num1[i] += num
-                    }
-                    break;
-                } case '-': {
-                    for (const i in this.buttonsControl.insert) {
-                        this.buttonsControl.insert[i] -= num
-                    }
-                    for (const i in this.buttonsControl.elementaryArithmetic.num1) {
-                        this.buttonsControl.elementaryArithmetic.num1[i] -= num
-                    }
-                    break;
-                }
-                case 'x': {
-                    for (const i in this.buttonsControl.insert) {
-                        this.buttonsControl.insert[i] *= num
-                    }
-                    for (const i in this.buttonsControl.elementaryArithmetic.num1) {
-                        this.buttonsControl.elementaryArithmetic.num1[i] *= num
-                    }
-                    break;
-                }
-                case '/': {
-                    for (const i in this.buttonsControl.insert) {
-                        this.buttonsControl.insert[i] /= num
-                    }
-                    for (const i in this.buttonsControl.elementaryArithmetic.num1) {
-                        this.buttonsControl.elementaryArithmetic.num1[i] /= num
-                    }
-                    break;
-                }
-            }
-            this.changeButtonList();
+            this.buttonsControl.eachButton(operation, num);
+            this.updateButtonList();
         },
         accomplish() {
             if (this.data.currentLevelIndex < this.allLevelData.length) {
