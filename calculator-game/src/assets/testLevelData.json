@@ -2,26 +2,16 @@
   {
     "level": -5,
     "initialNum": 0,
-    "initialStep": 50,
-    "goal": -1000,
-    "buttons": [
-      "+1",
-      "<<",
-      "x²",
-      "Reverse",
-      "SUM",
-      "x³",
-      "Shift<",
-      "Shift>",
-      "Mirror",
-      "Store",
-      "Inv10",
-      "insert1",
-      "each+1",
-      "13=>14",
-      "+/-"
-    ],
-    "path": ["+1"]
+    "initialStep": 0,
+    "goal": 0,
+    "buttons": [],
+    "path": [],
+    "dialogue": [
+      {
+        "info": "这只是一个测试",
+        "buttons": [{ "info": "wow,测试", "position": 4 }]
+      }
+    ]
   },
   {
     "level": -4,
@@ -29,7 +19,8 @@
     "initialStep": 6,
     "goal": 2022,
     "buttons": ["+2", "x3", "-3", "each+2", "25=>2022"],
-    "path": ["+2", "each+2", "+4", "x5", "-5", "25=>2022"]
+    "path": ["+2", "each+2", "+4", "x5", "-5", "25=>2022"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
   },
   {
     "level": -3,
@@ -37,7 +28,8 @@
     "initialStep": 5,
     "goal": -11,
     "buttons": ["+1", "-2", "x3", "/3", "insert1"],
-    "path": ["+1", "-2", "x3", "/3", "insert1"]
+    "path": ["+1", "-2", "x3", "/3", "insert1"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
   },
   {
     "level": -2,
@@ -45,7 +37,8 @@
     "initialStep": 5,
     "goal": 61,
     "buttons": ["<<", "x²", "+/-", "Reverse", "SUM"],
-    "path": ["<<", "+/-", "x²", "SUM", "Reverse"]
+    "path": ["<<", "+/-", "x²", "SUM", "Reverse"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
   },
   {
     "level": -1,
@@ -53,7 +46,8 @@
     "initialStep": 5,
     "goal": 11,
     "buttons": ["x³", "Shift<", "Shift>", "Mirror"],
-    "path": ["x³", "Shift<", "Shift>", "x³", "Mirror"]
+    "path": ["x³", "Shift<", "Shift>", "x³", "Mirror"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
   },
   {
     "level": 0,
@@ -61,6 +55,7 @@
     "initialStep": 3,
     "goal": 9090,
     "buttons": ["Store", "Inv10"],
-    "path": ["Store", "takeOut", "Inv10"]
+    "path": ["Store", "takeOut", "Inv10"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
   }
 ]

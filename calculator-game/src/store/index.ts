@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { ILedOptions } from "./interface"
+import { ILedOptions, ShowWhat } from "./interface"
 import levelData from "../assets/levelData.json"
 // import levelData from "../assets/testLevelData.json"
 import { ButtonControl } from "./ButtonsControl"
@@ -28,16 +28,14 @@ export const useStore = defineStore("main", {
                     lineWidth: 5,
                     italics: 0,
                     opacity: 0.1,
-                } as ILedOptions
+                } as ILedOptions,
+                conversation: [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }],
+                conversationIndex: 0,
             },
             control: {
-                ledCanvasDisplay: true,
-                error: false,
-                accomplish: false,
-                initialMode: true,
-                setMode: false,
+                showWhat: ShowWhat.number,
             },
-            buttonList: [] as any,
+            buttons: [["", "", ""], ["", "", ""], ["", "", ""]] as any[][],
             allLevelData: levelData,
             buttonsControl: new ButtonControl()
         }
@@ -51,13 +49,11 @@ export const useStore = defineStore("main", {
         },
         getButtonControl(state) {
             return {
-                accomplish: state.control.accomplish,
-                setMode: state.control.setMode,
-                initialMode: state.control.initialMode,
+                showWhat: state.control.showWhat,
             }
         },
         getButtonList(state) {
-            return state.buttonList;
+            return state.buttons;
         },
         getButtonData(state) {
             return { currentNum: state.data.ledOptions.values, step: state.data.step }
@@ -69,30 +65,28 @@ export const useStore = defineStore("main", {
     actions: {//更改当前数字后，判断是否错误以及是否完成
         changeCurrentNum(num: number) {
             //值小于100000并且不是小数
+            //数字在正确范围则更改
             if (num < 1000000 && !num.toString().includes(".")) {
                 this.data.step--;
                 this.data.ledOptions.values = num;
                 this.data.ledCanvasKey++;
-            } else {//数字在正确范围则更改
-                this.control.ledCanvasDisplay = false;
-                this.control.error = true;
+            } else {
+                this.control.showWhat = ShowWhat.error;
             }
             //更改之后判断是否达到目标（通关）
             if (this.data.ledOptions.values === this.data.goal) {
-                this.control.ledCanvasDisplay = false;
-                this.control.accomplish = true;
+                this.control.showWhat = ShowWhat.accomplish;
+                this.buttonsControl.accomplsh(this.buttons);
             }
-
         },
         //clr的初始化
         clr() {
             this.data.ledOptions.values = this.data.initialNum;
             this.data.step = this.data.initialStep;
-            this.control.ledCanvasDisplay = true;
-            this.control.error = false;
+            this.control.showWhat = ShowWhat.number;
             this.data.storeNum = "Store";
             this.data.ledCanvasKey--;
-            if (this.buttonsControl.getEach().operation.length != 0) {//如果有按钮的数字则需要关卡初始化
+            if (this.buttonsControl.isIncludeEachButtons()) {//如果有按钮的数字则需要关卡初始化
                 this.levelInit();
             }
         },
@@ -111,44 +105,74 @@ export const useStore = defineStore("main", {
             this.data.goal = this.allLevelData[this.data.currentLevelIndex].goal;
             this.data.step = this.data.initialStep;
             this.data.ledOptions.values = this.data.initialNum;
-            //更新按钮控制
-            this.buttonsControl.updateButtonsControl(this.allLevelData[this.data.currentLevelIndex].buttons);
-            //更新按钮列表
+            this.data.conversation = this.allLevelData[this.data.currentLevelIndex].dialogue;
+            //为第0关特制，如果没有按钮则直接显示对话
+            if (this.allLevelData[this.data.currentLevelIndex].buttons.length == 0) {
+                this.control.showWhat = ShowWhat.conversation;
+            }
             this.updateButtonList();
         },
         //更新显示的按钮列表
         updateButtonList() {
-            this.buttonList = [];
-            this.buttonsControl.updateButtonsList(this.buttonList);
+            this.buttons = [["", "", ""], ["", "", ""], ["", "", ""]];
+            if (this.control.showWhat === ShowWhat.conversation) {
+                this.buttons = this.buttonsControl.updateConversationButtonsList(this.data.conversation[this.data.conversationIndex].buttons);
+            } else {
+                this.buttons = this.buttonsControl.updateButtonsList(this.allLevelData[this.data.currentLevelIndex].buttons);
+            }
         },
         //每个数字都操作的按钮
         eachButton(operation: string, num: number) {
             if (this.data.step > 0) {
                 this.data.step--;
+                this.buttonsControl.eachButton(operation, num);
+                this.updateButtonList();
             }
-            this.buttonsControl.eachButton(operation, num);
+        },
+
+        //OK按钮专用，用于跳转到下一关
+        accomplish() {
+            //如果还有关卡
+            if (this.data.currentLevelIndex < this.allLevelData.length - 1) {
+                //如果显示的是对话，则说明该关已完结，关卡增加
+                if (this.control.showWhat === ShowWhat.conversation) {
+                    this.data.currentLevelIndex++;
+                    this.levelInit();
+                } else {
+                    //如果有对话则显示对话，否则到下一关
+                    if (this.allLevelData[this.data.currentLevelIndex].dialogue[0].info != "") {
+                        this.control.showWhat = ShowWhat.conversation;
+                        this.updateButtonList();
+                    } else {
+                        this.data.currentLevelIndex++;
+                        this.levelInit();
+                    }
+                }
+            } else {
+                this.data.currentLevelIndex = 1;
+                this.levelInit();
+            }
+        },
+        conversationAccomplish() {
+            if (this.data.conversationIndex < this.data.conversation.length - 1) {
+                this.data.conversationIndex++;
+                this.updateButtonList();
+            } else {
+                this.accomplish();
+            }
+        },
+        jumpConversation() {
+            this.data.conversationIndex = 2;
             this.updateButtonList();
         },
-        accomplish() {
-            if (this.data.currentLevelIndex < this.allLevelData.length) {
-                this.data.currentLevelIndex++;
-            } else {
-                this.data.currentLevelIndex = 0;
-            }
-            this.control.accomplish = false;
-            this.control.ledCanvasDisplay = true;
-            this.levelInit();
-        },
         changeMode() {
-            if (this.control.setMode) {
+            if (this.control.showWhat === ShowWhat.pause) {
                 //如果是设置模式，点击就切换初始模式
-                this.control.initialMode = true;
-                this.control.setMode = false;
+                this.control.showWhat = ShowWhat.number;
                 //从设置切换到初始模式时初始化关卡
                 this.levelInit();
             } else {
-                this.control.setMode = true;
-                this.control.initialMode = false;
+                this.control.showWhat = ShowWhat.pause;
             }
         },
         levelAdd() {
@@ -157,7 +181,7 @@ export const useStore = defineStore("main", {
             }
         },
         levelSub() {
-            if (this.data.currentLevelIndex > 0) {
+            if (this.data.currentLevelIndex > 1) {
                 this.data.currentLevelIndex--;
             }
         }

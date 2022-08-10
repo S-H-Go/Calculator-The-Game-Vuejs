@@ -1,7 +1,7 @@
 <template>
   <div id="button-panel">
-    <set-button-panel v-show="buttonControl.setMode && !buttonControl.initialMode"></set-button-panel>
-    <function-button-panel v-show="!buttonControl.setMode && buttonControl.initialMode"></function-button-panel>
+    <set-button-panel v-show="buttonControl.showWhat == 'pause'"></set-button-panel>
+    <function-button-panel v-show="buttonControl.showWhat != 'pause'"></function-button-panel>
   </div>
 </template>
 
@@ -39,14 +39,14 @@ const buttonControl = computed(() => store.getButtonControl);
 
 .color-button-grey
 {
-  background-color: #424a4c;
+  background-color: hsl(192, 7%, 28%);
   box-shadow: 0rem var(--button-border-size) hsl(192, 7%, 21%);
 }
 
 .color-button-green
 {
-  background-color: greenyellow;
-  box-shadow: 0rem var(--button-border-size) greenyellow;
+  background-color: hsl(120, 100%, 25%);
+  box-shadow: 0rem var(--button-border-size) hsl(120, 100%, 18%);
 }
 
 .color-button-orange

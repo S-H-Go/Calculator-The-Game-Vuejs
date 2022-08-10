@@ -3,7 +3,7 @@
     <level-screen :level=screenData.level></level-screen>
     <div id="display-section">
       <step-goal-screen :step=screenData.step :goal=screenData.goal></step-goal-screen>
-      <number-screen></number-screen>
+      <info-screen></info-screen>
     </div>
   </div>
 </template>
@@ -11,9 +11,9 @@
 <script lang="ts" setup>
 import LevelScreen from "./screenSection/LevelScreen.vue";
 import StepGoalScreen from "./screenSection/StepGoalScreen.vue";
-import NumberScreen from "./screenSection/NumberScreen.vue";
 import { useStore } from '../store'
 import { computed } from 'vue';
+import InfoScreen from "./screenSection/InfoScreen.vue";
 const store = useStore()
 const screenData = computed(() => store.getScreenData)
 </script>

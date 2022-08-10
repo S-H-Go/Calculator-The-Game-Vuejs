@@ -4,5 +4,9 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [vue()],
-    base: "/calculator-game/"
+    base: "/calculator-game/",
+    server: {
+        host: true,
+        port: 80,
+    }
 })

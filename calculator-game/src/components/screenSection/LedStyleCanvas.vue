@@ -4,7 +4,7 @@
 </template>
 <script lang="ts" setup>
 import { onMounted } from 'vue';
-import { ILedOptions } from '../../store'
+import { ILedOptions } from '../../store/interface'
 //加载完成后操作DOM显示数码数字
 onMounted(() => {
   const canvas = document.getElementById("canvas")

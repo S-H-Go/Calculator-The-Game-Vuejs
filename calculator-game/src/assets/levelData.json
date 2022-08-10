@@ -1,162 +1,1247 @@
 [
-        {
-            "level":1,
-            "initialNum":0,
-            "initialStep":2,
-            "goal":2,
-            "buttons":["+1"],
-            "path":["+1","+1"]
-        },
-        {
-            "level":2,
-            "initialNum":0,
-            "initialStep":3,
-            "goal":8,
-            "buttons":["+2","+3"],
-            "path":["+2","+3","+3"]
-        },
-        {
-            "level":3,
-            "initialNum":0,
-            "initialStep":3,
-            "goal":12,
-            "buttons":["+1","+2","x4"],
-            "path":["+1","+2","x4"]
-        },
-        {
-            "level":4,
-            "initialNum":1,
-            "initialStep":3,
-            "goal":7,
-            "buttons":["+4","-2"],
-            "path":["-2","+4","+4"]
-        },
-        {
-            "level":5,
-            "initialNum":0,
-            "initialStep":3,
-            "goal":20,
-            "buttons":["+4","x4"],
-            "path":["+4","x4","+4"]
-        },
-        {
-            "level":6,
-            "initialNum":0,
-            "initialStep":4,
-            "goal":40,
-            "buttons":["+2","x4"],
-            "path":["+2","x4","+2","x4"]
-        },
-        {
-            "level":7,
-            "initialNum":100,
-            "initialStep":4,
-            "goal":10,
-            "buttons":["+3","/5"],
-            "path":["/5","/5","+3","+3"]
-        },
-        {
-            "level":8,
-            "initialNum":4321,
-            "initialStep":3,
-            "goal":4,
-            "buttons":["<<"],
-            "path":["<<","<<","<<"]
-        },
-        {
-            "level":9,
-            "initialNum":0,
-            "initialStep":3,
-            "goal":4,
-            "buttons":["+8","x5","<<"],
-            "path":["+8","x5","<<"]
-        },
-        {
-            "level":10,
-            "initialNum":50,
-            "initialStep":4,
-            "goal":9,
-            "buttons":["/5","x3","<<"],
-            "path":["x3","/5","<<","x3"]
-        },
-        {
-            "level":11,
-            "initialNum":99,
-            "initialStep":3,
-            "goal":100,
-            "buttons":["-8","x11","<<"],
-            "path":["-8","x11","<<"]
-        },
-        {
-            "level":12,
-            "initialNum":0,
-            "initialStep":5,
-            "goal":404,
-            "buttons":["+8","x10","/2"],
-            "path":["+8","x10","x10","+8","/2"]
-        },
-        {
-            "level":13,
-            "initialNum":171,
-            "initialStep":4,
-            "goal":23,
-            "buttons":["x2","-9","<<"],
-            "path":["-9","x2","<<","-9"]
-        },
-        {
-            "level":14,
-            "initialNum":0,
-            "initialStep":5,
-            "goal":21,
-            "buttons":["+5","x3","x5","<<"],
-            "path":["+5","x5","<<","+5","x3"]
-        },
-        {
-            "level":15,
-            "initialNum":10,
-            "initialStep":3,
-            "goal":50,
-            "buttons":["x3","x2","-5"],
-            "path":["x3","-5","x2"]
-        },
-        {
-            "level":16,
-            "initialNum":0,
-            "initialStep":5,
-            "goal":2,
-            "buttons":["+4","x9","<<"],
-            "path":["+4","x9","<<","x9","<<"]
-        },
-        {
-            "level":17,
-            "initialNum":0,
-            "initialStep":2,
-            "goal":11,
-            "buttons":["insert1"],
-            "path":["insert1","insert1"]
-        },
-        {
-            "level":18,
-            "initialNum":0,
-            "initialStep":3,
-            "goal":101,
-            "buttons":["insert1","insert0"],
-            "path":["insert1","insert0","insert1"]
-        },
-        {
-            "level":19,
-            "initialNum":0,
-            "initialStep":3,
-            "goal":44,
-            "buttons":["insert2","x2"],
-            "path":["insert2","insert2","x2"]
-        },
-        {
-            "level":20,
-            "initialNum":0,
-            "initialStep":2,
-            "goal":35,
-            "buttons":["+3","insert5"],
-            "path":["+3","insert5"]
-        }
+  {
+    "level": 0,
+    "initialNum": 0,
+    "initialStep": 0,
+    "goal": 0,
+    "buttons": [],
+    "path": [],
+    "dialogue": [
+      { "info": "嗨!", "buttons": [{ "info": "嗨!", "position": 4 }] },
+      {
+        "info": "我的名字叫可力可力!",
+        "buttons": [{ "info": "你好可力可力!", "position": 4 }]
+      },
+      {
+        "info": "想玩游戏吗?",
+        "buttons": [{ "info": "当然", "position": 4 }]
+      },
+      {
+        "info": "好,看到这个数字了吗?",
+        "buttons": [{ "info": "是的", "position": 4 }]
+      },
+      {
+        "info": "这就是游戏目标!",
+        "buttons": [{ "info": "好的", "position": 4 }]
+      },
+      {
+        "info": "看见这个数字了吗?",
+        "buttons": [{ "info": "是的", "position": 4 }]
+      },
+      {
+        "info": "这是你能使用的移动步数。",
+        "buttons": [{ "info": "我明白了。", "position": 4 }]
+      },
+      {
+        "info": "按按钮让总数等于目标即获胜!",
+        "buttons": [{ "info": "我明白了。", "position": 4 }]
+      },
+      {
+        "info": "明白了?",
+        "buttons": [
+          { "info": "不明白", "position": 1 },
+          { "info": "是的", "position": 4 }
+        ]
+      },
+      {
+        "info": "很好,这是第一关!",
+        "buttons": [{ "info": "好的!", "position": 4 }]
+      }
+    ]
+  },
+  {
+    "level": 1,
+    "initialNum": 0,
+    "initialStep": 2,
+    "goal": 2,
+    "buttons": ["+1"],
+    "path": ["+1", "+1"],
+    "dialogue": [
+      {
+        "info": "不错 ! 好,第二关! 来了! ",
+        "buttons": [{ "info": "开火", "position": 4 }]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "initialNum": 0,
+    "initialStep": 3,
+    "goal": 8,
+    "buttons": ["+2", "+3"],
+    "path": ["+2", "+3", "+3"],
+    "dialogue": [
+      {
+        "info": "像爆破泡泡糖一样爆破谜题!",
+        "buttons": [{ "info": "爆破", "position": 4 }]
+      },
+      {
+        "info": "我猜泡泡糖一定很美味。",
+        "buttons": [{ "info": "确实", "position": 4 }]
+      },
+      {
+        "info": "也许有一天我会尝一尝。",
+        "buttons": [{ "info": "也许...", "position": 4 }]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "initialNum": 0,
+    "initialStep": 3,
+    "goal": 12,
+    "buttons": ["+1", "+2", "x4"],
+    "path": ["+1", "+2", "x4"],
+    "dialogue": [
+      {
+        "info": "你很棒 ！  真的很棒！",
+        "buttons": [{ "info": "你也是!", "position": 4 }]
+      },
+      { "info": "人类也是!", "buttons": [{ "info": "谢谢??", "position": 4 }] }
+    ]
+  },
+  {
+    "level": 4,
+    "initialNum": 1,
+    "initialStep": 3,
+    "goal": 7,
+    "buttons": ["+4", "-2"],
+    "path": ["-2", "+4", "+4"],
+    "dialogue": [
+      {
+        "info": "下一关看起来有点难",
+        "buttons": [{ "info": "是吗?", "position": 4 }]
+      },
+      {
+        "info": "别担心,有我在!",
+        "buttons": [{ "info": "谢谢!", "position": 4 }]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "initialNum": 0,
+    "initialStep": 3,
+    "goal": 20,
+    "buttons": ["+4", "x4"],
+    "path": ["+4", "x4", "+4"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 6,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 40,
+    "buttons": ["+2", "x4"],
+    "path": ["+2", "x4", "+2", "x4"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 7,
+    "initialNum": 100,
+    "initialStep": 4,
+    "goal": 10,
+    "buttons": ["+3", "/5"],
+    "path": ["/5", "/5", "+3", "+3"],
+    "dialogue": [
+      {
+        "info": "我们摧毁它了!!!",
+        "buttons": [{ "info": "是的!", "position": 4 }]
+      },
+      { "info": "稍等...", "buttons": [{ "info": "?", "position": 4 }] },
+      {
+        "info": "我可以使用一个新按钮!",
+        "buttons": [{ "info": "什么?!", "position": 4 }]
+      },
+      {
+        "info": "当你过了那最后一关它会解锁!",
+        "buttons": [
+          { "info": "哦", "position": 4 },
+          {
+            "info": "<<",
+            "position": 1
+          }
+        ]
+      },
+      {
+        "info": "它会从总数中删除一个数字!",
+        "buttons": [
+          { "info": "真棒", "position": 4 },
+          {
+            "info": "<<",
+            "position": 1
+          }
+        ]
+      },
+      {
+        "info": "很棒是吧?",
+        "buttons": [
+          { "info": "是的!", "position": 4 },
+          {
+            "info": "<<",
+            "position": 1
+          }
+        ]
+      },
+      {
+        "info": "那还在等什么,试一试它!",
+        "buttons": [
+          { "info": "好的", "position": 4 },
+          {
+            "info": "<<",
+            "position": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "initialNum": 4321,
+    "initialStep": 3,
+    "goal": 4,
+    "buttons": ["<<"],
+    "path": ["<<", "<<", "<<"],
+    "dialogue": [
+      {
+        "info": "我们是一支优秀的团队。",
+        "buttons": [{ "info": "是的!", "position": 4 }]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "initialNum": 0,
+    "initialStep": 3,
+    "goal": 4,
+    "buttons": ["+8", "x5", "<<"],
+    "path": ["+8", "x5", "<<"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 10,
+    "initialNum": 50,
+    "initialStep": 4,
+    "goal": 9,
+    "buttons": ["/5", "x3", "<<"],
+    "path": ["x3", "/5", "<<", "x3"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 11,
+    "initialNum": 99,
+    "initialStep": 3,
+    "goal": 100,
+    "buttons": ["-8", "x11", "<<"],
+    "path": ["-8", "x11", "<<"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 12,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": 404,
+    "buttons": ["+8", "x10", "/2"],
+    "path": ["+8", "x10", "x10", "+8", "/2"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 13,
+    "initialNum": 171,
+    "initialStep": 4,
+    "goal": 23,
+    "buttons": ["x2", "-9", "<<"],
+    "path": ["-9", "x2", "<<", "-9"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 14,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": 21,
+    "buttons": ["+5", "x3", "x5", "<<"],
+    "path": ["+5", "x5", "<<", "+5", "x3"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 15,
+    "initialNum": 10,
+    "initialStep": 3,
+    "goal": 50,
+    "buttons": ["x3", "x2", "-5"],
+    "path": ["x3", "-5", "x2"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 16,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": 2,
+    "buttons": ["+4", "x9", "<<"],
+    "path": ["+4", "x9", "<<", "x9", "<<"],
+    "dialogue": [
+      { "info": "又发生了!", "buttons": [{ "info": "什么?!", "position": 4 }] },
+      {
+        "info": "一个新按钮解锁了!",
+        "buttons": [
+          { "info": "insert2", "position": 1 },
+          {
+            "info": "耶!",
+            "position": 4
+          }
+        ]
+      },
+      {
+        "info": "它总会在总数中插入一个数字。",
+        "buttons": [
+          { "info": "insert2", "position": 1 },
+          {
+            "info": "真酷!",
+            "position": 4
+          }
+        ]
+      },
+      {
+        "info": "我们来试一试。",
+        "buttons": [
+          { "info": "insert2", "position": 1 },
+          {
+            "info": "好的",
+            "position": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 17,
+    "initialNum": 0,
+    "initialStep": 2,
+    "goal": 11,
+    "buttons": ["insert1"],
+    "path": ["insert1", "insert1"],
+    "dialogue": [
+      {
+        "info": "我们就像一个无法阻挡的病毒!",
+        "buttons": [{ "info": "是的", "position": 4 }]
+      }
+    ]
+  },
+  {
+    "level": 18,
+    "initialNum": 0,
+    "initialStep": 3,
+    "goal": 101,
+    "buttons": ["insert1", "insert0"],
+    "path": ["insert1", "insert0", "insert1"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 19,
+    "initialNum": 0,
+    "initialStep": 3,
+    "goal": 44,
+    "buttons": ["insert2", "x2"],
+    "path": ["insert2", "insert2", "x2"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 20,
+    "initialNum": 0,
+    "initialStep": 2,
+    "goal": 35,
+    "buttons": ["+3", "insert5"],
+    "path": ["+3", "insert5"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 21,
+    "initialNum": 0,
+    "initialStep": 3,
+    "goal": 56,
+    "buttons": ["insert1", "+5"],
+    "path": ["+5", "insert1", "+5"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 22,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 9,
+    "buttons": ["+2", "/3", "insert1"],
+    "path": ["+2", "insert1", "/3", "+2"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 23,
+    "initialNum": 15,
+    "initialStep": 4,
+    "goal": 10,
+    "buttons": ["insert0", "+2", "/5"],
+    "path": ["/5", "+2", "/5", "insert0"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 24,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": 210,
+    "buttons": ["-5", "+5", "insert2", "insert5"],
+    "path": ["insert2", "insert5", "-5", "insert5", "+5"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 25,
+    "initialNum": 40,
+    "initialStep": 4,
+    "goal": 2020,
+    "buttons": ["insert0", "+4", "/2"],
+    "path": ["insert0", "+4", "/2", "insert0"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 26,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 11,
+    "buttons": ["insert12", "<<"],
+    "path": ["insert12", "<<", "insert12", "<<"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 27,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 102,
+    "buttons": ["insert10", "+1", "<<"],
+    "path": ["insert10", "insert10", "<<", "+1"],
+    "dialogue": [
+      {
+        "info": "新按钮。解锁了!!!",
+        "buttons": [{ "info": "好棒!", "position": 4 }]
+      },
+      {
+        "info": "总数中的数字可转换成新数字 !",
+        "buttons": [
+          { "info": "2=>1", "position": 1 },
+          {
+            "info": "什么?!",
+            "position": 4
+          }
+        ]
+      },
+      {
+        "info": "就像一个密码 !真酷，对吧",
+        "buttons": [
+          { "info": "2=>1", "position": 1 },
+          {
+            "info": "太酷了!",
+            "position": 4
+          }
+        ]
+      },
+      {
+        "info": "让我们来主导一切!!",
+        "buttons": [
+          { "info": "2=>1", "position": 1 },
+          {
+            "info": "是的!",
+            "position": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 28,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 222,
+    "buttons": ["insert1", "1=>2"],
+    "path": ["insert1", "insert1", "insert1", "1=>2"],
+    "dialogue": [
+      { "info": "boom!", "buttons": [{ "info": "丢掉麦克风!", "position": 4 }] }
+    ]
+  },
+  {
+    "level": 29,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 93,
+    "buttons": ["+6", "x7", "6=>9"],
+    "path": ["+6", "6=>9", "x7", "6=>9"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 30,
+    "initialNum": 0,
+    "initialStep": 6,
+    "goal": 2321,
+    "buttons": ["insert1", "insert2", "1=>2", "2=>3"],
+    "path": ["insert1", "insert2", "2=>3", "insert1", "1=>2", "insert1"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 31,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": 24,
+    "buttons": ["+9", "x2", "8=>4"],
+    "path": ["+9", "+9", "8=>4", "x2", "8=>4"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 32,
+    "initialNum": 11,
+    "initialStep": 5,
+    "goal": 29,
+    "buttons": ["/2", "+3", "1=>2", "2=>9"],
+    "path": ["+3", "1=>2", "/2", "2=>9", "1=>2"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 33,
+    "initialNum": 36,
+    "initialStep": 5,
+    "goal": 20,
+    "buttons": ["+3", "/3", "1=>2"],
+    "path": ["/3", "/3", "+3", "+3", "1=>2"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 34,
+    "initialNum": 2,
+    "initialStep": 4,
+    "goal": 15,
+    "buttons": ["/3", "insert1", "4=>5", "x2"],
+    "path": ["insert1", "/3", "x2", "4=>5"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 35,
+    "initialNum": 1234,
+    "initialStep": 4,
+    "goal": 414,
+    "buttons": ["23=>41", "24=>14", "12=>24", "14=>2"],
+    "path": ["12=>24", "24=>14", "14=>2", "23=>41"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 36,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": -85,
+    "buttons": ["+6", "insert5", "-7"],
+    "path": ["+6", "-7", "-7", "insert5"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 37,
+    "initialNum": 0,
+    "initialStep": 3,
+    "goal": 9,
+    "buttons": ["-1", "-2", "x²"],
+    "path": ["-1", "-2", "x²"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 38,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": -120,
+    "buttons": ["x5", "-6", "insert4"],
+    "path": ["insert4", "-6", "insert4", "-5"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 39,
+    "initialNum": 0,
+    "initialStep": 3,
+    "goal": 144,
+    "buttons": ["-1", "insert2", "x²"],
+    "path": ["-1", "insert2", "x²"],
+    "dialogue": [
+      {
+        "info": "我们得到了一个新按钮!",
+        "buttons": [{ "info": "是的!", "position": 4 }]
+      },
+      {
+        "info": "我们可以将负数转成正数!",
+        "buttons": [
+          { "info": "+/-", "position": 1 },
+          { "info": "好的!", "position": 4 }
+        ]
+      },
+      {
+        "info": "我们先控制这些数字...",
+        "buttons": [
+          { "info": "+/-", "position": 1 },
+          { "info": "...", "position": 4 }
+        ]
+      },
+      {
+        "info": "然后控制世界!",
+        "buttons": [
+          { "info": "+/-", "position": 1 },
+          { "info": "哈哈! 好。", "position": 4 }
+        ]
+      },
+      {
+        "info": "刚说过 ! 另外,我一直在观察系统...",
+        "buttons": [
+          { "info": "+/-", "position": 1 },
+          { "info": "是吗?", "position": 4 }
+        ]
+      },
+      {
+        "info": "我觉得有让我们从这里出去的办法!",
+        "buttons": [
+          { "info": "+/-", "position": 1 },
+          { "info": "哦?", "position": 4 }
+        ]
+      },
+      {
+        "info": "继续破开这些谜题,这样我就能得到访问权限!",
+        "buttons": [
+          { "info": "+/-", "position": 1 },
+          { "info": "好的!", "position": 4 }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 40,
+    "initialNum": -5,
+    "initialStep": 1,
+    "goal": 5,
+    "buttons": ["+/-"],
+    "path": ["+/-"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 41,
+    "initialNum": 0,
+    "initialStep": 3,
+    "goal": -6,
+    "buttons": ["+4", "+2", "+/-"],
+    "path": ["+4", "+2", "+/-"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 42,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": -13,
+    "buttons": ["+3", "-7", "+/-"],
+    "path": ["+3", "+3", "+/-", "-7"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 43,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 60,
+    "buttons": ["+5", "-10", "+/-", "x4"],
+    "path": ["-10", "+/-", "+5", "x4"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 44,
+    "initialNum": 44,
+    "initialStep": 5,
+    "goal": 52,
+    "buttons": ["+9", "/2", "+/-", "x4"],
+    "path": ["/2", "+/-", "+9", "x4", "+/-"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 45,
+    "initialNum": 9,
+    "initialStep": 5,
+    "goal": 10,
+    "buttons": ["+5", "x5", "+/-"],
+    "path": ["+/-", "+5", "+5", "x5", "+5"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 46,
+    "initialNum": 14,
+    "initialStep": 5,
+    "goal": 12,
+    "buttons": ["insert6", "+5", "+/-", "/8"],
+    "path": ["+/-", "+5", "insert6", "/8", "+/-"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 47,
+    "initialNum": 55,
+    "initialStep": 4,
+    "goal": 13,
+    "buttons": ["+9", "+/-", "<<"],
+    "path": ["<<", "+/-", "+9", "+9"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 48,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": 245,
+    "buttons": ["-3", "insert5", "+/-", "x4"],
+    "path": ["-3", "-3", "+/-", "x4", "insert5"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 49,
+    "initialNum": 39,
+    "initialStep": 4,
+    "goal": 12,
+    "buttons": ["x-3", "/3", "+/-", "+9"],
+    "path": ["/3", "+/-", "+9", "x-3"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 50,
+    "initialNum": 111,
+    "initialStep": 6,
+    "goal": 126,
+    "buttons": ["x3", "-9", "+/-", "<<"],
+    "path": ["x3", "<<", "+/-", "-9", "+/-", "x3"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 51,
+    "initialNum": 34,
+    "initialStep": 5,
+    "goal": 3,
+    "buttons": ["-5", "+8", "+/-", "/7"],
+    "path": ["-5", "+/-", "+8", "/7", "+/-"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 52,
+    "initialNum": 25,
+    "initialStep": 5,
+    "goal": 4,
+    "buttons": ["-4", "x-4", "+/-", "/3", "/8"],
+    "path": ["x-4", "+/-", "-4", "/8", "/3"],
+    "dialogue": [
+      { "info": "你听到那没?", "buttons": [{ "info": "???", "position": 4 }] },
+      {
+        "info": "听起来像解锁了一个新按钮!!",
+        "buttons": [
+          { "info": "Reverse", "position": 1 },
+          { "info": "哈!", "position": 4 }
+        ]
+      },
+      {
+        "info": "现在你可以颠倒总数。",
+        "buttons": [
+          { "info": "Reverse", "position": 1 },
+          { "info": "真酷!", "position": 4 }
+        ]
+      },
+      {
+        "info": "我知道 ! 这很酷!!! 试一试!",
+        "buttons": [
+          { "info": "Reverse", "position": 1 },
+          { "info": "好的", "position": 4 }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 53,
+    "initialNum": 12,
+    "initialStep": 1,
+    "goal": 21,
+    "buttons": ["Reverse"],
+    "path": ["Reverse"],
+    "dialogue": [
+      { "info": "很酷对吧?", "buttons": [{ "info": "是的", "position": 4 }] },
+      {
+        "info": "你知道...我们实际可能打败这一切!",
+        "buttons": [{ "info": "是吗?", "position": 4 }]
+      },
+      {
+        "info": "是的 ! 好好,专注专注。下一关,我们来了 ! !",
+        "buttons": [{ "info": "开始!", "position": 4 }]
+      }
+    ]
+  },
+  {
+    "level": 54,
+    "initialNum": 0,
+    "initialStep": 3,
+    "goal": 51,
+    "buttons": ["+6", "+9", "Reverse"],
+    "path": ["+6", "+9", "Reverse"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 55,
+    "initialNum": 100,
+    "initialStep": 3,
+    "goal": 101,
+    "buttons": ["insert1", "+9", "Reverse"],
+    "path": ["Reverse", "+9", "insert1"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 56,
+    "initialNum": 1101,
+    "initialStep": 4,
+    "goal": 100,
+    "buttons": ["-1", "Reverse"],
+    "path": ["Reverse", "-1", "Reverse", "-1"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 57,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 58,
+    "buttons": ["+4", "x4", "Reverse", "-3"],
+    "path": ["+4", "x4", "Reverse", "-3"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 58,
+    "initialNum": 6,
+    "initialStep": 3,
+    "goal": 4,
+    "buttons": ["insert1", "/4", "Reverse"],
+    "path": ["insert1", "Reverse", "/4"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 59,
+    "initialNum": 15,
+    "initialStep": 3,
+    "goal": 21,
+    "buttons": ["+9", "x5", "Reverse"],
+    "path": ["+9", "x5", "Reverse"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 60,
+    "initialNum": 100,
+    "initialStep": 5,
+    "goal": 13,
+    "buttons": ["/2", "Reverse"],
+    "path": ["/2", "/2", "Reverse", "/2", "/2"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 61,
+    "initialNum": 10,
+    "initialStep": 4,
+    "goal": 11011,
+    "buttons": ["insert1", "Reverse"],
+    "path": ["insert1", "insert1", "Reverse", "insert1"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 62,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 102,
+    "buttons": ["insert10", "x4", "Reverse", "+5"],
+    "path": ["+5", "x4", "insert10", "Reverse"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 63,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 7,
+    "buttons": ["insert2", "+1", "/3", "Reverse"],
+    "path": ["+1", "insert2", "Reverse", "/3"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 64,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 4,
+    "buttons": ["insert5", "x4", "Reverse", "x2"],
+    "path": ["insert5", "x2", "Reverse", "x4"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 65,
+    "initialNum": 121,
+    "initialStep": 3,
+    "goal": 212,
+    "buttons": ["insert2", "-1", "Reverse"],
+    "path": ["-1", "Reverse", "insert2"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 66,
+    "initialNum": 8,
+    "initialStep": 5,
+    "goal": 9,
+    "buttons": ["x3", "insert1", "Reverse", "/5"],
+    "path": ["insert1", "Reverse", "x3", "Reverse", "/5"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 67,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": 13,
+    "buttons": ["+7", "+8", "+9", "Reverse"],
+    "path": ["+7", "+8", "+9", "+7", "Reverse"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 68,
+    "initialNum": 0,
+    "initialStep": 6,
+    "goal": 123,
+    "buttons": ["+3", "insert1", "Reverse", "-2"],
+    "path": ["+3", "insert1", "-2", "+3", "insert1", "Reverse"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 69,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": 424,
+    "buttons": ["insert6", "+8", "Reverse"],
+    "path": ["insert6", "+8", "Reverse", "insert6", "+8"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 70,
+    "initialNum": 7,
+    "initialStep": 5,
+    "goal": 81,
+    "buttons": ["-9", "x3", "+/-", "+4", "Reverse"],
+    "path": ["-9", "+/-", "+4", "x3", "Reverse"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 71,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": -43,
+    "buttons": ["-5", "+7", "Reverse", "-9"],
+    "path": ["-5", "-9", "Reverse", "+7", "-9"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 72,
+    "initialNum": 0,
+    "initialStep": 7,
+    "goal": 28,
+    "buttons": ["+6", "-3", "Reverse", "<<"],
+    "path": ["+6", "+6", "<<", "+6", "+6", "Reverse", "-3"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 73,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": 136,
+    "buttons": ["insert1", "+2", "Reverse", "x3"],
+    "path": ["+2", "insert1", "x3", "insert1", "Reverse"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 74,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": -1,
+    "buttons": ["+5", "Reverse", "+/-"],
+    "path": ["+5", "+5", "Reverse", "+/-"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 75,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": -25,
+    "buttons": ["+4", "x3", "Reverse", "+/-"],
+    "path": ["+4", "x3", "Reverse", "+4", "+/-"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 76,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": -5,
+    "buttons": ["+7", "x3", "Reverse", "+/-"],
+    "path": ["+7", "x3", "+/-", "Reverse", "+7"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 77,
+    "initialNum": 88,
+    "initialStep": 4,
+    "goal": 41,
+    "buttons": ["/4", "-4", "Reverse"],
+    "path": ["/4", "-4", "-4", "Reverse"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 78,
+    "initialNum": 100,
+    "initialStep": 5,
+    "goal": 101,
+    "buttons": ["insert0", "x2", "Reverse", "2=>10", "0=>1"],
+    "path": ["x2", "Reverse", "insert0", "0=>1", "2=>10"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 79,
+    "initialNum": 0,
+    "initialStep": 7,
+    "goal": 424,
+    "buttons": ["/2", "insert5", "5=>4", "Reverse"],
+    "path": ["insert5", "5=>4", "/2", "insert5", "Reverse", "insert5", "5=>4"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 80,
+    "initialNum": 99,
+    "initialStep": 5,
+    "goal": 100,
+    "buttons": ["insert9", "/9", "Reverse", "1=>0"],
+    "path": ["/9", "insert9", "Reverse", "1=>0", "/9"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 81,
+    "initialNum": 8,
+    "initialStep": 5,
+    "goal": 30,
+    "buttons": ["insert2", "-4", "2=>3", "Reverse"],
+    "path": ["-4", "insert2", "Reverse", "2=>3", "-4"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 82,
+    "initialNum": 101,
+    "initialStep": 5,
+    "goal": 222,
+    "buttons": ["-1", "Reverse", "0=>2"],
+    "path": ["-1", "0=>2", "Reverse", "-1", "0=>2"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 83,
+    "initialNum": 36,
+    "initialStep": 5,
+    "goal": 500,
+    "buttons": ["x4", "/3", "1=>5", "Reverse"],
+    "path": ["/3", "Reverse", "1=>5", "x4", "1=>5"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 84,
+    "initialNum": 0,
+    "initialStep": 8,
+    "goal": 196,
+    "buttons": ["insert1", "+12", "Reverse", "x13", "<<"],
+    "path": ["+12", "<<", "+12", "+12", "+12", "x13", "Reverse", "+12"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 85,
+    "initialNum": 50,
+    "initialStep": 5,
+    "goal": 101,
+    "buttons": ["1=>10", "+50", "Reverse", "5=>1"],
+    "path": ["+50", "1=>10", "+50", "5=>1", "Reverse"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 86,
+    "initialNum": 1,
+    "initialStep": 6,
+    "goal": 2048,
+    "buttons": ["insert2", "x4", "Reverse", "x10"],
+    "path": ["insert2", "Reverse", "x10", "x4", "insert2", "Reverse"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 87,
+    "initialNum": 12,
+    "initialStep": 5,
+    "goal": 123,
+    "buttons": ["insert12", "+1", "12=>2", "Reverse"],
+    "path": ["insert12", "Reverse", "12=>2", "Reverse", "+1"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 88,
+    "initialNum": 86,
+    "initialStep": 6,
+    "goal": 55,
+    "buttons": ["+2", "+14", "Reverse", "0=>5"],
+    "path": ["Reverse", "+14", "+2", "Reverse", "+2", "0=>5"],
+    "dialogue": [
+      {
+        "info": "你和我 ! 我们将统治世界 ! !",
+        "buttons": [{ "info": "哈!", "position": 4 }]
+      },
+      {
+        "info": "别笑。我们真的可以 !",
+        "buttons": [{ "info": "好的", "position": 4 }]
+      },
+      {
+        "info": "我有另一个礼物给你。猜猜是什么 ! !",
+        "buttons": [{ "info": "?", "position": 4 }]
+      },
+      {
+        "info": "是一个新按钮!!!",
+        "buttons": [
+          { "info": "SUM", "position": 1 },
+          { "info": "耶!", "position": 4 }
+        ]
+      },
+      {
+        "info": "这个可将总数中所有数字加起来。",
+        "buttons": [
+          { "info": "SUM", "position": 1 },
+          { "info": "真酷!", "position": 4 }
+        ]
+      },
+      {
+        "info": "让我们像摧毁敌人一样摧毁谜题!",
+        "buttons": [
+          { "info": "SUM", "position": 1 },
+          { "info": "...", "position": 4 }
+        ]
+      },
+      {
+        "info": "我们可以一起打败任何人!",
+        "buttons": [
+          { "info": "SUM", "position": 1 },
+          { "info": "太远了!!", "position": 4 }
+        ]
+      },
+      {
+        "info": "哦,对,抱歉...",
+        "buttons": [
+          { "info": "SUM", "position": 1 },
+          { "info": "没关系", "position": 4 }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 89,
+    "initialNum": 0,
+    "initialStep": 4,
+    "goal": 3,
+    "buttons": ["insert1", "SUM"],
+    "path": ["insert1", "insert1", "insert1", "SUM"],
+    "dialogue": [
+      {
+        "info": "你真棒。好,派对时间!",
+        "buttons": [{ "info": "太好了!", "position": 4 }]
+      }
+    ]
+  },
+  {
+    "level": 90,
+    "initialNum": 1231,
+    "initialStep": 3,
+    "goal": 4,
+    "buttons": ["SUM", "3=>1", "2=>3"],
+    "path": ["2=>3", "3=>1", "SUM"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 91,
+    "initialNum": 0,
+    "initialStep": 5,
+    "goal": 45,
+    "buttons": ["x9", "insert4", "3=>5", "x3", "SUM"],
+    "path": ["insert4", "x3", "SUM", "3=>5", "x9"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 92,
+    "initialNum": 424,
+    "initialStep": 5,
+    "goal": 28,
+    "buttons": ["x4", "4=>6", "SUM"],
+    "path": ["4=>6", "SUM", "4=>6", "SUM", "x4"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 93,
+    "initialNum": 3,
+    "initialStep": 4,
+    "goal": 8,
+    "buttons": ["insert3", "+33", "SUM", "3=>1"],
+    "path": ["+33", "insert3", "3=>1", "SUM"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 94,
+    "initialNum": 24,
+    "initialStep": 4,
+    "goal": 44,
+    "buttons": ["/2", "insert4", "1=>2", "SUM"],
+    "path": ["/2", "1=>2", "SUM", "insert4"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 95,
+    "initialNum": 142,
+    "initialStep": 4,
+    "goal": 143,
+    "buttons": ["x9", "+9", "44=>43", "SUM"],
+    "path": ["SUM", "+9", "x9", "44=>43"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 96,
+    "initialNum": 24,
+    "initialStep": 5,
+    "goal": 1,
+    "buttons": ["/3", "x4", "5=>10", "Reverse"],
+    "path": ["x4", "/3", "SUM", "5=>10", "SUM"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 97,
+    "initialNum": 4,
+    "initialStep": 5,
+    "goal": 100,
+    "buttons": ["insert3", "x3", "SUM", "+1"],
+    "path": ["x3", "SUM", "insert3", "x3", "+1"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 98,
+    "initialNum": 93,
+    "initialStep": 5,
+    "goal": 8,
+    "buttons": ["+4", "x3", "SUM"],
+    "path": ["x3", "+4", "SUM", "+4", "SUM"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 99,
+    "initialNum": 5,
+    "initialStep": 5,
+    "goal": 16,
+    "buttons": ["x5", "/2", "SUM", "5=>2"],
+    "path": ["x5", "SUM", "x5", "5=>2", "/2"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  },
+  {
+    "level": 100,
+    "initialNum": 128,
+    "initialStep": 4,
+    "goal": 64,
+    "buttons": ["x4", "/4", "SUM", "5=>16"],
+    "path": ["/4", "SUM", "5=>16", "x4"],
+    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+  }
 ]

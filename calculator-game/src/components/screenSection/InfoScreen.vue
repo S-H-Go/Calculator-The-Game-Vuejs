@@ -1,23 +1,18 @@
 <template>
     <section id="number-display-section">
-        <led-style-canvas v-show="screenControl.ledCanvasDisplay && !screenControl.setMode"
-            :ledOptions="screenData.ledOptions" :key="screenData.ledCanvasKey"></led-style-canvas>
-        <div v-show="
-            screenControl.initialMode &&
-            !screenControl.ledCanvasDisplay &&
-            screenControl.error
-        " id="error">
+        <led-style-canvas v-show="screenControl.showWhat == 'number'" :ledOptions="screenData.ledOptions"
+            :key="screenData.ledCanvasKey"></led-style-canvas>
+        <div v-show="screenControl.showWhat == 'error'" id="error">
             {{ screenData.errorInfo }}
         </div>
-        <div v-show="
-            screenControl.initialMode &&
-            !screenControl.ledCanvasDisplay &&
-            screenControl.accomplish
-        " id="accomplish">
+        <div v-show="screenControl.showWhat == 'accomplish'" id="accomplish">
             {{ screenData.accomplishInfo }}
         </div>
-        <div id="pause" v-show="screenControl.setMode && !screenControl.initialMode">
+        <div id="pause" v-show="screenControl.showWhat == 'pause'">
             {{ screenData.pauseInfo }}
+        </div>
+        <div v-show="screenControl.showWhat == 'conversation'">
+            {{ screenData.conversation[screenData.conversationIndex].info }}
         </div>
     </section>
 </template>
@@ -31,7 +26,7 @@ const screenData = computed(() => store.getScreenData)
 const screenControl = computed(() => store.getScreenControl)
 </script>
 
-<style>
+<style scoped>
 /* 数字显示部分 */
 #number-display-section
 {

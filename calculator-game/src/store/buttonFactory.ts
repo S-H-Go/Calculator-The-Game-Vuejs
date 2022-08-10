@@ -1,3 +1,8 @@
+import ConversationButton from "../components/otherButtons/ConversationButton.vue";
+import ClrButton from "../components/functionButton/ClrButton.vue";
+import SetButton from "../components/setButton/SetButton.vue";
+import EmptyButton from "../components/otherButtons/EmptyButton.vue";
+import OkButton from "../components/functionButton/OkButton.vue";
 import RightMoveButton from "../components/functionButton/RightMoveButton.vue";
 import SquareButton from "../components/functionButton/SquareButton.vue";
 import PpositeButton from "../components/functionButton/PpositeButton.vue";
@@ -20,6 +25,18 @@ import { SEButtonEnum } from "./ButtonsControl";
 export function SEButtonFactory(index: SEButtonEnum) {
   //需要加上markRaw()
   switch (index) {
+    case SEButtonEnum.CLR: {
+      return { tag: markRaw(ClrButton) };
+    }
+    case SEButtonEnum.set: {
+      return { tag: markRaw(SetButton) };
+    }
+    case SEButtonEnum.empty: {
+      return { tag: markRaw(EmptyButton) };
+    }
+    case SEButtonEnum.OK: {
+      return { tag: markRaw(OkButton) };
+    }
     case "<<": {
       return { tag: markRaw(RightMoveButton) };
     }
@@ -71,4 +88,7 @@ export function buttonFactory(index: string, num1?: number, num2?: number, opera
       return { tag: markRaw(ElementaryArithmetic), operation: operation, num1: num1 }
     }
   }
+}
+export function conversationButtonFactory(info: string) {
+  return { tag: markRaw(ConversationButton), info: info }
 }

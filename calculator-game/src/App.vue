@@ -42,6 +42,16 @@ main
   margin: auto;
 }
 
+/*来自：https://blog.csdn.net/qq_16660859/article/details/111695771 */
+a,
+input,
+button
+{
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-focus-ring-color: rgba(0, 0, 0, 0);
+}
+
 /* 手机端常规尺寸适配 */
 @media screen and (max-width: 768px)
 {
