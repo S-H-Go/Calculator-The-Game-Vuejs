@@ -29,3 +29,8 @@ export interface ILevelData {
         buttons: { info: string, position: number }[]
     }[],
 }
+
+export enum LSKey {
+    "levelIndex" = "levelIndex",
+    "maxLevelIndex" = "maxlevelIndex",
+}

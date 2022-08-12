@@ -1,14 +1,21 @@
 import { defineStore } from "pinia"
-import { ILedOptions, ShowWhat } from "./interface"
+import { ILedOptions, LSKey, ShowWhat } from "./interface"
 import levelData from "../assets/levelData.json"
 // import levelData from "../assets/testLevelData.json"
 import { ButtonControl } from "./ButtonsControl"
+//初始化本地关卡索引
+if (localStorage.getItem(LSKey.levelIndex) === null) {
+    localStorage.setItem(LSKey.levelIndex, "0");
+}
+if (localStorage.getItem(LSKey.maxLevelIndex) === null) {
+    localStorage.setItem(LSKey.maxLevelIndex, "0");
+}
 export const useStore = defineStore("main", {
     state: () => {
         return {
             data: {
                 //全局数据
-                currentLevelIndex: 0,
+                currentLevelIndex: Number(localStorage.getItem("levelIndex")),
                 errorInfo: "错误",
                 accomplishInfo: "你赢了",
                 pauseInfo: "暂停",
@@ -92,6 +99,12 @@ export const useStore = defineStore("main", {
         },
         //关卡初始化
         levelInit() {
+            //将当前关卡索引存到本地
+            localStorage.setItem("levelIndex", this.data.currentLevelIndex.toString());
+            //存储当前最大的关卡索引
+            if (this.data.currentLevelIndex > Number(localStorage.getItem(LSKey.maxLevelIndex))) {
+                localStorage.setItem(LSKey.maxLevelIndex, this.data.currentLevelIndex.toString());
+            }
             //存储当前关卡索引
             const level = this.data.currentLevelIndex;
             //全部初始化
@@ -176,7 +189,7 @@ export const useStore = defineStore("main", {
             }
         },
         levelAdd() {
-            if (this.data.currentLevelIndex < this.allLevelData.length - 1) {
+            if (this.data.currentLevelIndex < Number(localStorage.getItem(LSKey.maxLevelIndex))) {
                 this.data.currentLevelIndex++;
             }
         },
@@ -187,3 +200,8 @@ export const useStore = defineStore("main", {
         }
     }
 })
+
+//监听手动更改事件，阻止用户更改
+window.addEventListener('storage', e => {
+    localStorage.setItem(e.key as string, e.oldValue as string)
+});
