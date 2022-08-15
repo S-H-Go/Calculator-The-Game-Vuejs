@@ -28,9 +28,9 @@
 
 <script lang="ts" setup>
 import SetButton from './SetButton.vue';
-import LevelSubButton from './LevelSubButton.vue';
+import LevelSubButton from './LevelReductionButton.vue';
 import LevelDisplayButton from './LevelDisplayButton.vue';
-import LevelAddButton from './LevelAddButton.vue';
+import LevelAddButton from './LevelIncreaseButton.vue';
 </script>
 
 <style>

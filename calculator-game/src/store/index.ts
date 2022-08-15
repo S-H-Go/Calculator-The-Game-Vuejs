@@ -188,12 +188,12 @@ export const useStore = defineStore("main", {
                 this.control.showWhat = ShowWhat.pause;
             }
         },
-        levelAdd() {
+        levelIncrease() {
             if (this.data.currentLevelIndex < Number(localStorage.getItem(LSKey.maxLevelIndex))) {
                 this.data.currentLevelIndex++;
             }
         },
-        levelSub() {
+        levelReduction() {
             if (this.data.currentLevelIndex > 1) {
                 this.data.currentLevelIndex--;
             }
