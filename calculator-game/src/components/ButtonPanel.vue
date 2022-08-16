@@ -68,6 +68,16 @@ const buttonControl = computed(() => store.getButtonControl);
   box-shadow: 0rem var(--button-border-size) hsl(60, 50%, 40%);
 }
 
+.buttons-layout
+{
+  width: calc(var(--button-width) * 3 + var(--button-margin-left) * 6);
+  height: calc(var(--button-margin-top) * 3 + var(--button-height) * 3);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 0;
+}
+
 .button
 {
   width: var(--button-width);
@@ -82,10 +92,6 @@ const buttonControl = computed(() => store.getButtonControl);
   margin-right: var(--button-margin-left);
 }
 
-.button:active
-{
-  border: none;
-}
 
 @media screen and (max-width: 768px)
 {
