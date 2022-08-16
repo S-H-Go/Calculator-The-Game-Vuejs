@@ -1,6 +1,15 @@
-# 软件工程大作业
+# 前言
 
-该程序模仿[计算器 - 游戏](https://www.taptap.com/app/56200)设计，模仿此移动应用设计并实现同功能的网页应用。
+该程序模仿[计算器 - 游戏](https://www.taptap.com/app/56200)设计，试图使用网页技术实现该游戏，玩法及界面设计均来自原游戏。
+可以在 play 商店中[下载](https://play.google.com/store/apps/details?id=com.sm.calculateme&hl=zh&gl=US)原游戏。
+
+
+使用 [Vite](https://vitejs.dev/) + [Vue](https://vuejs.org/) + [Pinia](https://pinia.vuejs.org/) + [Typescript](https://www.typescriptlang.org/)。
+
+
+关于该项目的一点[小故事](https://sweethg.club/2022-06-05/calculator-game/)。
+
+
 
 部署地址：[www.sweethg.club/calculator-game](https://www.sweethg.club/calculator-game)
 
@@ -21,7 +30,7 @@ git clone https://github.com/S-H-Go/software-engineering.git
 2. 进入代码文件夹
 
 ```shell
-cd software-engineering/calculator-game
+cd software-engineering
 ```
 
 3. 安装依赖
