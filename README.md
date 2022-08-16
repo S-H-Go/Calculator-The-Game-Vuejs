@@ -24,13 +24,13 @@
 1. 克隆该仓库
 
 ```shell
-git clone https://github.com/S-H-Go/software-engineering.git
+https://github.com/S-H-Go/calculator-game-web
 ```
 
 2. 进入代码文件夹
 
 ```shell
-cd software-engineering
+cd calculator-game-web
 ```
 
 3. 安装依赖
