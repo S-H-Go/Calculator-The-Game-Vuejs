@@ -1,6 +1,6 @@
 <template>
     <button @mousedown="continuousIncrease()" @mouseup="stopIncrease()" @mouseleave="stopIncrease()"
-        class=" button color-button-orange">+</button>
+        class=" button color-button-6c96b6">+</button>
 </template>
 
 <script lang="ts" setup>

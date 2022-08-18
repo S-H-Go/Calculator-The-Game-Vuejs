@@ -61,6 +61,20 @@ const buttonControl = computed(() => store.getButtonControl);
   box-shadow: 0rem var(--button-border-size) hsl(301, 47%, 18%);
 }
 
+/* 加减关卡按钮的颜色 */
+.color-button-6c96b6
+{
+  background-color: #6c96b6;
+  box-shadow: 0rem var(--button-border-size) #3a5761;
+}
+
+/* 显示等级按钮的颜色 */
+.color-button-1f2d3a
+{
+  background-color: #1f2d3a;
+  box-shadow: 0rem var(--button-border-size) #1a2023;
+}
+
 /* 设置按钮的颜色 */
 .color-button-yeelow
 {

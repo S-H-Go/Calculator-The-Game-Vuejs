@@ -7,8 +7,10 @@
         <level-display-button></level-display-button>
         <level-increase-button></level-increase-button>
         <set-button></set-button>
-        <empty-button></empty-button>
-        <empty-button></empty-button>
+        <a href="https://github.com/S-H-Go/calculator-game-web"><button
+                class="button color-button-purple">源代码</button></a>
+        <a href="https://sweethg.club/2022-06-05/calculator-game/"><button
+                class="button color-button-blue">一点小故事</button></a>
     </div>
 </template>
 
