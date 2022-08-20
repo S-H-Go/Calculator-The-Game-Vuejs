@@ -33,7 +33,7 @@ export const useStore = defineStore("main", {
                     height: 60,
                     values: 0,
                     lineWidth: 5,
-                    italics: 0,
+                    italics: -8,
                     opacity: 0.1,
                 } as ILedOptions,
                 conversation: [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }],

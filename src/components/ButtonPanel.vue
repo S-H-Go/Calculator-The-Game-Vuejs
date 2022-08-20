@@ -17,48 +17,99 @@ const buttonControl = computed(() => store.getButtonControl);
 <style>
 #button-panel
 {
-  --button-border-size: 0.5rem;
-  --button-width: 5.5rem;
-  --button-height: 4.8rem;
-  --button-margin-top: 0.8rem;
-  --button-margin-left: 0.25rem;
-  --button-border-radius: 6%;
+  width: 100%;
+  height: 100%;
+  --button-width: 90px;
+  --button-height: 75px;
+  --button-margin-top: 15px;
+  --button-margin-left: 6px;
+  --button-margin-right: 1%;
+  --button-border-size: 10px;
+  --button-border-radius: 8%;
 }
 
+/* clr按钮的颜色 */
 .color-button-clr
 {
   background-color: #c72f2e;
-  box-shadow: 0rem var(--button-border-size) hsl(0, 62%, 41%);
+  box-shadow: 0px var(--button-border-size) #912322;
 }
 
+.color-button-clr:active
+{
+  position: relative;
+  top: calc(var(--button-margin-top) / 2);
+  box-shadow: 0px calc(var(--button-margin-top) / 6) #912322;
+}
+
+/* 插入按钮的颜色 */
 .color-button-blue
 {
-  background-color: #8b7cd6;
-  box-shadow: 0rem var(--button-border-size) hsl(250, 52%, 59%);
+  background-color: #8b7cd7;
+  box-shadow: 0px var(--button-border-size) #473984;
 }
 
+.color-button-blue:active
+{
+  position: relative;
+  top: calc(var(--button-margin-top) / 2);
+  box-shadow: 0px calc(var(--button-margin-top) / 6) #473984;
+}
+
+/* 四则运算按钮的颜色 */
 .color-button-grey
 {
-  background-color: hsl(192, 7%, 28%);
-  box-shadow: 0rem var(--button-border-size) hsl(192, 7%, 21%);
+  background-color: #45494c;
+  box-shadow: 0px var(--button-border-size) #18191b;
 }
 
+.color-button-grey:active
+{
+  position: relative;
+  top: calc(var(--button-margin-top) / 2);
+  box-shadow: 0px calc(var(--button-margin-top) / 6) #18191b;
+}
+
+/* OK按钮、对话按钮的颜色， */
 .color-button-green
 {
-  background-color: hsl(120, 100%, 25%);
-  box-shadow: 0rem var(--button-border-size) hsl(120, 100%, 18%);
+  background-color: #48ac30;
+  box-shadow: 0px var(--button-border-size) #368323;
 }
 
+.color-button-green:active
+{
+  position: relative;
+  top: calc(var(--button-margin-top) / 2);
+  box-shadow: 0px calc(var(--button-margin-top) / 6) #368323;
+}
+
+/* 单目操作按钮的颜色 */
 .color-button-orange
 {
-  background-color: #ea6c18;
-  box-shadow: 0rem var(--button-border-size) hsl(24, 83%, 44%);
+  background-color: #ea6c17;
+  box-shadow: 0rem var(--button-border-size) #b44800;
 }
 
+.color-button-orange:active
+{
+  position: relative;
+  top: calc(var(--button-margin-top) / 2);
+  box-shadow: 0rem 3px #b44800;
+}
+
+/* 存储按钮、源代码按钮的颜色 */
 .color-button-purple
 {
   background-color: #5c215b;
-  box-shadow: 0rem var(--button-border-size) hsl(301, 47%, 18%);
+  box-shadow: 0px var(--button-border-size) hsl(301, 47%, 18%);
+}
+
+.color-button-purple:active
+{
+  position: relative;
+  top: calc(var(--button-margin-top) / 2);
+  box-shadow: 0px calc(var(--button-margin-top) / 6) hsl(301, 47%, 18%);
 }
 
 /* 加减关卡按钮的颜色 */
@@ -66,6 +117,13 @@ const buttonControl = computed(() => store.getButtonControl);
 {
   background-color: #6c96b6;
   box-shadow: 0rem var(--button-border-size) #3a5761;
+}
+
+.color-button-6c96b6:active
+{
+  position: relative;
+  top: calc(var(--button-margin-top) / 2);
+  box-shadow: 0px calc(var(--button-margin-top) / 6) #3a5761;
 }
 
 /* 显示等级按钮的颜色 */
@@ -78,17 +136,32 @@ const buttonControl = computed(() => store.getButtonControl);
 /* 设置按钮的颜色 */
 .color-button-yeelow
 {
-  background-color: rgb(202, 202, 44);
-  box-shadow: 0rem var(--button-border-size) hsl(60, 50%, 40%);
+  background-color: #e3bc21;
+  box-shadow: 0px var(--button-border-size) #a87019;
+}
+
+.color-button-yeelow:active
+{
+  position: relative;
+  top: calc(var(--button-margin-top) / 2);
+  box-shadow: 0px calc(var(--button-margin-top) / 6) #a87019;
+}
+
+.color-button-empty
+{
+  background-color: #b5b1a5;
+  position: relative;
+  top: calc(var(--button-border-size) - calc(var(--button-margin-top) / 6));
+  box-shadow: 0px calc(var(--button-margin-top) / 6) #cbc5b9, 0px calc(var(--button-margin-top) / 6 * -1) #cbc5b9;
 }
 
 .buttons-layout
 {
-  width: calc(var(--button-width) * 3 + var(--button-margin-left) * 6);
-  height: calc(var(--button-margin-top) * 3 + var(--button-height) * 3);
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
+  width: 100%;
+  height: 100%;
+  display: inline-grid;
+  grid-template-columns: repeat(3, 33.33%);
+  grid-template-rows: repeat(3, 33.33%);
   padding: 0;
 }
 
@@ -98,7 +171,7 @@ const buttonControl = computed(() => store.getButtonControl);
   height: var(--button-height);
   border: none;
   font-size: 1.25rem;
-  color: white;
+  color: #e4decb;
   padding: 0;
   border-radius: var(--button-border-radius);
   margin-top: var(--button-margin-top);
@@ -107,16 +180,16 @@ const buttonControl = computed(() => store.getButtonControl);
 }
 
 
-@media screen and (max-width: 768px)
+@media screen and (max-width: 480px)
 {
   #button-panel
   {
-    --button-border-size: 4vw;
-    --button-width: 28vw;
-    --button-height: calc(28vw - 5vw);
-    --button-margin-top: 5.5vw;
+    --button-width: 29vw;
+    --button-height: 12vh;
+    --button-margin-top: 3vh;
     --button-margin-left: 1vw;
-    --button-border-radius: 6%;
+    --button-margin-right: 1vw;
+    --button-border-size: 2vh;
   }
 
   .button

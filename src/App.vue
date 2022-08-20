@@ -1,8 +1,6 @@
 <template>
-  <main>
-    <ScreenPanel></ScreenPanel>
-    <ButtonPanel></ButtonPanel>
-  </main>
+  <ScreenPanel></ScreenPanel>
+  <ButtonPanel></ButtonPanel>
 </template>
 
 <script lang="ts" setup>
@@ -27,6 +25,7 @@ body
   padding: 0px;
   margin: 0px;
   border: 0px;
+  background-color: #e4dccf;
 }
 
 div
@@ -35,11 +34,16 @@ div
   margin: 0;
 }
 
-main
+#app
 {
-  width: 18rem;
-  height: auto;
+  width: 300px;
+  height: 533px;
+  padding: 10px 20px 40px 20px;
   margin: auto;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 36% 56%;
+  row-gap: 8%;
 }
 
 /*来自：https://blog.csdn.net/qq_16660859/article/details/111695771 */
@@ -53,12 +57,18 @@ button
 }
 
 /* 手机端常规尺寸适配 */
-@media screen and (max-width: 768px)
+@media screen and (max-width: 480px)
 {
-  main
+  #app
   {
-    width: 90vw;
-    padding: 0 5vw;
+    width: 92vw;
+    height: 80vh;
+    padding: 2vh 4vw 10vh 4vw;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 40% 60%;
+    row-gap: 8%;
+    background-color: #e4dccf;
   }
 }
 </style>

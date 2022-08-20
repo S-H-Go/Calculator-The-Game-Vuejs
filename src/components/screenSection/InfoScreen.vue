@@ -59,12 +59,12 @@ const screenControl = computed(() => store.getScreenControl)
     margin-right: var(--margin-right);
 }
 
-@media screen and (max-width: 768px)
+@media screen and (max-width: 480px)
 {
     #number-display-section
     {
-        margin-top: 3rem;
-        margin-bottom: 4rem;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
     }
 }
 </style>

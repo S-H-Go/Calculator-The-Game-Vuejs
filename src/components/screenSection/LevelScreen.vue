@@ -15,7 +15,6 @@ const props = defineProps<{
 <style>
 #head
 {
-    height: var(--level-height);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,19 +23,18 @@ const props = defineProps<{
 
 #level-screen
 {
-    font-size: 1rem;
-    margin-left: 0.5rem;
-    color: azure;
+    color: #dadfe1;
     font-style: italic;
+    margin-left: 5%;
 }
 
 /* 链接样式 */
 #play-link
 {
-    font-size: 0.5rem;
     margin: 0;
-    color: white;
+    color: #dadfe1;
     text-decoration: none;
+    margin-right: 5%;
 }
 
 #play-link:hover

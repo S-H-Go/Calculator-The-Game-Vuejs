@@ -1,15 +1,13 @@
 <template>
     <section id="info-display-section">
         <section style="line-height: 3rem">O(∩_∩)O</section>
-
-
         <section class="info-display">
-            <section class="info-text-display">步数:</section>
-            <section class="info-num-diaplay">{{ props.step }}</section>
+            <section>步数:</section>
+            <section>{{ props.step }}</section>
         </section>
         <section class="info-display">
-            <section class="info-text-display">目标:</section>
-            <section class="info-num-display">{{ props.goal }}</section>
+            <section>目标:</section>
+            <section>{{ props.goal }}</section>
         </section>
     </section>
 
@@ -30,7 +28,7 @@ const props = defineProps<{
     display: flex;
     justify-content: space-evenly;
     align-items: stretch;
-    padding: 0;
+    margin-top: 3%;
 }
 
 .info-display
@@ -44,7 +42,6 @@ const props = defineProps<{
     text-align: center;
     color: #a9b4aa;
     margin-right: 0.5em;
-    margin-top: 0.5em;
     border-radius: 5%;
 }
 </style>

@@ -21,17 +21,17 @@ const screenData = computed(() => store.getScreenData)
 /* 边框部分 */
 #screen-panel
 {
-  --height: 15rem;
-  --level-height: 2rem;
-  --step-width: 5rem;
-  --step-height: 3rem;
-  height: var(--height);
+  --step-width: 30%;
+  --step-height: 3em;
+  height: 100%;
   background-color: #3d3c3a;
-  padding: 0.5rem 1rem 1rem;
-  display: flex;
+  padding: 4% 4% 10%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 10% 90%;
+  row-gap: 6%;
   flex-direction: column;
   border-radius: 5%;
-  margin: 0;
 }
 
 /* 显示部分 */
@@ -41,24 +41,6 @@ const screenData = computed(() => store.getScreenData)
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0;
-  margin: 0;
   border-radius: 5%;
-  height: calc(var(--height) - var(--height) * 0.1);
-}
-
-@media screen and (max-width: 768px)
-{
-  #screen-panel
-  {
-    --height: 16rem;
-    --step-width: 6rem;
-    --step-height: 4rem;
-  }
-
-  #display-section
-  {
-    height: calc(var(--height) - var(--height) * 0.15)
-  }
 }
 </style>
