@@ -22,53 +22,70 @@ import EachButton from "../components/functionButton/EachButton.vue";
 import ElementaryArithmetic from "../components/functionButton/ElementaryArithmetic.vue"
 import { markRaw } from "vue";
 import { SEButtonEnum } from "./ButtonsControl";
+
+const clrButton = { tag: markRaw(ClrButton) };
+const setButton = { tag: markRaw(SetButton) };
+const emptyButton = { tag: markRaw(EmptyButton) };
+const okButton = { tag: markRaw(OkButton) };
+const rightMoveButton = { tag: markRaw(RightMoveButton) };
+const squareButton = { tag: markRaw(SquareButton) };
+const ppositeButton = { tag: markRaw(PpositeButton) };
+const reverseButton = { tag: markRaw(ReverseButton) };
+const sumButton = { tag: markRaw(SumButton) };
+const cubeButton = { tag: markRaw(CubeButton) };
+const shiftLeftButton = { tag: markRaw(ShiftLeftButton) };
+const shiftRightButton = { tag: markRaw(ShiftRightButton) };
+const mirrorButton = { tag: markRaw(MirrorButton) };
+const storeButton = { tag: markRaw(StoreButton) };
+const inv10Button = { tag: markRaw(Inv10Button) };
+
 export function SEButtonFactory(index: SEButtonEnum) {
   //需要加上markRaw()
   switch (index) {
     case SEButtonEnum.CLR: {
-      return { tag: markRaw(ClrButton) };
+      return clrButton;
     }
     case SEButtonEnum.set: {
-      return { tag: markRaw(SetButton) };
+      return setButton;
     }
     case SEButtonEnum.empty: {
-      return { tag: markRaw(EmptyButton) };
+      return emptyButton;
     }
     case SEButtonEnum.OK: {
-      return { tag: markRaw(OkButton) };
+      return okButton;
     }
     case "<<": {
-      return { tag: markRaw(RightMoveButton) };
+      return rightMoveButton;
     }
     case "x²": {
-      return { tag: markRaw(SquareButton) };
+      return squareButton;
     }
     case "+/-": {
-      return { tag: markRaw(PpositeButton) };
+      return ppositeButton;
     }
     case "Reverse": {
-      return { tag: markRaw(ReverseButton) };
+      return reverseButton;
     }
     case "SUM": {
-      return { tag: markRaw(SumButton) };
+      return sumButton;
     }
     case "x³": {
-      return { tag: markRaw(CubeButton) };
+      return cubeButton;
     }
     case "Shift>": {
-      return { tag: markRaw(ShiftLeftButton) };
+      return shiftLeftButton;
     }
     case "Shift<": {
-      return { tag: markRaw(ShiftRightButton) };
+      return shiftRightButton;
     }
     case "Mirror": {
-      return { tag: markRaw(MirrorButton) };
+      return mirrorButton;
     }
     case "Store": {
-      return { tag: markRaw(StoreButton) };
+      return storeButton;
     }
     case "Inv10": {
-      return { tag: markRaw(Inv10Button) };
+      return inv10Button;
     }
   }
 }
