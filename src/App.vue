@@ -15,6 +15,20 @@ onMounted(() => {
 </script>
 
 <style>
+/* 
+  * 禁止移动端长按选择功能
+  * 来源: https://blog.csdn.net/Julylyna/article/details/79663162
+  * 方法二会导致按钮失效
+  * 方法三无效，故选择方法一
+*/
+*
+{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 html
 {
   font-family: "Microsoft Yahei", simSun, Arial;
