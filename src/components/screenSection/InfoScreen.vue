@@ -1,18 +1,18 @@
 <template>
     <section id="number-display-section">
         <led-style-canvas v-show="screenControl.showWhat == 'number'" :ledOptions="screenData.ledOptions"
-            :key="screenData.ledCanvasKey"></led-style-canvas>
+            :key="screenData.ledCanvasKey" :class="{ 'blink': store.control.numberBlink }"></led-style-canvas>
         <div v-show="screenControl.showWhat == 'error'" id="error">
-            {{ screenData.errorInfo }}
+            {{  screenData.errorInfo  }}
         </div>
         <div v-show="screenControl.showWhat == 'accomplish'" id="accomplish">
-            {{ screenData.accomplishInfo }}
+            {{  screenData.accomplishInfo  }}
         </div>
-        <div id="pause" v-show="screenControl.showWhat == 'pause'">
-            {{ screenData.pauseInfo }}
+        <div id="pause" v-show="screenControl.showWhat == 'pause'" :class="{ 'pause-blink': store.control.pauseBlink }">
+            {{  screenData.pauseInfo  }}
         </div>
         <div v-show="screenControl.showWhat == 'conversation'">
-            {{ screenData.conversation[screenData.conversationIndex].info }}
+            {{  screenData.conversation[screenData.conversationIndex].info  }}
         </div>
     </section>
 </template>

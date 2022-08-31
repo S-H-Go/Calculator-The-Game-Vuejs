@@ -34,3 +34,10 @@ export enum LSKey {
     "levelIndex" = "levelIndex",
     "maxLevelIndex" = "maxlevelIndex",
 }
+
+export enum BlinkEnum {
+    "number" = "number",
+    "step" = "step",
+    "goal" = "goal",
+    "pause" = "pause",
+}

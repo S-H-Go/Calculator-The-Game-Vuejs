@@ -18,9 +18,13 @@ function click() {
 }
 const color = computed(() => {
     switch (props.info) {
+        case '不明白': {
+            return "color-button-clr";
+        }
         case "<<": {
             return "color-button-orange"
-        } case "insert2": {
+        }
+        case "insert2": {
             return "color-button-blue"
         }
         default: {

@@ -70,6 +70,38 @@ button
   -webkit-focus-ring-color: rgba(0, 0, 0, 0);
 }
 
+.blink
+{
+  animation: blink 300ms infinite;
+}
+
+.pause-blink
+{
+  animation: pauseBlink 4000ms infinite;
+}
+
+@keyframes blink
+{
+
+  50%
+  {
+    opacity: 0;
+  }
+}
+
+@keyframes pauseBlink
+{
+  0%
+  {
+    opacity: 0;
+  }
+
+  30%
+  {
+    opacity: 1;
+  }
+}
+
 /* 手机端常规尺寸适配 */
 @media screen and (max-width: 480px)
 {

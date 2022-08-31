@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { ILedOptions, LSKey, ShowWhat } from "./interface"
+import { BlinkEnum, ILedOptions, LSKey, ShowWhat } from "./interface"
 import levelData from "../assets/levelData.json"
 // import levelData from "../assets/testLevelData.json"
 import { ButtonControl } from "./ButtonsControl"
@@ -10,6 +10,8 @@ if (localStorage.getItem(LSKey.levelIndex) === null) {
 if (localStorage.getItem(LSKey.maxLevelIndex) === null) {
     localStorage.setItem(LSKey.maxLevelIndex, "0");
 }
+//css动画闪烁一次的时间
+const blinkTime = 300;
 export const useStore = defineStore("main", {
     state: () => {
         return {
@@ -28,7 +30,7 @@ export const useStore = defineStore("main", {
                 storeNum: "Store" as string | number,
                 ledCanvasKey: Math.random(),
                 ledOptions: {
-                    color: "#464948",
+                    color: "#3b3c3a",
                     width: 36,
                     height: 60,
                     values: 0,
@@ -41,6 +43,10 @@ export const useStore = defineStore("main", {
             },
             control: {
                 showWhat: ShowWhat.number,
+                numberBlink: false,
+                stepBlink: false,
+                goalBlink: false,
+                pauseBlink: false,
             },
             buttons: [["", "", ""], ["", "", ""], ["", "", ""]] as any[][],
             allLevelData: levelData,
@@ -70,7 +76,7 @@ export const useStore = defineStore("main", {
         },
     },
     actions: {//更改当前数字后，判断是否错误以及是否完成
-        changeCurrentNum(num: number) {
+        async changeCurrentNum(num: number) {
             //值小于100000并且不是小数
             //数字在正确范围则更改
             if (num < 1000000 && !num.toString().includes(".")) {
@@ -82,12 +88,15 @@ export const useStore = defineStore("main", {
             }
             //更改之后判断是否达到目标（通关）
             if (this.data.ledOptions.values === this.data.goal) {
+                await this.blink(BlinkEnum.number, blinkTime * 3);
                 this.control.showWhat = ShowWhat.accomplish;
                 this.buttonsControl.accomplsh(this.buttons);
+            } else if (this.data.step === 0) {//没达到目标并且步数为0，执行步数闪烁
+                await this.blink(BlinkEnum.step, blinkTime * 3);
             }
         },
         //clr的初始化
-        clr() {
+        async clr() {
             this.data.ledOptions.values = this.data.initialNum;
             this.data.step = this.data.initialStep;
             this.control.showWhat = ShowWhat.number;
@@ -96,6 +105,7 @@ export const useStore = defineStore("main", {
             if (this.buttonsControl.isIncludeEachButtons()) {//如果有按钮的数字则需要关卡初始化
                 this.levelInit();
             }
+            await this.blink(BlinkEnum.number, blinkTime * 3);
         },
         //关卡初始化
         levelInit() {
@@ -126,10 +136,17 @@ export const useStore = defineStore("main", {
             this.updateButtonList();
         },
         //更新显示的按钮列表
-        updateButtonList() {
+        async updateButtonList() {
             this.buttons = [["", "", ""], ["", "", ""], ["", "", ""]];
             if (this.control.showWhat === ShowWhat.conversation) {
                 this.buttons = this.buttonsControl.updateConversationButtonsList(this.data.conversation[this.data.conversationIndex].buttons);
+                //第一次玩该游戏对话时的目标和步数闪烁
+                if (this.data.conversation[this.data.conversationIndex].info === '好,看到这个数字了吗?') {
+                    await this.blink(BlinkEnum.goal, blinkTime * 3);
+                }
+                if (this.data.conversation[this.data.conversationIndex].info === '看见这个数字了吗?') {
+                    await this.blink(BlinkEnum.step, blinkTime * 3);
+                }
             } else {
                 this.buttons = this.buttonsControl.updateButtonsList(this.allLevelData[this.data.currentLevelIndex].buttons);
             }
@@ -182,10 +199,12 @@ export const useStore = defineStore("main", {
             if (this.control.showWhat === ShowWhat.pause) {
                 //如果是设置模式，点击就切换初始模式
                 this.control.showWhat = ShowWhat.number;
+                this.control.pauseBlink = false;
                 //从设置切换到初始模式时初始化关卡
                 this.levelInit();
             } else {
                 this.control.showWhat = ShowWhat.pause;
+                this.control.pauseBlink = true;
             }
         },
         levelIncrease() {
@@ -196,6 +215,42 @@ export const useStore = defineStore("main", {
         levelReduction() {
             if (this.data.currentLevelIndex > 1) {
                 this.data.currentLevelIndex--;
+            }
+        },
+        async blink(thing: BlinkEnum, delay: number) {
+            const sleep = (timeout: number) => {
+                return new Promise<void>((resolve) => {
+                    setTimeout(() => {
+                        resolve();
+                    }, timeout)
+                })
+            }
+            //这里在for循环外switch虽然多一些代码，但不用每次for循环都要执行一次或两次switch
+            switch (thing) {
+                case BlinkEnum.number: {
+                    this.control.numberBlink = true;
+                    await sleep(delay);
+                    this.control.numberBlink = false;
+                    break;
+                }
+                case BlinkEnum.step: {
+                    this.control.stepBlink = true;
+                    await sleep(delay);
+                    this.control.stepBlink = false;
+                    break;
+                }
+                case BlinkEnum.goal: {
+                    this.control.goalBlink = true;
+                    await sleep(delay);
+                    this.control.goalBlink = false;
+                    break;
+                }
+                case BlinkEnum.pause: {
+                    this.control.pauseBlink = true;
+                    await sleep(delay);
+                    this.control.pauseBlink = false;
+                    break;
+                }
             }
         }
     }
