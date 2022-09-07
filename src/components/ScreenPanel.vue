@@ -40,7 +40,6 @@ const screenData = computed(() => store.getScreenData)
   background-color: #a8b7a2;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   border-radius: 5%;
 }
 </style>

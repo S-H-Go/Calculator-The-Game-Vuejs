@@ -20,7 +20,89 @@
     "goal": 2022,
     "buttons": ["+2", "x3", "-3", "each+2", "25=>2022"],
     "path": ["+2", "each+2", "+4", "x5", "-5", "25=>2022"],
-    "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
+    "dialogue": [
+      { "info": "一", "buttons": [{ "info": "一", "position": 4 }] },
+      { "info": "一二", "buttons": [{ "info": "一二", "position": 4 }] },
+      { "info": "一二三", "buttons": [{ "info": "一二三", "position": 4 }] },
+      {
+        "info": "一二三四",
+        "buttons": [{ "info": "一二三四", "position": 4 }]
+      },
+      {
+        "info": "一二三四五",
+        "buttons": [{ "info": "一二三四五", "position": 4 }]
+      },
+      {
+        "info": "一二三四五六",
+        "buttons": [{ "info": "一二三四五六", "position": 4 }]
+      },
+      {
+        "info": "一二三四五六七",
+        "buttons": [{ "info": "一二三四五六七", "position": 4 }]
+      },
+      {
+        "info": "一二三四五六七八",
+        "buttons": [{ "info": "一二三四五六七八", "position": 4 }]
+      },
+      {
+        "info": "一二三四五六七八九",
+        "buttons": [{ "info": "一二三四五六七八九", "position": 4 }]
+      },
+      {
+        "info": "一二三四五六七八九十",
+        "buttons": [{ "info": "一二三四五六七八九十", "position": 4 }]
+      },
+      {
+        "info": "一二三四五六七八九十壹",
+        "buttons": [{ "info": "一二三四五六七八九十壹", "position": 4 }]
+      },
+      {
+        "info": "一二三四五六七八九十壹贰",
+        "buttons": [{ "info": "一二三四五六七八九十壹贰", "position": 4 }]
+      },
+      {
+        "info": "一二三四五六七八九十壹贰叁",
+        "buttons": [{ "info": "一二三四五六七八九十壹贰叁", "position": 4 }]
+      },
+      {
+        "info": "一二三四五六七八九十壹贰叁肆",
+        "buttons": [{ "info": "一二三四五六七八九十壹贰叁肆", "position": 4 }]
+      },
+      {
+        "info": "一二三四五六七八九十壹贰叁肆伍",
+        "buttons": [{ "info": "一二三四五六七八九十壹贰叁肆伍", "position": 4 }]
+      },
+      {
+        "info": "一二三四五六七八九十壹贰叁肆伍陆",
+        "buttons": [
+          { "info": "一二三四五六七八九十壹贰叁肆伍陆", "position": 4 }
+        ]
+      },
+      {
+        "info": "一二三四五六七八九十壹贰叁肆伍陆柒",
+        "buttons": [
+          { "info": "一二三四五六七八九十壹贰叁肆伍陆柒", "position": 4 }
+        ]
+      },
+      {
+        "info": "一二三四五六七八九十壹贰叁肆伍陆柒捌",
+        "buttons": [
+          { "info": "一二三四五六七八九十壹贰叁肆伍陆柒捌", "position": 4 }
+        ]
+      },
+      {
+        "info": "一二三四五六七八九十壹贰叁肆伍陆柒捌玖",
+        "buttons": [
+          { "info": "一二三四五六七八九十壹贰叁肆伍陆柒捌玖", "position": 4 }
+        ]
+      },
+      {
+        "info": "一二三四五六七八九十壹贰叁肆伍陆柒捌玖拾",
+        "buttons": [
+          { "info": "一二三四五六七八九十壹贰叁肆伍陆柒捌玖拾", "position": 4 }
+        ]
+      }
+    ]
   },
   {
     "level": -3,

@@ -1,5 +1,5 @@
 <template>
-    <button @click="click()" class="button" :class="color">
+    <button @click="click()" class="button" :class="color" :style="{ fontSize: fontSize + 'px' }">
         {{ info }}
     </button>
 </template>
@@ -44,11 +44,25 @@ const info = computed(() => {
         }
     }
 })
+//根据字数动态设置字体大小
+const fontSize = computed(() => {
+    //获取 rem 大小
+    const rem: number = Number(window.getComputedStyle(document.documentElement).fontSize.replace("px", ""));
+    if (props.info != "<<" && props.info != "2") {
+        switch (props.info.length) {
+            case 1: return 3 * rem;
+            case 2: return 2 * rem;
+            case 3: return 1.5 * rem;
+            case 4: return 1.5 * rem;
+            case 5: return 1.5 * rem;
+            case 6: return 1.5 * rem;
+            case 7: return 1.3 * rem;
+            case 9: return 1.1 * rem;
+        }
+    }
+})
 </script>
 
 <style scoped>
-button
-{
-    font-size: 0.75rem;
-}
+
 </style>

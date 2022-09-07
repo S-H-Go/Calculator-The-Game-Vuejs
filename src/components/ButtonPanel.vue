@@ -19,12 +19,12 @@ const buttonControl = computed(() => store.getButtonControl);
 {
   width: 100%;
   height: 100%;
-  --button-width: 90px;
-  --button-height: 75px;
-  --button-margin-top: 15px;
-  --button-margin-left: 6px;
-  --button-margin-right: 1%;
-  --button-border-size: 10px;
+  --button-width: calc(0.29 * var(--vw));
+  --button-height: calc(0.12 * var(--vh));
+  --button-margin-top: calc(0.03 * var(--vh));
+  --button-margin-left: calc(0.01 * var(--vw));
+  --button-margin-right: calc(0.01 * var(--vw));
+  --button-border-size: calc(0.02 * var(--vh));
   --button-border-radius: 8%;
 }
 
@@ -170,7 +170,7 @@ const buttonControl = computed(() => store.getButtonControl);
   width: var(--button-width);
   height: var(--button-height);
   border: none;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: #e4decb;
   padding: 0;
   border-radius: var(--button-border-radius);
@@ -190,11 +190,6 @@ const buttonControl = computed(() => store.getButtonControl);
     --button-margin-left: 1vw;
     --button-margin-right: 1vw;
     --button-border-size: 2vh;
-  }
-
-  .button
-  {
-    font-size: 1.5rem;
   }
 }
 </style>

@@ -1,20 +1,21 @@
 <template>
-    <section id="number-display-section">
-        <led-style-canvas v-show="screenControl.showWhat == 'number'" :ledOptions="screenData.ledOptions"
+    <div id="number-display-section">
+        <led-style-canvas id="number" v-show="screenControl.showWhat == 'number'" :ledOptions="screenData.ledOptions"
             :key="screenData.ledCanvasKey" :class="{ 'blink': store.control.numberBlink }"></led-style-canvas>
         <div v-show="screenControl.showWhat == 'error'" id="error">
-            {{  screenData.errorInfo  }}
+            {{ screenData.errorInfo }}
         </div>
         <div v-show="screenControl.showWhat == 'accomplish'" id="accomplish">
-            {{  screenData.accomplishInfo  }}
+            {{ screenData.accomplishInfo }}
         </div>
         <div id="pause" v-show="screenControl.showWhat == 'pause'" :class="{ 'pause-blink': store.control.pauseBlink }">
-            {{  screenData.pauseInfo  }}
+            {{ screenData.pauseInfo }}
         </div>
-        <div v-show="screenControl.showWhat == 'conversation'">
-            {{  screenData.conversation[screenData.conversationIndex].info  }}
+        <!-- :style="{ fontSize: fontSize + 'px' }" -->
+        <div id="conversation" v-show="screenControl.showWhat == 'conversation'">
+            {{ screenData.conversation[screenData.conversationIndex].info }}
         </div>
-    </section>
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -24,47 +25,88 @@ import { computed } from 'vue';
 const store = useStore()
 const screenData = computed(() => store.getScreenData)
 const screenControl = computed(() => store.getScreenControl)
+//动态字体大小
+// const fontSize = computed(() => {
+//     let width: number = document.getElementById("number-display-section")?.clientWidth as number;
+//     let height: number = document.getElementById("number-display-section")?.clientHeight as number;
+//     const reg = RegExp(" ", 'g');
+//     let marginRight = ["0", "0"];
+//     if (document.getElementById("number-display-section") != null) {
+//         marginRight = getComputedStyle(document.getElementById("number-display-section") as HTMLElement).getPropertyValue('--margin-right').replace("calc(", "").replace("px)", "").replace(reg, "").split("*");
+//     }
+//     width -= (Number(marginRight[0]) * Number(marginRight[1]) * 2);
+//     let length: number = store.data.conversation[store.data.conversationIndex].info.length;
+//     let fs = 0;
+//     fs = (Math.sqrt((width + height) * (width + height) + 4 * width * height * length - 4 * width * height) - width - height) / (2 * length - 2);
+//     console.log("width:", width);
+//     console.log("height:", height);
+//     console.log("fs", fs);
+//     // return fs;
+//     // while (Math.ceil(length / Math.floor(width / fs)) * fs < height) {
+//     //     fs++;
+//     //     // console.log("+++");
+//     // }
+//     return fs;
+// });
 </script>
 
 <style scoped>
-/* 数字显示部分 */
 #number-display-section
 {
-    --margin-right: 1rem;
+    --margin-top: calc(0.06 * var(--vh));
+    --margin-right: calc(0.05 * var(--vw));
+}
+
+#number
+{
     text-align: right;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
+    margin-top: var(--margin-top);
 }
 
 #accomplish
 {
-    font-size: 3rem;
+    font-size: 60px;
     text-align: right;
+    margin-top: calc(0.03 * var(--vh));
     margin-right: var(--margin-right);
 }
 
 #pause
 {
-    font-size: 3rem;
-    padding: 0;
-    margin: 0;
+    font-size: 60px;
+    margin-top: calc(0.04 * var(--vh));
     text-align: center;
 }
 
 #error
 {
-    font-size: 3rem;
+    font-size: 60px;
     text-align: right;
-    padding-right: 0.5rem;
+    margin-top: calc(0.03 * var(--vh));
     margin-right: var(--margin-right);
 }
 
-@media screen and (max-width: 480px)
+#conversation
+{
+    font-size: 2rem;
+    margin-left: var(--margin-right);
+    text-align: left;
+}
+
+@media screen and (max-width:480px)
 {
     #number-display-section
     {
+        --margin-top: 6vh;
+        --margin-right: 5vw;
+    }
+
+    #pause,
+    #error,
+    #accomplish
+    {
+        font-size: 56px;
         margin-top: 5vh;
-        margin-bottom: 5vh;
     }
 }
 </style>

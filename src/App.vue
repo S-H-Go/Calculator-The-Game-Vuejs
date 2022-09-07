@@ -50,13 +50,16 @@ div
 
 #app
 {
-  width: 300px;
-  height: 533px;
-  padding: 10px 20px 40px 20px;
+  /* ipone 13 pro 的尺寸 */
+  --vw: 390px;
+  --vh: 844px;
+  width: calc(var(--vw) * 0.92);
+  height: calc(var(--vh) * 0.80);
+  padding: calc(var(--vh) * 2%) calc(var(--vw) * 4%) calc(var(--vh) * 10%) calc(var(--vw) * 4%);
   margin: auto;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 36% 56%;
+  grid-template-rows: 40% 60%;
   row-gap: 8%;
 }
 
