@@ -1,7 +1,7 @@
 <template>
     <div class="buttons-layout">
-        <component :is="emptyButton ? emptyButton.tag : ''"></component>
-        <component :is="emptyButton ? emptyButton.tag : ''"></component>
+        <button class="button color-button-clr">该游戏非原创</button>
+        <a href="https://www.taptap.com/app/56200"><button class="button color-button-clr">原游戏</button></a>
         <component :is="emptyButton ? emptyButton.tag : ''"></component>
         <level-reduction-button></level-reduction-button>
         <level-display-button></level-display-button>
@@ -25,4 +25,5 @@ const emptyButton = SEButtonFactory(SEButtonEnum.empty);
 </script>
 
 <style>
+
 </style>
