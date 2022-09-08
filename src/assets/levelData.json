@@ -1204,7 +1204,7 @@
     "initialNum": 24,
     "initialStep": 5,
     "goal": 1,
-    "buttons": ["/3", "x4", "5=>10", "Reverse"],
+    "buttons": ["/3", "x4", "5=>10", "SUM"],
     "path": ["x4", "/3", "SUM", "5=>10", "SUM"],
     "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
   },
