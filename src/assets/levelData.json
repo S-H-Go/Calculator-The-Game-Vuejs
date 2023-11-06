@@ -550,7 +550,7 @@
     "initialStep": 4,
     "goal": -120,
     "buttons": ["x5", "-6", "insert4"],
-    "path": ["insert4", "-6", "insert4", "-5"],
+    "path": ["insert4", "-6", "insert4", "x5"],
     "dialogue": [{ "info": "", "buttons": [{ "info": "", "position": 0 }] }]
   },
   {
