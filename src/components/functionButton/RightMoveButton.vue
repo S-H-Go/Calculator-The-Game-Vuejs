@@ -8,8 +8,8 @@
 import { useStore } from '../../store'
 const store = useStore()
 const props = defineProps<{
-  currentNum: Number,
-  step: Number,
+  currentNum: number,
+  step: number,
 }>()
 function rightMove() {
   let numStr = props.currentNum.toString();
