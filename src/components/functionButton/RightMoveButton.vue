@@ -5,12 +5,12 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from '../../store'
-const store = useStore()
+import { useStore } from "../../store";
+const store = useStore();
 const props = defineProps<{
-  currentNum: Number,
-  step: Number,
-}>()
+  currentNum: number;
+  step: number;
+}>();
 function rightMove() {
   let numStr = props.currentNum.toString();
   if (props.step > 0 && props.currentNum != 0) {
@@ -24,12 +24,9 @@ function rightMove() {
       store.changeCurrentNum(0);
       return;
     }
-    store.changeCurrentNum(
-      Number(numStr.slice(0, numStr.length - 1))
-    );
+    store.changeCurrentNum(Number(numStr.slice(0, numStr.length - 1)));
   }
 }
 </script>
 
-<style>
-</style>
+<style></style>
