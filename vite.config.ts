@@ -5,4 +5,8 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
     plugins: [vue()],
     base: "/Calculator-The-Game-Vuejs/",
+    server: {
+        host: true,
+        port: 80,
+    }
 })
