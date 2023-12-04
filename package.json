@@ -1,6 +1,7 @@
 {
   "name": "calculator-the-game-vuejs",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -9,12 +10,12 @@
   },
   "dependencies": {
     "pinia": "^2.1.7",
-    "vue": "^3.3.7"
+    "vue": "^3.3.9"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.4.0",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0",
-    "vue-tsc": "^1.8.22"
+    "@vitejs/plugin-vue": "^4.5.1",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.5",
+    "vue-tsc": "^1.8.24"
   }
 }
