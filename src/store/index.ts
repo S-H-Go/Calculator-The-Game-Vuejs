@@ -93,7 +93,7 @@ export const useStore = defineStore('main', {
       if (this.data.ledOptions.values === this.data.goal) {
         await this.blink(BlinkEnum.number, blinkTime * 3)
         this.control.showWhat = ShowWhat.accomplish
-        this.buttonsControl.accomplsh(this.buttons)
+        this.buttonsControl.accomplish(this.buttons)
       }
       else if (this.data.step === 0) { // 没达到目标并且步数为0，执行步数闪烁
         await this.blink(BlinkEnum.step, blinkTime * 3)
