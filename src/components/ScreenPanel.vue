@@ -1,22 +1,24 @@
+<script lang="ts" setup>
+import { computed } from 'vue'
+import { useStore } from '../store'
+import LevelScreen from './screenSection/LevelScreen.vue'
+import StepGoalScreen from './screenSection/StepGoalScreen.vue'
+import InfoScreen from './screenSection/InfoScreen.vue'
+
+const store = useStore()
+const screenData = computed(() => store.getScreenData)
+</script>
+
 <template>
   <div id="screen-panel">
-    <level-screen :level=screenData.level></level-screen>
+    <LevelScreen :level="screenData.level" />
     <div id="display-section">
-      <step-goal-screen :step=screenData.step :goal=screenData.goal></step-goal-screen>
-      <info-screen></info-screen>
+      <StepGoalScreen :step="screenData.step" :goal="screenData.goal" />
+      <InfoScreen />
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-import LevelScreen from "./screenSection/LevelScreen.vue";
-import StepGoalScreen from "./screenSection/StepGoalScreen.vue";
-import { useStore } from '../store'
-import { computed } from 'vue';
-import InfoScreen from "./screenSection/InfoScreen.vue";
-const store = useStore()
-const screenData = computed(() => store.getScreenData)
-</script>
 <style>
 /* 边框部分 */
 #screen-panel

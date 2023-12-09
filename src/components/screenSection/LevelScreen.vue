@@ -1,16 +1,16 @@
-<template>
-    <section id="head">
-        <span id="level-screen">等级: {{ props.level }}</span>
-        <a id="play-link" href="https://play.google.com/store/apps/details?id=com.sm.calculateme">Calculator:The
-            Game</a>
-    </section>
-</template>
-
 <script lang="ts" setup>
 const props = defineProps<{
-    level: number
+  level: number
 }>()
 </script>
+
+<template>
+  <section id="head">
+    <span id="level-screen">等级: {{ props.level }}</span>
+    <a id="play-link" href="https://play.google.com/store/apps/details?id=com.sm.calculateme">Calculator:The
+      Game</a>
+  </section>
+</template>
 
 <style>
 #head
