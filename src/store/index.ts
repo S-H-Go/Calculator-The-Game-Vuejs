@@ -9,9 +9,8 @@ import { ButtonControl } from './ButtonsControl'
 // 初始化本地关卡索引
 if (localStorage.getItem(LSKey.levelIndex) === null)
   localStorage.setItem(LSKey.levelIndex, '0')
-
-if (localStorage.getItem(LSKey.maxLevelIndex) === null)
-  localStorage.setItem(LSKey.maxLevelIndex, '0')
+// 清除最大关卡索引
+localStorage.removeItem(LSKey.maxLevelIndex)
 
 // css动画闪烁一次的时间
 const blinkTime = 300
@@ -116,9 +115,6 @@ export const useStore = defineStore('main', {
     levelInit() {
       // 将当前关卡索引存到本地
       localStorage.setItem('levelIndex', this.data.currentLevelIndex.toString())
-      // 存储当前最大的关卡索引
-      if (this.data.currentLevelIndex > Number(localStorage.getItem(LSKey.maxLevelIndex)))
-        localStorage.setItem(LSKey.maxLevelIndex, this.data.currentLevelIndex.toString())
 
       // 存储当前关卡索引
       const level = this.data.currentLevelIndex
@@ -218,7 +214,7 @@ export const useStore = defineStore('main', {
       }
     },
     levelIncrease() {
-      if (this.data.currentLevelIndex < Number(localStorage.getItem(LSKey.maxLevelIndex)))
+      if (this.data.currentLevelIndex < this.allLevelData.length - 1)
         this.data.currentLevelIndex++
     },
     levelReduction() {
@@ -262,9 +258,4 @@ export const useStore = defineStore('main', {
       }
     },
   },
-})
-
-// 监听手动更改事件，阻止用户更改
-window.addEventListener('storage', (e) => {
-  localStorage.setItem(e.key as string, e.oldValue as string)
 })
