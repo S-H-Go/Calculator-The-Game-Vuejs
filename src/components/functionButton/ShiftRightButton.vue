@@ -1,34 +1,36 @@
-<template>
-  <button @click="shiftRight" class="button color-button-orange">
-    Shift&gt;
-  </button>
-</template>
-
 <script lang="ts" setup>
 import { useStore } from '../../store'
-const store = useStore()
+
 const props = defineProps<{
-  currentNum: Number,
-  step: Number,
+  currentNum: number
+  step: number
 }>()
+const store = useStore()
 function shiftRight() {
-  if (props.step > 0 && props.currentNum != 0) {
-    const numStr = props.currentNum.toString().replace("-", "");
-    let numArray = numStr.split("");
-    numArray.unshift(String(numArray.pop()));
-    if (props.currentNum.toString().includes("-")) {
-      //如果是负数
+  if (props.step > 0 && props.currentNum !== 0) {
+    const numStr = props.currentNum.toString().replace('-', '')
+    const numArray = numStr.split('')
+    numArray.unshift(String(numArray.pop()))
+    if (props.currentNum.toString().includes('-')) {
+      // 如果是负数
       store.changeCurrentNum(
-        Number("-" + numArray.join(""))
-      );
-    } else {
+        Number(`-${numArray.join('')}`),
+      )
+    }
+    else {
       store.changeCurrentNum(
-        Number(numArray.join(""))
-      );
+        Number(numArray.join('')),
+      )
     }
   }
 }
 </script>
+
+<template>
+  <button class="button color-button-orange" @click="shiftRight">
+    Shift&gt;
+  </button>
+</template>
 
 <style>
 </style>

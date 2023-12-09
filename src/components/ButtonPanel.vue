@@ -1,18 +1,19 @@
+<script lang="ts" setup>
+import { computed } from 'vue'
+import { useStore } from '../store'
+import FunctionButtonPanel from './functionButton/FunctionButtonPanel.vue'
+import SetButtonPanel from './setButton/SetButtonPanel.vue'
+
+const store = useStore()
+const buttonControl = computed(() => store.getButtonControl)
+</script>
+
 <template>
   <div id="button-panel">
-    <set-button-panel v-show="buttonControl.showWhat == 'pause'"></set-button-panel>
-    <function-button-panel v-show="buttonControl.showWhat != 'pause'"></function-button-panel>
+    <SetButtonPanel v-show="buttonControl.showWhat === 'pause'" />
+    <FunctionButtonPanel v-show="buttonControl.showWhat !== 'pause'" />
   </div>
 </template>
-
-<script lang="ts" setup>
-import FunctionButtonPanel from './functionButton/FunctionButtonPanel.vue';
-import SetButtonPanel from "./setButton/SetButtonPanel.vue";
-import { useStore } from '../store'
-import { computed } from 'vue';
-const store = useStore()
-const buttonControl = computed(() => store.getButtonControl);
-</script>
 
 <style>
 #button-panel
@@ -178,7 +179,6 @@ const buttonControl = computed(() => store.getButtonControl);
   margin-left: var(--button-margin-left);
   margin-right: var(--button-margin-left);
 }
-
 
 @media screen and (max-width: 480px)
 {
