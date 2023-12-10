@@ -9,7 +9,7 @@ function continuousIncrease(event: string) {
     isClick = false
     store.levelIncrease()
   }, 240)
-  if (isClick && event === 'touchstart')
+  if (isClick && event === 'mousedown')
     store.levelIncrease()
 }
 function stopIncrease() {

@@ -97,7 +97,7 @@ export class ButtonControl {
   }
 
   // 完成一关时按钮变换
-  accomplsh(buttons: any[][]) {
+  accomplish(buttons: any[][]) {
     // 第一列设置为空按钮
     for (let i = 0; i < buttons.length; i++)
       buttons[i][0] = SEButtonFactory(SEButtonEnum.empty)
