@@ -1,21 +1,22 @@
-<template>
-  <ScreenPanel></ScreenPanel>
-  <ButtonPanel></ButtonPanel>
-</template>
-
 <script lang="ts" setup>
-import ScreenPanel from './components/ScreenPanel.vue';
-import ButtonPanel from './components/ButtonPanel.vue';
+import { onMounted } from 'vue'
+import ScreenPanel from './components/ScreenPanel.vue'
+import ButtonPanel from './components/ButtonPanel.vue'
 import { useStore } from './store/index'
-import { onMounted } from 'vue';
-const store = useStore();
+
+const store = useStore()
 onMounted(() => {
-  store.levelInit();
+  store.levelInit()
 })
 </script>
 
+<template>
+  <ScreenPanel />
+  <ButtonPanel />
+</template>
+
 <style>
-/* 
+/*
   * 禁止移动端长按选择功能
   * 来源: https://blog.csdn.net/Julylyna/article/details/79663162
   * 方法二会导致按钮失效
@@ -50,7 +51,7 @@ div
 
 #app
 {
-  /* ipone 13 pro 的尺寸 */
+  /* iphone 13 pro 的尺寸 */
   --vw: 390px;
   --vh: 844px;
   width: calc(var(--vw) * 0.92);

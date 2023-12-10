@@ -1,31 +1,12 @@
-<template>
-    <div id="number-display-section">
-        <led-style-canvas id="number" v-show="screenControl.showWhat == 'number'" :ledOptions="screenData.ledOptions"
-            :key="screenData.ledCanvasKey" :class="{ 'blink': store.control.numberBlink }"></led-style-canvas>
-        <div v-show="screenControl.showWhat == 'error'" id="error">
-            {{ screenData.errorInfo }}
-        </div>
-        <div v-show="screenControl.showWhat == 'accomplish'" id="accomplish">
-            {{ screenData.accomplishInfo }}
-        </div>
-        <div id="pause" v-show="screenControl.showWhat == 'pause'" :class="{ 'pause-blink': store.control.pauseBlink }">
-            {{ screenData.pauseInfo }}
-        </div>
-        <!-- :style="{ fontSize: fontSize + 'px' }" -->
-        <div id="conversation" v-show="screenControl.showWhat == 'conversation'">
-            {{ screenData.conversation[screenData.conversationIndex].info }}
-        </div>
-    </div>
-</template>
-
 <script lang="ts" setup>
-import LedStyleCanvas from './LedStyleCanvas.vue';
+import { computed } from 'vue'
 import { useStore } from '../../store'
-import { computed } from 'vue';
+import LedStyleCanvas from './LedStyleCanvas.vue'
+
 const store = useStore()
 const screenData = computed(() => store.getScreenData)
 const screenControl = computed(() => store.getScreenControl)
-//动态字体大小
+// 动态字体大小
 // const fontSize = computed(() => {
 //     let width: number = document.getElementById("number-display-section")?.clientWidth as number;
 //     let height: number = document.getElementById("number-display-section")?.clientHeight as number;
@@ -49,6 +30,28 @@ const screenControl = computed(() => store.getScreenControl)
 //     return fs;
 // });
 </script>
+
+<template>
+  <div id="number-display-section">
+    <LedStyleCanvas
+      v-show="screenControl.showWhat === 'number'" id="number" :key="screenData.ledCanvasKey"
+      :led-options="screenData.ledOptions" :class="{ blink: store.control.numberBlink }"
+    />
+    <div v-show="screenControl.showWhat === 'error'" id="error">
+      {{ screenData.errorInfo }}
+    </div>
+    <div v-show="screenControl.showWhat === 'accomplish'" id="accomplish">
+      {{ screenData.accomplishInfo }}
+    </div>
+    <div v-show="screenControl.showWhat === 'pause'" id="pause" :class="{ 'pause-blink': store.control.pauseBlink }">
+      {{ screenData.pauseInfo }}
+    </div>
+    <!-- :style="{ fontSize: fontSize + 'px' }" -->
+    <div v-show="screenControl.showWhat === 'conversation'" id="conversation">
+      {{ screenData.conversation[screenData.conversationIndex].info }}
+    </div>
+  </div>
+</template>
 
 <style scoped>
 #number-display-section

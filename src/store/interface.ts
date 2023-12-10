@@ -1,43 +1,43 @@
 export interface ILedOptions {
-    color: string,
-    width: number,
-    height: number,
-    values: number,
-    lineWidth: number,
-    italics: number,
-    opacity: number,
+  color: string
+  width: number
+  height: number
+  values: number
+  lineWidth: number
+  italics: number
+  opacity: number
 }
-//显示什么
+// 显示什么
 export enum ShowWhat {
-    "number" = "number",
-    "error" = "error",
-    "accomplish" = "accomplish",
-    "pause" = "pause",
-    "conversation" = "conversation"
+  'number' = 'number',
+  'error' = 'error',
+  'accomplish' = 'accomplish',
+  'pause' = 'pause',
+  'conversation' = 'conversation',
 }
 
-//关卡数据的接口
+// 关卡数据的接口
 export interface ILevelData {
-    level: number,
-    initialNum: number,
-    initialStep: number,
-    goal: number,
-    buttons: string[],
-    path: string[],
-    dialogue: {
-        info: string,
-        buttons: { info: string, position: number }[]
-    }[],
+  level: number
+  initialNum: number
+  initialStep: number
+  goal: number
+  buttons: string[]
+  path: string[]
+  dialogue: {
+    info: string
+    buttons: { info: string, position: number }[]
+  }[]
 }
 
 export enum LSKey {
-    "levelIndex" = "levelIndex",
-    "maxLevelIndex" = "maxlevelIndex",
+  'levelIndex' = 'levelIndex',
+  'maxLevelIndex' = 'maxlevelIndex',
 }
 
 export enum BlinkEnum {
-    "number" = "number",
-    "step" = "step",
-    "goal" = "goal",
-    "pause" = "pause",
+  'number' = 'number',
+  'step' = 'step',
+  'goal' = 'goal',
+  'pause' = 'pause',
 }
