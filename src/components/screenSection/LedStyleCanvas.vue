@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue'
-import type { ILedOptions } from '../../store/interface'
+import type { ILedOptions } from '../../modules/interface'
 
 const props = defineProps<
   { ledOptions: ILedOptions }
@@ -249,3 +249,4 @@ function setNumber(num: number | string, opacity: number): number[] {
   padding: 0;
 }
 </style>
+../../modules/interface

@@ -1,5 +1,5 @@
+import type { ILevelData } from '../modules/interface'
 import { SEButtonFactory, buttonFactory, conversationButtonFactory } from './buttonFactory'
-import type { ILevelData } from './interface'
 
 // 单目运算按钮枚举 single eye
 export enum SEButtonEnum {

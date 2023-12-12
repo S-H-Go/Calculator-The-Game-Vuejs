@@ -7,14 +7,6 @@ export interface ILedOptions {
   italics: number
   opacity: number
 }
-// 显示什么
-export enum ShowWhat {
-  'number' = 'number',
-  'error' = 'error',
-  'accomplish' = 'accomplish',
-  'pause' = 'pause',
-  'conversation' = 'conversation',
-}
 
 // 关卡数据的接口
 export interface ILevelData {
@@ -24,10 +16,20 @@ export interface ILevelData {
   goal: number
   buttons: string[]
   path: string[]
+  portals: { entrance: number, exit: number }
   dialogue: {
     info: string
     buttons: { info: string, position: number }[]
   }[]
+}
+
+// 显示什么
+export enum ShowWhat {
+  'number' = 'number',
+  'error' = 'error',
+  'accomplish' = 'accomplish',
+  'pause' = 'pause',
+  'conversation' = 'conversation',
 }
 
 export enum LSKey {

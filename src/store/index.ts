@@ -1,9 +1,7 @@
 import { defineStore } from 'pinia'
 import levelData from '../assets/levelData.json'
-import type { ILedOptions } from './interface'
-import { BlinkEnum, LSKey, ShowWhat } from './interface'
-
-// import levelData from "../assets/testLevelData.json"
+import { BlinkEnum, LSKey, ShowWhat } from '../modules/interface'
+import type { ILedOptions } from '../modules/interface'
 import { ButtonControl } from './ButtonsControl'
 
 // 初始化本地关卡索引
