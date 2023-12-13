@@ -135,13 +135,13 @@ const buttonControl = computed(() => store.getButtonControl)
 }
 
 /* 设置按钮的颜色 */
-.color-button-yeelow
+.color-button-yellow
 {
   background-color: #e3bc21;
   box-shadow: 0px var(--button-border-size) #a87019;
 }
 
-.color-button-yeelow:active
+.color-button-yellow:active
 {
   position: relative;
   top: calc(var(--button-margin-top) / 2);

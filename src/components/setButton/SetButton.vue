@@ -10,7 +10,7 @@ function setClick() {
 </script>
 
 <template>
-  <button class="button color-button-yeelow" @click="setClick()">
+  <button class="button color-button-yellow" @click="setClick()">
     设置
   </button>
 </template>
