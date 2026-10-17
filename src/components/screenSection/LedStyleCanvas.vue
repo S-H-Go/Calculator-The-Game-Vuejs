@@ -1,10 +1,32 @@
 <script lang="ts" setup>
-import type { ILedOptions } from '../../modules/interface'
-import { onMounted } from 'vue'
+import type { ILedOptions, IPortals } from '../../modules/interface'
+import { computed, onMounted } from 'vue'
 
 const props = defineProps<
-  { ledOptions: ILedOptions }
+  { ledOptions: ILedOptions, portals?: IPortals }
 >()
+
+function getDisplayCharacters(value: number) {
+  if (!props.portals)
+    return value.toString().split('')
+
+  const digits = Math.abs(value).toString().padStart(props.portals.entrance + 1, ' ')
+  return `${value < 0 ? '-' : ''}${digits}`.split('')
+}
+
+const displayWidth = computed(() => {
+  const count = getDisplayCharacters(props.ledOptions.values).length
+  return count * props.ledOptions.width + (count - 1) * props.ledOptions.lineWidth * 0.5
+})
+
+function positionX(position: number) {
+  const count = getDisplayCharacters(props.ledOptions.values).length
+  return (count - position - 1) * (props.ledOptions.width + props.ledOptions.lineWidth * 0.5) + props.ledOptions.width / 2
+}
+
+function placeName(position: number) {
+  return ['个位', '十位', '百位', '千位', '万位', '十万位'][position] ?? `第 ${position + 1} 位`
+}
 
 // 加载完成后操作DOM显示数码数字
 onMounted(() => {
@@ -55,7 +77,7 @@ function ledSetValue(canvas: any, options: ILedOptions) {
   if (!/^[\d.\-:]*$/.test(values.toString()))
     console.error('传入内容只能为“0-9”、“.”、“-”、“:”四种类型的值')
 
-  const valuesArr = values.toString().split('')
+  const valuesArr = getDisplayCharacters(values)
   const commaCount = values.toString().match(/\.|:/g) === null ? 0 : values.toString().match(/\.|:/g)?.length
   const divWidth
     = (valuesArr.length - Number(commaCount)) * width
@@ -239,14 +261,43 @@ function setNumber(num: number | string, opacity: number): number[] {
 
 <template>
   <!-- 如果没有外层的div标签，则父组件中的v-show不起作用 -->
-  <div><canvas id="canvas" /></div>
+  <div>
+    <div class="led-digits" :style="{ width: `${displayWidth}px` }">
+      <svg
+        v-if="props.portals" class="portal-marker" :viewBox="`0 0 ${displayWidth} 16`"
+        role="img" :aria-label="`传送门出口：${placeName(props.portals.exit)}`"
+      >
+        <polygon :points="`${positionX(props.portals.exit) - 13},2 ${positionX(props.portals.exit) + 13},2 ${positionX(props.portals.exit)},10`" />
+      </svg>
+      <canvas id="canvas" />
+      <svg
+        v-if="props.portals" class="portal-marker" :viewBox="`0 0 ${displayWidth} 16`"
+        role="img" :aria-label="`传送门入口：${placeName(props.portals.entrance)}`"
+      >
+        <polygon :points="`${positionX(props.portals.entrance) - 13},4 ${positionX(props.portals.entrance) + 13},4 ${positionX(props.portals.entrance)},12`" />
+      </svg>
+    </div>
+  </div>
 </template>
 
 <style>
 #canvas
 {
-  margin-right: var(--margin-right);
+  display: block;
   padding: 0;
 }
+
+.led-digits {
+  margin-left: auto;
+  margin-right: var(--margin-right);
+}
+
+.portal-marker {
+  display: block;
+  width: 100%;
+  height: 16px;
+  fill: #3b3c3a;
+  stroke: #7d8976;
+  stroke-width: 0.7;
+}
 </style>
-../../modules/interface

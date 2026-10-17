@@ -27,7 +27,8 @@ const screenData = computed(() => store.screenInfo)
   --step-height: 3em;
   height: 100%;
   background-color: #3d3c3a;
-  padding: 4% 4% 10%;
+  --screen-bottom-trim: 16px;
+  padding: 4% 4% calc(10% - var(--screen-bottom-trim));
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 10% 90%;
@@ -39,6 +40,7 @@ const screenData = computed(() => store.screenInfo)
 /* 显示部分 */
 #display-section
 {
+  height: calc(100% - var(--screen-bottom-trim));
   background-color: #a8b7a2;
   display: flex;
   flex-direction: column;

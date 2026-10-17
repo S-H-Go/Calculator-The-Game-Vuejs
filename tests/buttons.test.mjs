@@ -23,6 +23,7 @@ const server = await createServer({ server: { middlewareMode: true }, appType: '
 const { useGameStore } = await server.ssrLoadModule('/src/stores/index.ts')
 const { useLevelStore } = await server.ssrLoadModule('/src/stores/level.ts')
 const { getButtonText } = await server.ssrLoadModule('/src/modules/operations.ts')
+const { applyPortals } = await server.ssrLoadModule('/src/modules/portals.ts')
 const levels = JSON.parse(await readFile(new URL('../src/assets/levelData.json', import.meta.url)))
 
 const source = await readFile(new URL('../src/components/Button.vue', import.meta.url), 'utf8')
@@ -375,7 +376,7 @@ test('tutorial replies, restart branch and operation previews use generic button
 test('representative configured solution paths complete across operation families', async () => {
   const { game, level } = init()
   game.blink = async () => {}
-  // Excludes the explicitly unimplemented portals and Store hold notation.
+  // Portal levels and Store hold notation are covered separately below.
   for (const index of [1, 3, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 132, 133, 137, 140]) {
     const data = levels[index]
     level.initLevel(data)
@@ -389,3 +390,64 @@ test('representative configured solution paths complete across operation familie
     assert.equal(game.control.showWhat, 'accomplish', `Not completed: ${index}`)
   }
 })
+
+test('portals count digits from the right, add at the exit and resolve cascading carries', () => {
+  assert.equal(applyPortals(991, { entrance: 2, exit: 0 }), 1)
+  assert.equal(applyPortals(964, { entrance: 2, exit: 1 }), 64)
+  assert.equal(applyPortals(12345, { entrance: 3, exit: 0 }), 348)
+  assert.equal(applyPortals(-991, { entrance: 2, exit: 0 }), -1)
+  assert.equal(applyPortals(1000, { entrance: 3, exit: 1 }), 10)
+  assert.equal(applyPortals(99, { entrance: 2, exit: 0 }), 99)
+  assert.equal(applyPortals(0, { entrance: 2, exit: 0 }), 0)
+  assert.equal(applyPortals(123), 123)
+  assert.equal(applyPortals(1.5, { entrance: 2, exit: 0 }), 1.5)
+  assert.ok(Number.isNaN(applyPortals(123, { entrance: 1, exit: 2 })))
+})
+
+test('portals run before goal and display-limit checks and consume only the button step', async () => {
+  const { game, level } = init({ initialNum: 99999, initialStep: 1, goal: 936, buttons: ['x100'], portals: { entrance: 3, exit: 0 } })
+  game.blink = async () => {}
+  button(level, 'x 100').operation()
+  await Promise.resolve()
+  assert.equal(level.screenInfo.currentNum, 936)
+  assert.equal(level.screenInfo.currentStep, 0)
+  assert.equal(game.control.showWhat, 'accomplish')
+  level.initLevel(levels[180])
+  button(level, '1').operation()
+  assert.equal(level.screenInfo.currentNum, 1)
+  button(level, 'CLR').operation()
+  assert.equal(level.screenInfo.currentNum, 99)
+  assert.equal(level.screenInfo.currentStep, 3)
+  assert.deepEqual(level.screenInfo.portals, { entrance: 2, exit: 0 })
+  level.initLevel(levels[1])
+  assert.equal(level.screenInfo.portals, undefined)
+  button(level, '+ 1').operation()
+  assert.equal(level.screenInfo.currentNum, 1)
+})
+
+for (const data of levels.filter(level => level.portals)) {
+  test(`portal level ${data.level} completes with its configured solution`, async (context) => {
+    const advance = useFakeClock(context)
+    const { game, level } = init(data)
+    game.blink = async () => {}
+    for (const token of data.path) {
+      if (token === 'Store' || token === 'TakeOut') {
+        const store = level.buttons.find(item => item.colorClass === 'color-button-purple')
+        assert.ok(store)
+        store.onPressStart()
+        if (token === 'Store')
+          advance(500)
+        store.onPressEnd()
+      }
+      else {
+        const action = button(level, getButtonText(token))
+        assert.equal(Boolean(action.disabled), false, `Disabled ${token} in level ${data.level}`)
+        action.operation()
+      }
+      await Promise.resolve()
+    }
+    assert.equal(level.screenInfo.currentNum, data.goal)
+    assert.equal(game.control.showWhat, 'accomplish')
+    assert.equal(level.screenInfo.currentStep, data.initialStep - data.path.length)
+  })
+}

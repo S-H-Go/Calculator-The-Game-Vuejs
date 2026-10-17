@@ -13,7 +13,8 @@ const screenControl = computed(() => gameStore.control)
   <div id="number-display-section">
     <LedStyleCanvas
       v-show="screenControl.showWhat === 'number'" id="number" :key="screenData.ledCanvasKey"
-      :led-options="screenData.ledOptions" :class="{ blink: gameStore.control.numberBlink }"
+      :led-options="screenData.ledOptions" :portals="screenData.portals"
+      :class="{ 'blink': gameStore.control.numberBlink, 'with-portals': screenData.portals }"
     />
     <div v-show="screenControl.showWhat === 'error'" id="error">
       ERROR
@@ -42,6 +43,11 @@ const screenControl = computed(() => gameStore.control)
 {
     text-align: right;
     margin-top: var(--margin-top);
+}
+
+#number.with-portals
+{
+    margin-top: calc(var(--margin-top) / 2);
 }
 
 #accomplish

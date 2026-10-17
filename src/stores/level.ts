@@ -5,6 +5,7 @@ import { useGameStore } from '.'
 import { createAcceleratingRepeat } from '../modules/acceleratingRepeat'
 import { BlinkEnum, ButtonEnum, ShowWhat } from '../modules/interface'
 import { getButtonClass, getButtonText, isPreviewButtonToken, parseButtonToken } from '../modules/operations'
+import { applyPortals } from '../modules/portals'
 
 enum LevelModeEnum {
   NORMAL,
@@ -81,9 +82,10 @@ export const useLevelStore = defineStore('level', () => {
     if (!canOperate())
       return
 
-    if (Number.isSafeInteger(value) && Math.abs(value) < 1000000) {
+    const nextValue = applyPortals(value, levelData.portals)
+    if (Number.isSafeInteger(nextValue) && Math.abs(nextValue) < 1000000) {
       screenInfo.currentStep--
-      refreshLed(value)
+      refreshLed(nextValue)
       setShowWhat(ShowWhat.number)
     }
     else {
@@ -589,6 +591,7 @@ export const useLevelStore = defineStore('level', () => {
       currentNum: level.initialNum,
       currentStep: level.initialStep,
       goal: level.goal,
+      portals: level.portals,
       dialogue: level.dialogue?.length ? level.dialogue : emptyDialogue,
       dialogueIndex: 0,
       ledOptions: {

@@ -19,6 +19,12 @@ export interface IDialogueItem {
 }
 
 // 关卡数据的接口
+export interface IPortals {
+  /** Digit positions count from the right: units = 0. */
+  entrance: number
+  exit: number
+}
+
 export interface ILevelData {
   level: number
   initialNum: number
@@ -26,7 +32,7 @@ export interface ILevelData {
   goal: number
   buttons: string[]
   path: string[]
-  portals?: { entrance: number, exit: number }
+  portals?: IPortals
   dialogue?: IDialogueItem[]
 }
 
@@ -40,6 +46,7 @@ export interface IScreenInfo {
   ledCanvasKey: number
   dialogue: IDialogueItem[]
   dialogueIndex: number
+  portals?: IPortals
 }
 
 export interface IButtonInfo {
