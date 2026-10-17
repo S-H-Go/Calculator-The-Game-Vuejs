@@ -3,7 +3,7 @@ import { Buffer } from 'node:buffer'
 import { readFile } from 'node:fs/promises'
 import { createRequire } from 'node:module'
 import { after, afterEach, beforeEach, test } from 'node:test'
-import { setTimeout as delay } from 'node:timers/promises'
+import { setTimeout as delay, setImmediate as settle } from 'node:timers/promises'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { createPinia, setActivePinia } from 'pinia'
 import ts from 'typescript'
@@ -26,23 +26,40 @@ const { getButtonText } = await server.ssrLoadModule('/src/modules/operations.ts
 const { applyPortals } = await server.ssrLoadModule('/src/modules/portals.ts')
 const levels = JSON.parse(await readFile(new URL('../src/assets/levelData.json', import.meta.url)))
 
-const source = await readFile(new URL('../src/components/Button.vue', import.meta.url), 'utf8')
-const { descriptor } = parse(source, { filename: fileURLToPath(new URL('../src/components/Button.vue', import.meta.url)).replaceAll('\\', '/') })
-const script = compileScript(descriptor, {
-  id: 'button-test',
-  inlineTemplate: true,
-  fs: { fileExists: ts.sys.fileExists, readFile: ts.sys.readFile },
-})
 const require = createRequire(import.meta.url)
 const vueUrl = pathToFileURL(require.resolve('vue')).href
-const compiled = ts.transpileModule(script.content, {
-  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
-}).outputText.replaceAll('from "vue"', `from '${vueUrl}'`).replaceAll('from \'vue\'', `from '${vueUrl}'`)
-const { default: Button } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`)
+async function loadComponent(relativePath) {
+  const url = new URL(relativePath, import.meta.url)
+  const source = await readFile(url, 'utf8')
+  const { descriptor } = parse(source, { filename: fileURLToPath(url).replaceAll('\\', '/') })
+  const script = compileScript(descriptor, {
+    id: relativePath,
+    inlineTemplate: true,
+    fs: { fileExists: ts.sys.fileExists, readFile: ts.sys.readFile },
+  })
+  const compiled = ts.transpileModule(script.content, {
+    compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
+  }).outputText.replaceAll('from "vue"', `from '${vueUrl}'`).replaceAll('from \'vue\'', `from '${vueUrl}'`)
+  return (await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`)).default
+}
+const Button = await loadComponent('../src/components/Button.vue')
+const LedStyleCanvas = await loadComponent('../src/components/screenSection/LedStyleCanvas.vue')
 
 function element(type = 'root') {
   const captures = new Set()
+  const strokes = []
+  const context = {
+    beginPath() {},
+    moveTo() {},
+    lineTo() {},
+    stroke() {
+      strokes.push(this.globalAlpha)
+    },
+  }
   return {
+    style: {},
+    strokes,
+    getContext: () => context,
     type,
     props: {},
     children: [],
@@ -61,18 +78,22 @@ const renderer = createRenderer({
   setText: (node, text) => { node.text = text },
   setElementText: (node, text) => { node.text = text },
   patchProp: (node, key, _previous, value) => { node.props[key] = value },
-  insert(node, parent) {
+  insert(node, parent, anchor = null) {
     if (node.parent)
       node.parent.children.splice(node.parent.children.indexOf(node), 1)
     node.parent = parent
-    parent.children.push(node)
+    const index = anchor ? parent.children.indexOf(anchor) : -1
+    if (index < 0)
+      parent.children.push(node)
+    else
+      parent.children.splice(index, 0, node)
   },
   remove(node) {
     node.parent.children.splice(node.parent.children.indexOf(node), 1)
     node.parent = null
   },
   parentNode: node => node.parent,
-  nextSibling: () => null,
+  nextSibling: node => node.parent?.children[node.parent.children.indexOf(node) + 1] ?? null,
 })
 
 const apps = []
@@ -408,12 +429,13 @@ test('portals run before goal and display-limit checks and consume only the butt
   const { game, level } = init({ initialNum: 99999, initialStep: 1, goal: 936, buttons: ['x100'], portals: { entrance: 3, exit: 0 } })
   game.blink = async () => {}
   button(level, 'x 100').operation()
-  await Promise.resolve()
+  await settle()
   assert.equal(level.screenInfo.currentNum, 936)
   assert.equal(level.screenInfo.currentStep, 0)
   assert.equal(game.control.showWhat, 'accomplish')
   level.initLevel(levels[180])
   button(level, '1').operation()
+  await settle()
   assert.equal(level.screenInfo.currentNum, 1)
   button(level, 'CLR').operation()
   assert.equal(level.screenInfo.currentNum, 99)
@@ -444,10 +466,174 @@ for (const data of levels.filter(level => level.portals)) {
         assert.equal(Boolean(action.disabled), false, `Disabled ${token} in level ${data.level}`)
         action.operation()
       }
-      await Promise.resolve()
+      await settle()
     }
     assert.equal(level.screenInfo.currentNum, data.goal)
     assert.equal(game.control.showWhat, 'accomplish')
     assert.equal(level.screenInfo.currentStep, data.initialStep - data.path.length)
   })
 }
+
+test('portal entrance and exit blink for the same duration as CLR around every transfer', async (context) => {
+  const advance = useFakeClock(context)
+  const { game, level } = init(levels[180])
+  button(level, 'CLR').operation()
+  advance(899)
+  await settle()
+  assert.equal(game.control.numberBlink, true)
+  advance(1)
+  await settle()
+  assert.equal(game.control.numberBlink, false)
+
+  const insert = button(level, '1')
+  insert.operation()
+  assert.equal(level.screenInfo.currentNum, 991)
+  assert.equal(level.screenInfo.currentStep, 2)
+  assert.equal(level.portalAnimating, true)
+  assert.equal(game.control.portalEntranceBlink, true)
+  assert.equal(game.control.portalExitBlink, false)
+  assert.equal(button(level, '1').disabled, true)
+  insert.operation()
+  assert.equal(level.screenInfo.currentStep, 2)
+
+  advance(899)
+  await settle()
+  assert.equal(level.screenInfo.currentNum, 991)
+  advance(1)
+  await settle()
+  assert.equal(level.screenInfo.currentNum, 100)
+  assert.equal(game.control.portalEntranceBlink, false)
+  assert.equal(game.control.portalExitBlink, true)
+
+  advance(899)
+  await settle()
+  assert.equal(game.control.portalExitBlink, true)
+  advance(1)
+  await settle()
+  assert.equal(level.screenInfo.currentNum, 100)
+  assert.equal(game.control.portalExitBlink, false)
+  assert.equal(game.control.portalEntranceBlink, true)
+
+  advance(900)
+  await settle()
+  assert.equal(level.screenInfo.currentNum, 1)
+  assert.equal(game.control.portalExitBlink, true)
+  assert.equal(level.portalAnimating, true)
+  advance(900)
+  await settle()
+  assert.equal(level.portalAnimating, false)
+  assert.equal(game.control.portalExitBlink, false)
+  assert.equal(level.screenInfo.currentStep, 2)
+  assert.equal(button(level, '1').disabled, false)
+})
+
+test('portal animations wait until the entrance position contains a digit', () => {
+  const { game, level } = init(levels[181])
+  button(level, '6').operation()
+  assert.equal(level.screenInfo.currentNum, 96)
+  assert.equal(level.portalAnimating, false)
+  assert.equal(game.control.portalEntranceBlink, false)
+  assert.equal(game.control.portalExitBlink, false)
+})
+
+test('portal goals are checked after the exit blink completes, even on the last step', async (context) => {
+  const advance = useFakeClock(context)
+  const { game, level } = init({ initialNum: 100, initialStep: 1, goal: 1, buttons: ['insert0'], portals: { entrance: 3, exit: 0 } })
+  button(level, '0').operation()
+  advance(900)
+  await settle()
+  assert.equal(level.screenInfo.currentNum, 1)
+  assert.equal(level.screenInfo.currentStep, 0)
+  assert.equal(game.control.showWhat, 'number')
+  assert.equal(game.control.numberBlink, false)
+  assert.equal(game.control.portalExitBlink, true)
+  advance(900)
+  await settle()
+  assert.equal(level.portalAnimating, false)
+  assert.equal(game.control.portalExitBlink, false)
+  assert.equal(game.control.numberBlink, true)
+  assert.equal(game.control.showWhat, 'number')
+  advance(900)
+  await settle()
+  assert.equal(game.control.showWhat, 'accomplish')
+  assert.ok(button(level, 'OK'))
+})
+
+for (const phase of ['entrance', 'exit']) {
+  for (const cancellation of ['CLR', 'settings', 'level', 'dispose']) {
+    test(`${cancellation} cancels portal animation during ${phase} blink`, async (context) => {
+      const advance = useFakeClock(context)
+      const { game, level } = init(levels[180])
+      button(level, '1').operation()
+      if (phase === 'exit') {
+        advance(900)
+        await settle()
+        assert.equal(game.control.portalExitBlink, true)
+      }
+      if (cancellation === 'CLR')
+        button(level, 'CLR').operation()
+      else if (cancellation === 'settings')
+        game.toggleMode()
+      else if (cancellation === 'level')
+        game.levelIncrease()
+      else
+        level.$dispose()
+
+      const number = level.screenInfo.currentNum
+      const steps = level.screenInfo.currentStep
+      assert.equal(level.portalAnimating, false)
+      if (cancellation !== 'dispose') {
+        assert.equal(game.control.portalEntranceBlink, false)
+        assert.equal(game.control.portalExitBlink, false)
+      }
+      advance(5000)
+      await settle()
+      assert.equal(level.screenInfo.currentNum, number)
+      assert.equal(level.screenInfo.currentStep, steps)
+      assert.equal(level.portalAnimating, false)
+    })
+  }
+}
+
+test('a cancelled portal animation cannot clear the next animation state', async (context) => {
+  const advance = useFakeClock(context)
+  const { game, level } = init(levels[180])
+  button(level, '1').operation()
+  button(level, 'CLR').operation()
+  button(level, '1').operation()
+  assert.equal(game.control.numberBlink, false)
+  advance(900)
+  await settle()
+  assert.equal(level.screenInfo.currentNum, 100)
+  assert.equal(level.portalAnimating, true)
+  assert.equal(game.control.portalEntranceBlink, false)
+  assert.equal(game.control.portalExitBlink, true)
+})
+
+test('number blinking affects only lit segments while the LCD background and portal markers stay steady', async () => {
+  const props = reactive({
+    ledOptions: { values: 12, width: 36, height: 60, lineWidth: 5, color: '#3b3c3a', italics: -8, opacity: 0.1 },
+    portals: { entrance: 3, exit: 0 },
+    numberBlink: true,
+  })
+  const root = element()
+  const app = renderer.createApp({ render: () => h(LedStyleCanvas, props) })
+  apps.push(app)
+  app.mount(root)
+  function find(node, type) {
+    return [...(node.type === type ? [node] : []), ...node.children.flatMap(child => find(child, type))]
+  }
+  const [background, foreground] = find(root, 'canvas')
+  const markers = find(root, 'svg')
+  assert.equal(background.strokes.length, 28)
+  assert.ok(background.strokes.every(alpha => alpha === 0.1))
+  assert.equal(foreground.strokes.filter(alpha => alpha === 1).length, 7)
+  assert.ok(foreground.strokes.slice(0, 14).every(alpha => alpha === 0))
+  assert.match(foreground.props.class, /blink/)
+  assert.ok(!background.props.class?.includes('blink'))
+  assert.ok(markers.every(marker => !marker.props.class.includes('blink')))
+  props.numberBlink = false
+  await nextTick()
+  assert.ok(!foreground.props.class.includes('blink'))
+  assert.equal(background.strokes.length, 28)
+})

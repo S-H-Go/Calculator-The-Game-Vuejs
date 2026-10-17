@@ -82,6 +82,8 @@ export enum BlinkEnum {
   step = 'step',
   goal = 'goal',
   pause = 'pause',
+  portalEntrance = 'portalEntrance',
+  portalExit = 'portalExit',
 }
 
 export enum ButtonEnum {

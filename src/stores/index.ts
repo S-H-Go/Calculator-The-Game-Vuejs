@@ -21,6 +21,8 @@ export const useGameStore = defineStore('game', () => {
     stepBlink: false,
     goalBlink: false,
     pauseBlink: false,
+    portalEntranceBlink: false,
+    portalExitBlink: false,
   })
 
   function persistLevel() {
@@ -65,7 +67,7 @@ export const useGameStore = defineStore('game', () => {
     }
   }
 
-  const blinkVersions = { number: 0, step: 0, goal: 0, pause: 0 }
+  const blinkVersions = { number: 0, step: 0, goal: 0, pause: 0, portalEntrance: 0, portalExit: 0 }
 
   function resetBlinks() {
     for (const thing of Object.values(BlinkEnum)) {

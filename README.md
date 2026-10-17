@@ -76,6 +76,8 @@ pnpm build
 
 例如 `{ "entrance": 2, "exit": 0 }` 会将 `991` 连续变为 `100`、`1`。传送结束后才判断目标和显示范围。屏幕通过数字上方的出口三角和下方的入口三角标示传送位置；CLR 恢复关卡原始数字。
 
+入口有数字时，下方三角先闪烁，再执行一次传送，然后上方三角闪烁；连续传送会依次重复此流程。每段闪烁与 CLR 共用时长（当前为 900ms）。动画期间运算按钮暂停响应，CLR 和设置仍可使用；重置或切关会取消尚未完成的传送。
+
 ## 依赖升级说明
 
 2026-10-17 更新了 Vue、Pinia、Vite、ESLint 及相关工具的稳定版本。TypeScript 直接依赖 `~6.0.3`，允许安装 6.0 系列的后续补丁版本；TypeScript 7.0 暂不提供当前 `vue-tsc` 和 TypeScript ESLint 所依赖的旧编译器 API，直接安装会导致类型检查失败。待生态支持后再迁移到原生编译器。参见[官方迁移说明](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-60)。

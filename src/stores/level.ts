@@ -5,7 +5,7 @@ import { useGameStore } from '.'
 import { createAcceleratingRepeat } from '../modules/acceleratingRepeat'
 import { BlinkEnum, ButtonEnum, ShowWhat } from '../modules/interface'
 import { getButtonClass, getButtonText, isPreviewButtonToken, parseButtonToken } from '../modules/operations'
-import { applyPortals } from '../modules/portals'
+import { getPortalTransfers } from '../modules/portals'
 
 enum LevelModeEnum {
   NORMAL,
@@ -57,6 +57,7 @@ export const useLevelStore = defineStore('level', () => {
   const levelButtons = ref<string[]>([])
   const storeValue = ref<string | number>('Store')
   const completed = ref(false)
+  const portalAnimating = ref(false)
   let revision = 0
 
   let storeTimer: ReturnType<typeof setTimeout> | undefined
@@ -82,26 +83,41 @@ export const useLevelStore = defineStore('level', () => {
     if (!canOperate())
       return
 
-    const nextValue = applyPortals(value, levelData.portals)
-    if (Number.isSafeInteger(nextValue) && Math.abs(nextValue) < 1000000) {
-      screenInfo.currentStep--
-      refreshLed(nextValue)
-      setShowWhat(ShowWhat.number)
-    }
-    else {
+    const transfers = getPortalTransfers(value, levelData.portals)
+    const nextValue = transfers.length ? transfers[transfers.length - 1] : value
+    if (!Number.isSafeInteger(nextValue) || Math.abs(nextValue) >= 1000000) {
       setShowWhat(ShowWhat.error)
       return
     }
 
+    const currentRevision = revision
+    const game = useGameStore()
+    if (transfers.length)
+      game.resetBlinks()
+    screenInfo.currentStep--
+    portalAnimating.value = transfers.length > 0
+    refreshLed(value)
+    setShowWhat(ShowWhat.number)
+
+    for (const destination of transfers) {
+      await game.blink(BlinkEnum.portalEntrance)
+      if (currentRevision !== revision)
+        return
+      refreshLed(destination)
+      await game.blink(BlinkEnum.portalExit)
+      if (currentRevision !== revision)
+        return
+    }
+    portalAnimating.value = false
+
     if (screenInfo.currentNum === screenInfo.goal) {
       completed.value = true
-      const currentRevision = revision
-      await useGameStore().blink(BlinkEnum.number)
+      await game.blink(BlinkEnum.number)
       if (currentRevision === revision && levelMode.value === LevelModeEnum.NORMAL)
         setShowWhat(ShowWhat.accomplish)
     }
     else if (screenInfo.currentStep === 0) {
-      await useGameStore().blink(BlinkEnum.step)
+      await game.blink(BlinkEnum.step)
     }
   }
 
@@ -144,6 +160,7 @@ export const useLevelStore = defineStore('level', () => {
 
   function clearLevel() {
     revision++
+    portalAnimating.value = false
     useGameStore().resetBlinks()
     completed.value = false
     cancelStorePress()
@@ -396,6 +413,7 @@ export const useLevelStore = defineStore('level', () => {
       && useGameStore().control.showWhat === ShowWhat.number
       && screenInfo.currentStep > 0
       && !completed.value
+      && !portalAnimating.value
   }
 
   function createNormalButton(token: string, position: { x: number, y: number }): IButtonInfo {
@@ -580,6 +598,7 @@ export const useLevelStore = defineStore('level', () => {
     const keepSetMode = levelMode.value === LevelModeEnum.SET
     // Keep a held level-selector running while its displayed level changes.
     revision++
+    portalAnimating.value = false
     useGameStore().resetBlinks()
     completed.value = false
     cancelStorePress()
@@ -616,6 +635,7 @@ export const useLevelStore = defineStore('level', () => {
 
   function enterSetMode() {
     revision++
+    portalAnimating.value = false
     useGameStore().resetBlinks()
     cancelStorePress()
     levelMode.value = LevelModeEnum.SET
@@ -629,6 +649,8 @@ export const useLevelStore = defineStore('level', () => {
   }
 
   onScopeDispose(() => {
+    revision++
+    portalAnimating.value = false
     cancelStorePress()
     stopLevelIncrease()
     stopLevelReduction()
@@ -643,5 +665,6 @@ export const useLevelStore = defineStore('level', () => {
     jumpDialogue,
     screenInfo,
     buttons,
+    portalAnimating,
   }
 })

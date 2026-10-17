@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import type { ILedOptions, IPortals } from '../../modules/interface'
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 const props = defineProps<
-  { ledOptions: ILedOptions, portals?: IPortals }
+  { ledOptions: ILedOptions, portals?: IPortals, numberBlink?: boolean, portalEntranceBlink?: boolean, portalExitBlink?: boolean }
 >()
 
 function getDisplayCharacters(value: number) {
@@ -29,9 +29,11 @@ function placeName(position: number) {
 }
 
 // 加载完成后操作DOM显示数码数字
+const backgroundCanvas = ref<HTMLCanvasElement | null>(null)
+const foregroundCanvas = ref<HTMLCanvasElement | null>(null)
 onMounted(() => {
-  const canvas = document.getElementById('canvas')
-  ledSetValue(canvas, props.ledOptions)
+  ledSetValue(backgroundCanvas.value, props.ledOptions, false)
+  ledSetValue(foregroundCanvas.value, props.ledOptions, true)
 })
 
 /*
@@ -51,7 +53,9 @@ italics:10 --倾斜角度，默认0
 opacity:0.1 --led不发光时的透明度，默认0.1（0<=opacity<1。注意不透明度请不要写1.否则全显示8）
 }
 */
-function ledSetValue(canvas: any, options: ILedOptions) {
+function ledSetValue(canvas: HTMLCanvasElement | null, options: ILedOptions, foreground: boolean) {
+  if (!canvas)
+    return
   if (options === null) {
     options = {
       color: 'orange',
@@ -85,14 +89,17 @@ function ledSetValue(canvas: any, options: ILedOptions) {
       + (width * 0.5 - 0.5 * lineWidth) * Number(commaCount)
 
   const ctx = canvas.getContext('2d')
-  canvas.setAttribute('width', divWidth)
-  canvas.setAttribute('height', height)
-  canvas.setAttribute('style', `transform:skewX(${italics}deg)`)
+  if (!ctx)
+    return
+  canvas.width = divWidth
+  canvas.height = height
+  canvas.style.transform = `skewX(${italics}deg)`
   ctx.lineWidth = lineWidth
   ctx.strokeStyle = color
   let distanceLeft = 0
   for (let i = 0; i < valuesArr.length; i++) {
     const styleLed = setNumber(valuesArr[i], opacity)
+      .map(alpha => foreground ? Number(alpha === 1) : opacity)
 
     if (valuesArr[i] !== '.' && valuesArr[i] !== ':') {
       ctx.lineCap = 'round'
@@ -156,7 +163,7 @@ function ledSetValue(canvas: any, options: ILedOptions) {
     else if (valuesArr[i] === ':') {
       ctx.beginPath()
       ctx.lineCap = 'square'
-      ctx.globalAlpha = 1
+      ctx.globalAlpha = foreground ? 1 : opacity
       ctx.moveTo(
         0.25 * width - 0.5 * lineWidth + distanceLeft,
         0.3 * height - lineWidth,
@@ -180,7 +187,7 @@ function ledSetValue(canvas: any, options: ILedOptions) {
     else {
       ctx.beginPath()
       ctx.lineCap = 'square'
-      ctx.globalAlpha = 1
+      ctx.globalAlpha = foreground ? 1 : opacity
       ctx.moveTo(
         0.25 * width - 0.5 * lineWidth + distanceLeft,
         height - lineWidth,
@@ -264,14 +271,17 @@ function setNumber(num: number | string, opacity: number): number[] {
   <div>
     <div class="led-digits" :style="{ width: `${displayWidth}px` }">
       <svg
-        v-if="props.portals" class="portal-marker" :viewBox="`0 0 ${displayWidth} 16`"
+        v-if="props.portals" class="portal-marker" :class="{ blink: props.portalExitBlink }" :viewBox="`0 0 ${displayWidth} 16`"
         role="img" :aria-label="`传送门出口：${placeName(props.portals.exit)}`"
       >
         <polygon :points="`${positionX(props.portals.exit) - 13},2 ${positionX(props.portals.exit) + 13},2 ${positionX(props.portals.exit)},10`" />
       </svg>
-      <canvas id="canvas" />
+      <div class="number-layers" role="img" :aria-label="`当前数字：${props.ledOptions.values}`">
+        <canvas id="canvas" ref="backgroundCanvas" aria-hidden="true" />
+        <canvas ref="foregroundCanvas" class="number-foreground" :class="{ blink: props.numberBlink }" aria-hidden="true" />
+      </div>
       <svg
-        v-if="props.portals" class="portal-marker" :viewBox="`0 0 ${displayWidth} 16`"
+        v-if="props.portals" class="portal-marker" :class="{ blink: props.portalEntranceBlink }" :viewBox="`0 0 ${displayWidth} 16`"
         role="img" :aria-label="`传送门入口：${placeName(props.portals.entrance)}`"
       >
         <polygon :points="`${positionX(props.portals.entrance) - 13},4 ${positionX(props.portals.entrance) + 13},4 ${positionX(props.portals.entrance)},12`" />
@@ -281,10 +291,21 @@ function setNumber(num: number | string, opacity: number): number[] {
 </template>
 
 <style>
-#canvas
+#canvas,
+.number-foreground
 {
   display: block;
   padding: 0;
+}
+
+.number-layers {
+  position: relative;
+}
+
+.number-foreground {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .led-digits {

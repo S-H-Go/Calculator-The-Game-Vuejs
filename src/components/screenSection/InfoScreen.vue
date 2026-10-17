@@ -14,7 +14,9 @@ const screenControl = computed(() => gameStore.control)
     <LedStyleCanvas
       v-show="screenControl.showWhat === 'number'" id="number" :key="screenData.ledCanvasKey"
       :led-options="screenData.ledOptions" :portals="screenData.portals"
-      :class="{ 'blink': gameStore.control.numberBlink, 'with-portals': screenData.portals }"
+      :number-blink="screenControl.numberBlink"
+      :portal-entrance-blink="screenControl.portalEntranceBlink" :portal-exit-blink="screenControl.portalExitBlink"
+      :class="{ 'with-portals': screenData.portals }"
     />
     <div v-show="screenControl.showWhat === 'error'" id="error">
       ERROR
