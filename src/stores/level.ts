@@ -1,9 +1,10 @@
+import type { IButtonInfo, IDialogueItem, ILevelData, IScreenInfo } from '../modules/interface'
 import { defineStore } from 'pinia'
 import { computed, onScopeDispose, reactive, ref } from 'vue'
-import { BlinkEnum, ButtonEnum, type IButtonInfo, type IDialogueItem, type ILevelData, type IScreenInfo, ShowWhat } from '../modules/interface'
-import { getButtonClass, getButtonText, isPreviewButtonToken, parseButtonToken } from '../modules/operations'
-import { createAcceleratingRepeat } from '../modules/acceleratingRepeat'
 import { useGameStore } from '.'
+import { createAcceleratingRepeat } from '../modules/acceleratingRepeat'
+import { BlinkEnum, ButtonEnum, ShowWhat } from '../modules/interface'
+import { getButtonClass, getButtonText, isPreviewButtonToken, parseButtonToken } from '../modules/operations'
 
 enum LevelModeEnum {
   NORMAL,

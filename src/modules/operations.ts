@@ -1,12 +1,12 @@
 import { ButtonEnum } from './interface'
 
-export type ParsedButton =
-  | { type: 'empty' }
-  | { type: 'single', token: ButtonEnum }
-  | { type: 'arithmetic', operator: '+' | '-' | 'x' | '/', value: number }
-  | { type: 'insert', value: number }
-  | { type: 'replace', from: string, to: string }
-  | { type: 'each', operator: '+' | '-' | 'x' | '/', value: number }
+export type ParsedButton
+  = | { type: 'empty' }
+    | { type: 'single', token: ButtonEnum }
+    | { type: 'arithmetic', operator: '+' | '-' | 'x' | '/', value: number }
+    | { type: 'insert', value: number }
+    | { type: 'replace', from: string, to: string }
+    | { type: 'each', operator: '+' | '-' | 'x' | '/', value: number }
 
 const singleButtons = new Set<string>(Object.values(ButtonEnum))
 

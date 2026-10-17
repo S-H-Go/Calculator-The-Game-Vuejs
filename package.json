@@ -3,30 +3,42 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
+  "engines": {
+    "node": "^22.22.1 || >=24.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "test": "node --test tests/buttons.test.mjs",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "pinia": "^2.1.7",
-    "vue": "^3.3.9"
+    "@vue/devtools-api": "^8.2.1",
+    "pinia": "^4.1.0",
+    "vue": "^3.5.44"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.2.2",
-    "@vitejs/plugin-vue": "^4.5.1",
-    "eslint": "^8.55.0",
-    "lint-staged": "^15.2.0",
-    "simple-git-hooks": "^2.9.0",
-    "typescript": "^5.3.2",
-    "vite": "^5.0.5",
-    "vue-tsc": "^1.8.24"
+    "@antfu/eslint-config": "^9.5.1",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "eslint": "^10.13.0",
+    "lint-staged": "^17.6.0",
+    "simple-git-hooks": "^2.14.0",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.4",
+    "vue-tsc": "^3.3.13"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "simple-git-hooks"
+    ]
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "node node_modules/lint-staged/bin/lint-staged.js"
   },
   "lint-staged": {
-    "*": "eslint --fix"
+    "*.{js,mjs,cjs,ts,tsx,vue,json,jsonc,md,yml,yaml}": "eslint --fix"
   }
 }

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useLevelStore } from '../../stores/level'
 import { useGameStore } from '../../stores'
+import { useLevelStore } from '../../stores/level'
 import LedStyleCanvas from './LedStyleCanvas.vue'
 
 const gameStore = useGameStore()

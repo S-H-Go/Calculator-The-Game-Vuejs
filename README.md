@@ -15,11 +15,11 @@
 
 
 
-# 运行环境
+## 运行环境
 
-> node.js
+> Node.js 22.22.1+（22 LTS）或 24+，pnpm 10.33.0。项目的 Node.js 版本约束来自 Vite、ESLint 和 lint-staged。
 
-# 本地运行
+## 本地运行
 
 1. 克隆该仓库
 
@@ -36,18 +36,18 @@ cd calculator-game-web
 3. 安装依赖
 
 ```shell
-npm install
+pnpm install
 ```
 
 4. 开发环境运行
 
 ```shell
-npm run dev
+pnpm dev
 ```
 
 访问控制台输出的链接即可打开
 
-# 按钮结构
+## 按钮结构
 
 所有游戏按钮、对话选项、空位和设置按钮统一由 `src/components/Button.vue` 渲染。
 
@@ -60,13 +60,20 @@ npm run dev
 
 设置中的关卡加减按钮短按切换一级，长按 400ms 后连续切换并逐渐加速，最短间隔为 40ms。松手或取消时停止，再次按下时恢复初始速度。
 
-# 验证
+## 验证
 
 ```shell
-npm test
-npm run build
+pnpm test
+pnpm lint
+pnpm build
 ```
 
-测试使用 Node.js 内置测试工具、Vue 编译器和自定义渲染器，不新增测试依赖。覆盖通用按钮事件、Store 长短按、连续切关、Each、重置、通关和对话流程；实际页面布局及设备触摸体验需要另行在浏览器验收。运行测试建议使用 Node.js 20 或更高版本。
+测试使用 Node.js 内置测试工具、Vue 编译器和自定义渲染器，不新增测试依赖。覆盖通用按钮事件、Store 长短按、连续切关、Each、重置、通关和对话流程；实际页面布局及设备触摸体验需要另行在浏览器验收。运行测试使用上述 Node.js 版本。
 
 传送门仍未实现，本次按钮重构不包含该功能。
+
+## 依赖升级说明
+
+2026-10-17 更新了 Vue、Pinia、Vite、ESLint 及相关工具的稳定版本。TypeScript 直接依赖 `~6.0.3`，允许安装 6.0 系列的后续补丁版本；TypeScript 7.0 暂不提供当前 `vue-tsc` 和 TypeScript ESLint 所依赖的旧编译器 API，直接安装会导致类型检查失败。待生态支持后再迁移到原生编译器。参见[官方迁移说明](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-60)。
+
+Pinia 4 要求显式安装 `@vue/devtools-api`。TypeScript 模块解析使用 `bundler`，移除了已弃用的 `baseUrl`。安装依赖时会通过 `prepare` 配置 Git 提交钩子；钩子直接运行项目内的 lint-staged，不依赖全局 pnpm 命令。

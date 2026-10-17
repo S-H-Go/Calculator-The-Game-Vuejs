@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useLevelStore } from '../stores/level'
+import InfoScreen from './screenSection/InfoScreen.vue'
 import LevelScreen from './screenSection/LevelScreen.vue'
 import StepGoalScreen from './screenSection/StepGoalScreen.vue'
-import InfoScreen from './screenSection/InfoScreen.vue'
 
 const store = useLevelStore()
 const screenData = computed(() => store.screenInfo)

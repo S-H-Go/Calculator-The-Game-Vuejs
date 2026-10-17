@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue'
-import ScreenPanel from './components/ScreenPanel.vue'
 import ButtonPanel from './components/ButtonPanel.vue'
+import ScreenPanel from './components/ScreenPanel.vue'
 import { useGameStore } from './stores/index'
 
 const store = useGameStore()

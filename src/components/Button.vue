@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
 import type { CSSProperties } from 'vue'
 import type { IButtonInfo } from '../modules/interface'
+import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
 
 const props = defineProps<IButtonInfo>()
 const hasPressHandlers = computed(() => Boolean(props.onPressStart || props.onPressEnd || props.onPressCancel))

@@ -1,15 +1,15 @@
 import assert from 'node:assert/strict'
 import { Buffer } from 'node:buffer'
-import { createRequire } from 'node:module'
 import { readFile } from 'node:fs/promises'
-import { fileURLToPath, pathToFileURL } from 'node:url'
-import { setTimeout as delay } from 'node:timers/promises'
+import { createRequire } from 'node:module'
 import { after, afterEach, beforeEach, test } from 'node:test'
-import { compileScript, parse } from 'vue/compiler-sfc'
+import { setTimeout as delay } from 'node:timers/promises'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { createPinia, setActivePinia } from 'pinia'
-import { createRenderer, h, nextTick, reactive } from 'vue'
 import ts from 'typescript'
 import { createServer } from 'vite'
+import { createRenderer, h, nextTick, reactive } from 'vue'
+import { compileScript, parse } from 'vue/compiler-sfc'
 
 // Exercise the actual stores and compiled SFC without adding a test framework.
 const storage = new Map()

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { onMounted } from 'vue'
 import type { ILedOptions } from '../../modules/interface'
+import { onMounted } from 'vue'
 
 const props = defineProps<
   { ledOptions: ILedOptions }
@@ -59,8 +59,8 @@ function ledSetValue(canvas: any, options: ILedOptions) {
   const commaCount = values.toString().match(/\.|:/g) === null ? 0 : values.toString().match(/\.|:/g)?.length
   const divWidth
     = (valuesArr.length - Number(commaCount)) * width
-    + (valuesArr.length - Number(commaCount) - 1) * lineWidth * 0.5
-    + (width * 0.5 - 0.5 * lineWidth) * Number(commaCount)
+      + (valuesArr.length - Number(commaCount) - 1) * lineWidth * 0.5
+      + (width * 0.5 - 0.5 * lineWidth) * Number(commaCount)
 
   const ctx = canvas.getContext('2d')
   canvas.setAttribute('width', divWidth)
