@@ -220,6 +220,93 @@ test('holding level selection repeats across reinitialization and stops on relea
   assert.equal(level.screenInfo.level, game.currentLevel)
 })
 
+function useFakeClock(context) {
+  let now = 0
+  let nextId = 0
+  const timers = new Map()
+  context.mock.method(Date, 'now', () => now)
+  context.mock.method(globalThis, 'setTimeout', (callback, timeout) => {
+    const id = ++nextId
+    timers.set(id, { at: now + timeout, callback })
+    return id
+  })
+  context.mock.method(globalThis, 'clearTimeout', id => timers.delete(id))
+  return (milliseconds) => {
+    const target = now + milliseconds
+    for (;;) {
+      const next = [...timers.entries()].sort((a, b) => a[1].at - b[1].at)[0]
+      if (!next || next[1].at > target)
+        break
+      now = next[1].at
+      timers.delete(next[0])
+      next[1].callback()
+    }
+    now = target
+  }
+}
+
+for (const direction of ['+', '-']) {
+  test(`holding ${direction} accelerates, stops on release and restarts slowly`, (context) => {
+    const advance = useFakeClock(context)
+    const { game, level } = init()
+    game.toggleMode()
+    let calls = 0
+    const method = direction === '+' ? 'levelIncrease' : 'levelReduction'
+    const original = game[method]
+    context.mock.method(game, method, () => {
+      calls++
+      original()
+    })
+    const held = button(level, direction)
+    held.onPressStart()
+    assert.equal(calls, 1)
+    advance(399)
+    assert.equal(calls, 1)
+    advance(601)
+    const firstSecond = calls
+    advance(1000)
+    const secondSecond = calls - firstSecond
+    advance(1000)
+    const thirdSecond = calls - firstSecond - secondSecond
+    assert.ok(secondSecond > firstSecond)
+    assert.ok(thirdSecond > secondSecond)
+    advance(3000)
+    const beforeMaximum = calls
+    advance(1000)
+    assert.equal(calls - beforeMaximum, 25)
+    held.onPressEnd()
+    const stopped = calls
+    advance(1000)
+    assert.equal(calls, stopped)
+    held.onPressStart()
+    advance(399)
+    assert.equal(calls, stopped + 1)
+    held.onPressCancel()
+    advance(1000)
+    assert.equal(calls, stopped + 1)
+  })
+}
+
+test('opposite direction, leaving settings and disposal stop pending repeats', (context) => {
+  const advance = useFakeClock(context)
+  const { game, level } = init()
+  game.toggleMode()
+  button(level, '+').onPressStart()
+  button(level, '-').onPressStart()
+  advance(1000)
+  assert.ok(game.currentLevel > 190, 'Only the decreasing direction should remain active')
+  game.toggleMode()
+  const exitedAt = game.currentLevel
+  advance(1000)
+  assert.equal(game.currentLevel, exitedAt)
+  game.toggleMode()
+  button(level, '+').onPressStart()
+  level.$dispose()
+  const disposedAt = game.currentLevel
+  advance(1000)
+  assert.equal(game.currentLevel, disposedAt)
+})
+
 test('Each rebuilds arithmetic and insert buttons reactively; CLR restores originals', () => {
   const { level } = init({ initialNum: 0, buttons: ['each+1', 'insert1', '+2'] })
   button(level, '[+]1').operation()

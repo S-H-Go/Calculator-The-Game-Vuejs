@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { computed, onScopeDispose, reactive, ref } from 'vue'
 import { BlinkEnum, ButtonEnum, type IButtonInfo, type IDialogueItem, type ILevelData, type IScreenInfo, ShowWhat } from '../modules/interface'
 import { getButtonClass, getButtonText, isPreviewButtonToken, parseButtonToken } from '../modules/operations'
+import { createAcceleratingRepeat } from '../modules/acceleratingRepeat'
 import { useGameStore } from '.'
 
 enum LevelModeEnum {
@@ -58,10 +59,8 @@ export const useLevelStore = defineStore('level', () => {
 
   let storeTimer: ReturnType<typeof setTimeout> | undefined
   let storeLongPressed = false
-  let levelIncreaseDelayTimer: ReturnType<typeof setTimeout> | undefined
-  let levelIncreaseTimer: ReturnType<typeof setInterval> | undefined
-  let levelReductionDelayTimer: ReturnType<typeof setTimeout> | undefined
-  let levelReductionTimer: ReturnType<typeof setInterval> | undefined
+  const levelIncreaseRepeat = createAcceleratingRepeat(() => useGameStore().levelIncrease())
+  const levelReductionRepeat = createAcceleratingRepeat(() => useGameStore().levelReduction())
 
   function setShowWhat(showWhat: ShowWhat) {
     useGameStore().control.showWhat = showWhat
@@ -372,41 +371,21 @@ export const useLevelStore = defineStore('level', () => {
   }
 
   function startLevelIncrease() {
-    stopLevelIncrease()
-    useGameStore().levelIncrease()
-    levelIncreaseDelayTimer = setTimeout(() => {
-      levelIncreaseTimer = setInterval(() => {
-        useGameStore().levelIncrease()
-      }, 240)
-    }, 320)
+    stopLevelReduction()
+    levelIncreaseRepeat.start()
   }
 
   function stopLevelIncrease() {
-    if (levelIncreaseDelayTimer)
-      clearTimeout(levelIncreaseDelayTimer)
-    if (levelIncreaseTimer)
-      clearInterval(levelIncreaseTimer)
-    levelIncreaseDelayTimer = undefined
-    levelIncreaseTimer = undefined
+    levelIncreaseRepeat.stop()
   }
 
   function startLevelReduction() {
-    stopLevelReduction()
-    useGameStore().levelReduction()
-    levelReductionDelayTimer = setTimeout(() => {
-      levelReductionTimer = setInterval(() => {
-        useGameStore().levelReduction()
-      }, 240)
-    }, 320)
+    stopLevelIncrease()
+    levelReductionRepeat.start()
   }
 
   function stopLevelReduction() {
-    if (levelReductionDelayTimer)
-      clearTimeout(levelReductionDelayTimer)
-    if (levelReductionTimer)
-      clearInterval(levelReductionTimer)
-    levelReductionDelayTimer = undefined
-    levelReductionTimer = undefined
+    levelReductionRepeat.stop()
   }
 
   function canOperate() {

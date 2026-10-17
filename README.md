@@ -58,6 +58,8 @@ npm run dev
 
 通用按钮只负责显示和输入事件，不包含游戏规则。普通操作使用 `operation`；需要按压的操作使用 `onPressStart`、`onPressEnd`、`onPressCancel`。鼠标和触摸统一使用 Pointer Events，移出、取消、窗口失焦或组件卸载时取消按压；键盘 Enter/空格保留原生按钮激活行为。
 
+设置中的关卡加减按钮短按切换一级，长按 400ms 后连续切换并逐渐加速，最短间隔为 40ms。松手或取消时停止，再次按下时恢复初始速度。
+
 # 验证
 
 ```shell
