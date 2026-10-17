@@ -1,54 +1,32 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useStore } from '../../store'
+import { useLevelStore } from '../../stores/level'
+import { useGameStore } from '../../stores'
 import LedStyleCanvas from './LedStyleCanvas.vue'
 
-const store = useStore()
-const screenData = computed(() => store.getScreenData)
-const screenControl = computed(() => store.getScreenControl)
-// 动态字体大小
-// const fontSize = computed(() => {
-//     let width: number = document.getElementById("number-display-section")?.clientWidth as number;
-//     let height: number = document.getElementById("number-display-section")?.clientHeight as number;
-//     const reg = RegExp(" ", 'g');
-//     let marginRight = ["0", "0"];
-//     if (document.getElementById("number-display-section") != null) {
-//         marginRight = getComputedStyle(document.getElementById("number-display-section") as HTMLElement).getPropertyValue('--margin-right').replace("calc(", "").replace("px)", "").replace(reg, "").split("*");
-//     }
-//     width -= (Number(marginRight[0]) * Number(marginRight[1]) * 2);
-//     let length: number = store.data.conversation[store.data.conversationIndex].info.length;
-//     let fs = 0;
-//     fs = (Math.sqrt((width + height) * (width + height) + 4 * width * height * length - 4 * width * height) - width - height) / (2 * length - 2);
-//     console.log("width:", width);
-//     console.log("height:", height);
-//     console.log("fs", fs);
-//     // return fs;
-//     // while (Math.ceil(length / Math.floor(width / fs)) * fs < height) {
-//     //     fs++;
-//     //     // console.log("+++");
-//     // }
-//     return fs;
-// });
+const gameStore = useGameStore()
+const screenData = computed(() => useLevelStore().screenInfo)
+const screenControl = computed(() => gameStore.control)
 </script>
 
 <template>
   <div id="number-display-section">
     <LedStyleCanvas
       v-show="screenControl.showWhat === 'number'" id="number" :key="screenData.ledCanvasKey"
-      :led-options="screenData.ledOptions" :class="{ blink: store.control.numberBlink }"
+      :led-options="screenData.ledOptions" :class="{ blink: gameStore.control.numberBlink }"
     />
     <div v-show="screenControl.showWhat === 'error'" id="error">
-      {{ screenData.errorInfo }}
+      ERROR
     </div>
     <div v-show="screenControl.showWhat === 'accomplish'" id="accomplish">
-      {{ screenData.accomplishInfo }}
+      完成
     </div>
-    <div v-show="screenControl.showWhat === 'pause'" id="pause" :class="{ 'pause-blink': store.control.pauseBlink }">
-      {{ screenData.pauseInfo }}
+    <div v-show="screenControl.showWhat === 'pause'" id="pause" :class="{ 'pause-blink': gameStore.control.pauseBlink }">
+      暫停
     </div>
     <!-- :style="{ fontSize: fontSize + 'px' }" -->
     <div v-show="screenControl.showWhat === 'conversation'" id="conversation">
-      {{ screenData.conversation[screenData.conversationIndex].info }}
+      {{ screenData.dialogue[screenData.dialogueIndex].info }}
     </div>
   </div>
 </template>

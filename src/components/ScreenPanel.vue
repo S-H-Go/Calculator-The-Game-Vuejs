@@ -1,19 +1,19 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useStore } from '../store'
+import { useLevelStore } from '../stores/level'
 import LevelScreen from './screenSection/LevelScreen.vue'
 import StepGoalScreen from './screenSection/StepGoalScreen.vue'
 import InfoScreen from './screenSection/InfoScreen.vue'
 
-const store = useStore()
-const screenData = computed(() => store.getScreenData)
+const store = useLevelStore()
+const screenData = computed(() => store.screenInfo)
 </script>
 
 <template>
   <div id="screen-panel">
     <LevelScreen :level="screenData.level" />
     <div id="display-section">
-      <StepGoalScreen :step="screenData.step" :goal="screenData.goal" />
+      <StepGoalScreen :step="screenData.currentStep" :goal="screenData.goal" />
       <InfoScreen />
     </div>
   </div>

@@ -1,17 +1,15 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
-import { useStore } from '../store'
-import FunctionButtonPanel from './functionButton/FunctionButtonPanel.vue'
-import SetButtonPanel from './setButton/SetButtonPanel.vue'
+import { useLevelStore } from '../stores/level'
+import Button from './Button.vue'
 
-const store = useStore()
-const buttonControl = computed(() => store.getButtonControl)
+const levelStore = useLevelStore()
 </script>
 
 <template>
   <div id="button-panel">
-    <SetButtonPanel v-show="buttonControl.showWhat === 'pause'" />
-    <FunctionButtonPanel v-show="buttonControl.showWhat !== 'pause'" />
+    <div class="buttons-layout">
+      <Button v-for="button in levelStore.buttons" :key="`${button.x}-${button.y}`" v-bind="button" />
+    </div>
   </div>
 </template>
 

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { useStore } from '../../store'
+import { useGameStore } from '../../stores'
 
 const props = defineProps<{
   step: number
   goal: number
 }>()
-const store = useStore()
+const store = useGameStore()
 </script>
 
 <template>

@@ -2,11 +2,11 @@
 import { onMounted } from 'vue'
 import ScreenPanel from './components/ScreenPanel.vue'
 import ButtonPanel from './components/ButtonPanel.vue'
-import { useStore } from './store/index'
+import { useGameStore } from './stores/index'
 
-const store = useStore()
+const store = useGameStore()
 onMounted(() => {
-  store.levelInit()
+  store.init()
 })
 </script>
 

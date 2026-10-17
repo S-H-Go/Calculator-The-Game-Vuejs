@@ -23,4 +23,4 @@ pnpm-debug.log*
 
 #dev files
 src/dist
-src/store/dist
+src/stores/dist
