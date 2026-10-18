@@ -17,7 +17,7 @@
 
 ## 运行环境
 
-> Node.js 22.22.1+（22 LTS）或 24+，pnpm 10.33.0。项目的 Node.js 版本约束来自 Vite、ESLint 和 lint-staged。
+> Node.js 22.22.2+（22 LTS）、24.15.0+（24 LTS）或 26+，pnpm 10.33.0。具体版本范围见 `package.json` 的 `engines`，测试环境也需要满足该约束。
 
 ## 本地运行
 
@@ -68,7 +68,16 @@ pnpm lint
 pnpm build
 ```
 
-测试使用 Node.js 内置测试工具、Vue 编译器和自定义渲染器，不新增测试依赖。覆盖通用按钮事件、Store 长短按、连续切关、Each、重置、通关和对话流程；实际页面布局及设备触摸体验需要另行在浏览器验收。运行测试使用上述 Node.js 版本。
+测试使用 Vitest、Vue Test Utils 和 jsdom，组件通过 Vite 的 Vue 插件直接加载。覆盖通用按钮事件、Store 长短按、连续切关、Each、重置、通关、对话流程、传送门动画和数字闪烁；定时行为使用 Vitest 假时钟，无需实际等待动画。实际页面布局及设备触摸体验需要另行在浏览器验收。
+
+```shell
+pnpm test:watch
+pnpm test:coverage
+```
+
+`test:watch` 在修改文件后自动重跑相关测试；`test:coverage` 输出覆盖率摘要，并生成 `coverage/index.html` 报告。覆盖范围包含运算模块、状态管理、通用按钮和数字屏幕组件。
+
+测试按职责组织：`tests/components` 验证组件交互和渲染，`tests/modules` 验证纯运算规则，`tests/stores` 验证关卡流程、连续切关和传送门动画。`tests/setup.js` 统一隔离 Pinia、假时钟及浏览器存储，并在每个用例后卸载组件、恢复 mock；`tests/helpers` 提供组件输入和关卡初始化辅助函数。
 
 ## 传送门
 
